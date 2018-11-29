@@ -1,14 +1,14 @@
 //
-//  KFUserDefaults.swift
+//  KMUserDefaults.swift
 //  Pods
 //
 //  Created by Kitefaster on 10/27/16.
-//  Copyright © 2017 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
 //
 
 import Foundation
 
-class KFUserDefaults {
+class KMUserDefaults {
     
     class func setApplicationId(kitemetricsApplicationId: Int) {
         UserDefaults.standard.set(kitemetricsApplicationId, forKey: "com.kitemetrics.applicationId")
@@ -103,8 +103,8 @@ class KFUserDefaults {
     
     class func setAttribution(_ attribution: [String : NSObject]) {
         UserDefaults.standard.set(attribution, forKey: "com.kitemetrics.attribution")
-        KFUserDefaults.setAttributionDate()
-        KFUserDefaults.setAttributionClientVersionId()
+        KMUserDefaults.setAttributionDate()
+        KMUserDefaults.setAttributionClientVersionId()
     }
     
     class func attribution() -> [String : NSObject]? {
@@ -120,8 +120,8 @@ class KFUserDefaults {
     }
     
     class func setAttributionClientVersionId() {
-        if KFUserDefaults.attributionClientVersionId() == 0 {
-            let versionId = KFUserDefaults.versionId()
+        if KMUserDefaults.attributionClientVersionId() == 0 {
+            let versionId = KMUserDefaults.versionId()
             if versionId > 0 {
                 UserDefaults.standard.set(versionId, forKey: "com.kitemetrics.attributionClientVersionId")
             }

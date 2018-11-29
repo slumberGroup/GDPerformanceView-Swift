@@ -1,14 +1,14 @@
 //
-//  KFError.swift
+//  KMError.swift
 //  Pods
 //
 //  Created by Kitefaster on 11/1/16.
-//  Copyright © 2017 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
 //
 
 import Foundation
 
-class KFError {
+class KMError {
     
     class func logAsNSError(_ error: Error) {
         let nsError = error as NSError
@@ -17,25 +17,25 @@ class KFError {
     
     class func logError(_ error: Error, sendToServer: Bool = true) {
         if sendToServer {
-            KFError.logAsNSError(error)
+            KMError.logAsNSError(error)
         } else {
-            KFError.logErrorMessage(error.localizedDescription, sendToServer: sendToServer)
+            KMError.logErrorMessage(error.localizedDescription, sendToServer: sendToServer)
         }
     }
     
     class func logErrorMessage(_ errorMessage: String, sendToServer: Bool = true) {
-        KFLog.p("========== Kitemetrics ERROR: " + errorMessage)
+        KMLog.p("========== Kitemetrics ERROR: " + errorMessage)
         if sendToServer {
             Kitemetrics.shared.postError(errorMessage, isInternal: true)
         }
     }
     
     class func printError(_ errorMessage: String) {
-        KFLog.forcePrint("========== Kitemetrics ERROR: " + errorMessage)
+        KMLog.forcePrint("========== Kitemetrics ERROR: " + errorMessage)
     }
     
     class func printWarning(_ errorMessage: String) {
-        KFLog.forcePrint("========== Kitemetrics WARNING: " + errorMessage)
+        KMLog.forcePrint("========== Kitemetrics WARNING: " + errorMessage)
     }
     
     

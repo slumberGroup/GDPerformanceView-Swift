@@ -25,11 +25,11 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 
-//KFReachability v4.3
+//KMReachability v4.3
 import SystemConfiguration
 import Foundation
 
-public enum KFReachabilityError: Error {
+public enum KMReachabilityError: Error {
     case FailedToCreateWithAddress(sockaddr_in)
     case FailedToCreateWithHostname(String)
     case UnableToSetCallback
@@ -38,7 +38,7 @@ public enum KFReachabilityError: Error {
 }
 
 @available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
-public let KFReachabilityChangedNotification = NSNotification.Name("KFReachabilityChangedNotification")
+public let KMReachabilityChangedNotification = NSNotification.Name("KMReachabilityChangedNotification")
 
 public extension Notification.Name {
     public static let reachabilityChanged = Notification.Name("com.kitemetrics.reachabilityChanged")
@@ -167,12 +167,12 @@ public extension KFReachability {
         context.info = UnsafeMutableRawPointer(Unmanaged<KFReachability>.passUnretained(self).toOpaque())
         if !SCNetworkReachabilitySetCallback(reachabilityRef, callback, &context) {
             stopNotifier()
-            throw KFReachabilityError.UnableToSetCallback
+            throw KMReachabilityError.UnableToSetCallback
         }
         
         if !SCNetworkReachabilitySetDispatchQueue(reachabilityRef, reachabilitySerialQueue) {
             stopNotifier()
-            throw KFReachabilityError.UnableToSetDispatchQueue
+            throw KMReachabilityError.UnableToSetDispatchQueue
         }
         
         // Perform an initial check
@@ -228,7 +228,7 @@ fileprivate extension KFReachability {
             var flags = SCNetworkReachabilityFlags()
             if !SCNetworkReachabilityGetFlags(self.reachabilityRef, &flags) {
                 self.stopNotifier()
-                throw KFReachabilityError.UnableToGetInitialFlags
+                throw KMReachabilityError.UnableToGetInitialFlags
             }
             
             self.flags = flags

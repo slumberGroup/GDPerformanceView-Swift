@@ -1,9 +1,9 @@
 //
-//  KFHelper.swift
+//  KMHelper.swift
 //  Pods
 //
 //  Created by Kitefaster on 10/24/16.
-//  Copyright © 2017 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
 //
 
 import Foundation
@@ -43,7 +43,7 @@ public enum KFPurchaseType: Int {
     case eCommerce = 7
 }
 
-class KFHelper {
+class KMHelper {
     
     class func applicationDict() -> [String: String] {
         var dict: [String: String] = [String: String]()
@@ -82,7 +82,7 @@ class KFHelper {
     
     class func sessionDict(launchTime: Date, closeTime: Date) -> [String: Any] {
         var dict = [String: Any]()
-        let versionId = KFUserDefaults.versionId()
+        let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
         }
@@ -98,7 +98,7 @@ class KFHelper {
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["event"] = event.truncate(255)
         
-        let versionId = KFUserDefaults.versionId()
+        let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
         }
@@ -111,7 +111,7 @@ class KFHelper {
         dict["method"] = method.truncate(255)
         dict["userIdentifier"] = userIdentifier.truncate(255)
         
-        let versionId = KFUserDefaults.versionId()
+        let versionId = KMUserDefaults.versionId()
             if versionId > 0 {
                 dict["versionId"] = versionId
             }
@@ -126,7 +126,7 @@ class KFHelper {
             dict["code"] = code!.truncate(255)
         }
         
-        let versionId = KFUserDefaults.versionId()
+        let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
         }
@@ -138,7 +138,7 @@ class KFHelper {
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["code"] = code.truncate(255)
         
-        let versionId = KFUserDefaults.versionId()
+        let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
         }
@@ -151,7 +151,7 @@ class KFHelper {
         dict["error"] = error.truncate(1000)
         dict["isInternal"] = isInternal
         
-        let versionId = KFUserDefaults.versionId()
+        let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
         }
@@ -173,7 +173,7 @@ class KFHelper {
             currencyCode = product.priceLocale.currencyCode!
         }
         
-        return KFHelper.purchaseDict(productIdentifier: product.productIdentifier, price: product.price.decimalValue, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: pType)
+        return KMHelper.purchaseDict(productIdentifier: product.productIdentifier, price: product.price.decimalValue, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: pType)
     }
     
     class func purchaseDict(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") -> [String: Any] {
@@ -192,7 +192,7 @@ class KFHelper {
         }
         dict["webOrderLineItemId"] = webOrderLineItemId
     
-        let versionId = KFUserDefaults.versionId()
+        let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
         }
@@ -241,16 +241,16 @@ class KFHelper {
     
     class func jsonFromDictionary(_ dictionary: [AnyHashable:Any], logErrors: Bool = true) -> Data? {
         do {
-            if KFLog.debug {
+            if KMLog.debug {
                 print(dictionary)
             }
             let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: JSONSerialization.WritingOptions())
             return jsonData
         } catch {
             if logErrors {
-                KFError.logError(error)
+                KMError.logError(error)
             } else {
-                KFError.printError(error.localizedDescription)
+                KMError.printError(error.localizedDescription)
             }
         }
         return nil
@@ -263,7 +263,7 @@ class KFHelper {
             }
             return dictionary
         } catch {
-            KFError.logError(error)
+            KMError.logError(error)
         }
 
         return nil

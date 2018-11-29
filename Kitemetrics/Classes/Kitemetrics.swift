@@ -3,7 +3,7 @@
 //  Pods
 //
 //  Created by Kitefaster on 10/18/16.
-//  Copyright © 2017 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
 //
 
 import StoreKit
@@ -49,15 +49,15 @@ public class Kitemetrics: NSObject {
     
     var apiKey: String = ""
     public var userIdentifier: String = ""
-    let sessionManager = KFSessionManager()
-    let queue = KFQueue()
-    let timerManager = KFTimerManager()
+    let sessionManager = KMSessionManager()
+    let queue = KMQueue()
+    let timerManager = KMTimerManager()
     var currentBackoffMultiplier = 1
     var currentBackoffValue = 1
     
     private override init() {
         super.init()
-        KFLog.p("Kitemetrics shared instance initialized!")
+        KMLog.p("Kitemetrics shared instance initialized!")
         sessionManager.delegate = self
     }
     
@@ -71,19 +71,19 @@ public class Kitemetrics: NSObject {
     ///- parameter userIdentifier: Optional.  This is used for tracking the number of active users.  Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc).
     @objc
     public func initSession(apiKey: String, userIdentifier: String) {
-        KFLog.p("Kitemetrics shared instance initialized with apiKey!")
+        KMLog.p("Kitemetrics shared instance initialized with apiKey!")
         self.apiKey = apiKey
         
         var uid = userIdentifier
         if uid != "" {
             if isEmailAddress(inputString: uid) {
-                KFError.printError("Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc) as the userIdentifier.")
+                KMError.printError("Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc) as the userIdentifier.")
                 uid = ""
             } else {
                 self.userIdentifier = uid
             }
         } else {
-            let lastVersion = KFUserDefaults.lastVersion()
+            let lastVersion = KMUserDefaults.lastVersion()
             if lastVersion != nil && lastVersion!["userIdentifier"] != "" {
                 self.userIdentifier = lastVersion!["userIdentifier"]!
             }
@@ -100,21 +100,21 @@ public class Kitemetrics: NSObject {
     }
     
     func appLaunch() {
-        KFLog.p("App Launch")
-        let lastVersion = KFUserDefaults.lastVersion()
-        let currentVersion = KFHelper.versionDict()
+        KMLog.p("App Launch")
+        let lastVersion = KMUserDefaults.lastVersion()
+        let currentVersion = KMHelper.versionDict()
         
         if lastVersion == nil {
             //This is a new install or a reinstall
             postApplication()
             postDevice()
             postVersion(currentVersion, installType: KFInstallType.newInstall)
-            KFUserDefaults.setNeedsSearchAdsAttribution(true)
-            KFUserDefaults.setLastVersion(currentVersion)
-            KFUserDefaults.setLastAttemptToSendErrorQueue(Date())
-            KFUserDefaults.setInstallDate(date: Date())
+            KMUserDefaults.setNeedsSearchAdsAttribution(true)
+            KMUserDefaults.setLastVersion(currentVersion)
+            KMUserDefaults.setLastAttemptToSendErrorQueue(Date())
+            KMUserDefaults.setInstallDate(date: Date())
         } else if lastVersion! != currentVersion {
-            KFUserDefaults.setVersionId(kitemetricsVersionId: nil)
+            KMUserDefaults.setVersionId(kitemetricsVersionId: nil)
             if lastVersion!["appVersion"] != currentVersion["appVersion"] {
                 postVersion(currentVersion, installType: KFInstallType.appVersionUpdate)
             } else if lastVersion!["userIdentifier"] != currentVersion["userIdentifier"] {
@@ -124,20 +124,20 @@ public class Kitemetrics: NSObject {
             } else {
                 postVersion(currentVersion, installType: KFInstallType.unknown)
             }
-            KFUserDefaults.setLastVersion(currentVersion)
+            KMUserDefaults.setLastVersion(currentVersion)
         }
         
         self.queue.startSending()
         self.timerManager.performForegroundActions()
         
         if #available(iOS 10, *) {
-            if KFUserDefaults.needsSearchAdsAttribution() {
+            if KMUserDefaults.needsSearchAdsAttribution() {
                 //Number of days since install
-                let installDate = KFUserDefaults.installDate()
+                let installDate = KMUserDefaults.installDate()
                 let diff = Date().timeIntervalSince1970 - installDate.timeIntervalSince1970
                 if diff > 31557600 {
                     //If it has been more than 1 year since install and we still haven't retrieved attribution data.  It is no longer available.  Stop trying.
-                    KFUserDefaults.setNeedsSearchAdsAttribution(false)
+                    KMUserDefaults.setNeedsSearchAdsAttribution(false)
                 } else {
                     //Click Latency
                     //Most users that click on a Search Ads impression immediately download the app. When the app is opened immediately and the
@@ -149,9 +149,9 @@ public class Kitemetrics: NSObject {
                     }
                 }
             } else {
-                if KFUserDefaults.attributionDate() == nil && KFUserDefaults.attributionClientVersionId() == 0 && KFUserDefaults.attributionRequestAttemptNumber() < Kitemetrics.kMaxSearchAdAttributionAttempts {
+                if KMUserDefaults.attributionDate() == nil && KMUserDefaults.attributionClientVersionId() == 0 && KMUserDefaults.attributionRequestAttemptNumber() < Kitemetrics.kMaxSearchAdAttributionAttempts {
                     if ASIdentifierManager.shared().isAdvertisingTrackingEnabled == false {
-                        KFUserDefaults.setAttributionDate()
+                        KMUserDefaults.setAttributionDate()
                     } else {
                         //Resend attribution
                         self.postSearchAdsAttribution()
@@ -164,7 +164,7 @@ public class Kitemetrics: NSObject {
     
     func postApplication() {
         var request = URLRequest(url: URL(string: Kitemetrics.kApplicationsEndpoint)!)
-        guard let json = KFHelper.applicationJson() else {
+        guard let json = KMHelper.applicationJson() else {
             return
         }
         request.httpBody = json
@@ -173,7 +173,7 @@ public class Kitemetrics: NSObject {
     
     func postDevice() {
         var request = URLRequest(url: URL(string: Kitemetrics.kDevicesEndpoint)!)
-        guard let json = KFHelper.deviceJson() else {
+        guard let json = KMHelper.deviceJson() else {
             return
         }
         request.httpBody = json
@@ -185,23 +185,23 @@ public class Kitemetrics: NSObject {
         modifiedVersionDict["timestamp"] = Date().timeIntervalSince1970
         modifiedVersionDict["installType"] = installType.rawValue
         
-        if let applicationId = KFUserDefaults.applicationId() {
+        if let applicationId = KMUserDefaults.applicationId() {
             if applicationId > 0 {
                 modifiedVersionDict["applicationId"] = applicationId
             } else {
-                modifiedVersionDict["bundleId"] = KFDevice.appBundleId()
+                modifiedVersionDict["bundleId"] = KMDevice.appBundleId()
             }
         }
 
-        let deviceId = KFUserDefaults.deviceId()
+        let deviceId = KMUserDefaults.deviceId()
         if deviceId > 0 {
             modifiedVersionDict["deviceId"] = deviceId
         } else {
-            modifiedVersionDict["deviceIdForVendor"] = KFDevice.identifierForVendor()
+            modifiedVersionDict["deviceIdForVendor"] = KMDevice.identifierForVendor()
         }
 
         var request = URLRequest(url: URL(string: Kitemetrics.kVersionsEndpoint)!)
-        guard let json = KFHelper.jsonFromDictionary(modifiedVersionDict) else {
+        guard let json = KMHelper.jsonFromDictionary(modifiedVersionDict) else {
             return
         }
         request.httpBody = json
@@ -218,10 +218,10 @@ public class Kitemetrics: NSObject {
     
     func postEvent(_ event: String) {
         if event.count > 255 {
-            KFError.printError("Length of event must be less than 256 characters. Truncating.")
+            KMError.printError("Length of event must be less than 256 characters. Truncating.")
         }
         var request = URLRequest(url: URL(string: Kitemetrics.kEventsEndpoint)!)
-        guard let json = KFHelper.eventJson(event) else {
+        guard let json = KMHelper.eventJson(event) else {
             return
         }
         request.httpBody = json
@@ -235,29 +235,29 @@ public class Kitemetrics: NSObject {
     @objc
     public func logSignUp(method: String, userIdentifier: String) {
         if method.count > 255 {
-            KFError.printError("Length of method must be less than 256 characters. Truncating.")
+            KMError.printError("Length of method must be less than 256 characters. Truncating.")
         }
         if userIdentifier.count == 0 {
-            KFError.printError("Length of userIdentifier must be greater than 0 characters.")
+            KMError.printError("Length of userIdentifier must be greater than 0 characters.")
             return
         }
         if userIdentifier.count > 255 {
-            KFError.printError("Length of userIdentifier must be less than 256 characters. Truncating.")
+            KMError.printError("Length of userIdentifier must be less than 256 characters. Truncating.")
         }
         
         if isEmailAddress(inputString: userIdentifier) {
-            KFError.printError("Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc) as the userIdentifier.")
+            KMError.printError("Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc) as the userIdentifier.")
             return
         }
 
         //Create a new version first
         Kitemetrics.shared.userIdentifier = userIdentifier
-        let currentVersion = KFHelper.versionDict()
-        KFUserDefaults.setLastVersion(currentVersion)
+        let currentVersion = KMHelper.versionDict()
+        KMUserDefaults.setLastVersion(currentVersion)
         postVersion(currentVersion, installType: KFInstallType.userChange)
         
         var request = URLRequest(url: URL(string: Kitemetrics.kEventSignUpsEndpoint)!)
-        guard let json = KFHelper.eventSignUpJson(method: method, userIdentifier: userIdentifier) else {
+        guard let json = KMHelper.eventSignUpJson(method: method, userIdentifier: userIdentifier) else {
             return
         }
         request.httpBody = json
@@ -271,15 +271,15 @@ public class Kitemetrics: NSObject {
     @objc
     public func logInvite(method: String, code: String? = nil) {
         if method.count > 255 {
-            KFError.printError("Length of method must be less than 256 characters. Truncating.")
+            KMError.printError("Length of method must be less than 256 characters. Truncating.")
         }
         
         if code != nil && code!.count > 255 {
-            KFError.printError("Length of code must be less than 256 characters. Truncating.")
+            KMError.printError("Length of code must be less than 256 characters. Truncating.")
         }
         
         var request = URLRequest(url: URL(string: Kitemetrics.kEventInviteEndpoint)!)
-        guard let json = KFHelper.eventInviteJson(method: method, code: code) else {
+        guard let json = KMHelper.eventInviteJson(method: method, code: code) else {
             return
         }
         request.httpBody = json
@@ -292,11 +292,11 @@ public class Kitemetrics: NSObject {
     @objc
     public func logRedeemInvite(code: String) {
         if code.count > 255 {
-            KFError.printError("Length of code must be less than 256 characters. Truncating.")
+            KMError.printError("Length of code must be less than 256 characters. Truncating.")
         }
         
         var request = URLRequest(url: URL(string: Kitemetrics.kEventRedeemInviteEndpoint)!)
-        guard let json = KFHelper.eventRedeemInviteJson(code: code) else {
+        guard let json = KMHelper.eventRedeemInviteJson(code: code) else {
             return
         }
         request.httpBody = json
@@ -313,11 +313,11 @@ public class Kitemetrics: NSObject {
     
     func postError(_ error: String, isInternal: Bool) {
         if error.count > 1000 {
-            KFError.printError("Length of error must be less than 1000 characters. Truncating.")
+            KMError.printError("Length of error must be less than 1000 characters. Truncating.")
         }
         
         var request = URLRequest(url: URL(string: Kitemetrics.kErrorsEndpoint)!)
-        guard let json = KFHelper.errorJson(error, isInternal: isInternal) else {
+        guard let json = KMHelper.errorJson(error, isInternal: isInternal) else {
             return
         }
         request.httpBody = json
@@ -329,7 +329,7 @@ public class Kitemetrics: NSObject {
     @objc
     public func logInAppAddToCart(_ product: SKProduct, quantity: Int, purchaseType: KFPurchaseType = .unknown) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KFHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KFPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
+        guard let json = KMHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KFPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -341,7 +341,7 @@ public class Kitemetrics: NSObject {
     @objc
     public func logAddToCart(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, purchaseType: KFPurchaseType) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KFHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KFPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
+        guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KFPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -359,7 +359,7 @@ public class Kitemetrics: NSObject {
     @objc
     public func logInAppPurchase(_ product: SKProduct, quantity: Int, purchaseType: KFPurchaseType) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KFHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KFPurchaseFunnel.purchase, purchaseType: purchaseType) else {
+        guard let json = KMHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KFPurchaseFunnel.purchase, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -371,7 +371,7 @@ public class Kitemetrics: NSObject {
     @objc
     public func logPurchase(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, purchaseType: KFPurchaseType) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KFHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KFPurchaseFunnel.purchase, purchaseType: purchaseType) else {
+        guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KFPurchaseFunnel.purchase, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -382,7 +382,7 @@ public class Kitemetrics: NSObject {
     @objc
     public func logPurchaseFunnel(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KFHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType, expiresDate: expiresDate, webOrderLineItemId: webOrderLineItemId) else {
+        guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType, expiresDate: expiresDate, webOrderLineItemId: webOrderLineItemId) else {
             return
         }
         request.httpBody = json
@@ -392,17 +392,17 @@ public class Kitemetrics: NSObject {
     
     @available(iOS 10, *)
     func postSearchAdsAttribution() {
-        let attemptNumber = KFUserDefaults.incrementAttributionRequestAttemptNumber()
-        KFLog.p("Requesting attribution details attempt # " + String(attemptNumber))
+        let attemptNumber = KMUserDefaults.incrementAttributionRequestAttemptNumber()
+        KMLog.p("Requesting attribution details attempt # " + String(attemptNumber))
         ADClient.shared().requestAttributionDetails({ (attributionDetails: [String : NSObject]?, error: Error?) in
-            KFLog.p("Requesting attribution details responded.")
+            KMLog.p("Requesting attribution details responded.")
             if error != nil {
                 let adClientError = error as? ADClientError
                 if adClientError != nil {
                     if adClientError!.code == ADClientError.limitAdTracking {
-                        KFLog.p("Limit ad tracking is turned on.  ADClientError.limitAdTracking")
-                        KFUserDefaults.setNeedsSearchAdsAttribution(false)
-                        KFUserDefaults.setAttributionDate()
+                        KMLog.p("Limit ad tracking is turned on.  ADClientError.limitAdTracking")
+                        KMUserDefaults.setNeedsSearchAdsAttribution(false)
+                        KMUserDefaults.setAttributionDate()
                     } else {
                         //Apple Search Ads error.  Retry.
                         if attemptNumber < Kitemetrics.kMaxSearchAdAttributionAttempts {
@@ -411,15 +411,15 @@ public class Kitemetrics: NSObject {
                             }
                         } else {
                             //Cap retries for click latency
-                            KFUserDefaults.setNeedsSearchAdsAttribution(false)
+                            KMUserDefaults.setNeedsSearchAdsAttribution(false)
                         }
-                        KFError.logError(error!)
+                        KMError.logError(error!)
                     }
                 } else {
                     if ASIdentifierManager.shared().isAdvertisingTrackingEnabled == false {
-                        KFLog.p("Limit ad tracking is turned on.  isAdvertisingTrackingEnabled == false")
-                        KFUserDefaults.setNeedsSearchAdsAttribution(false)
-                        KFUserDefaults.setAttributionDate()
+                        KMLog.p("Limit ad tracking is turned on.  isAdvertisingTrackingEnabled == false")
+                        KMUserDefaults.setNeedsSearchAdsAttribution(false)
+                        KMUserDefaults.setAttributionDate()
                     } else {
                         //Apple Search Ads error.  Retry.
                         if attemptNumber < Kitemetrics.kMaxSearchAdAttributionAttempts {
@@ -428,9 +428,9 @@ public class Kitemetrics: NSObject {
                             }
                         } else {
                             //Cap retries
-                            KFUserDefaults.setNeedsSearchAdsAttribution(false)
+                            KMUserDefaults.setNeedsSearchAdsAttribution(false)
                         }
-                        KFError.logError(error!)
+                        KMError.logError(error!)
                     }
                 }
             } else if attributionDetails != nil {
@@ -448,21 +448,21 @@ public class Kitemetrics: NSObject {
                             }
                         } else {
                             //Cap retries
-                            KFUserDefaults.setNeedsSearchAdsAttribution(false)
+                            KMUserDefaults.setNeedsSearchAdsAttribution(false)
                         }
 
                         return
                     }
                 }
 
-                guard let jsonData = KFHelper.jsonFromDictionary(attributionDetails!) else {
+                guard let jsonData = KMHelper.jsonFromDictionary(attributionDetails!) else {
                     return
                 }
                 self.postAttribution(jsonData)
-                KFUserDefaults.setNeedsSearchAdsAttribution(false)
-                KFUserDefaults.setAttribution(attributionDetails!)
+                KMUserDefaults.setNeedsSearchAdsAttribution(false)
+                KMUserDefaults.setAttribution(attributionDetails!)
             } else {
-                KFError.logErrorMessage("nil attribuiton and nil error.")
+                KMError.logErrorMessage("nil attribuiton and nil error.")
             }
         })
     }
@@ -478,15 +478,15 @@ public class Kitemetrics: NSObject {
     
     @objc
     public func kitemetricsDeviceId() -> Int {
-        return KFUserDefaults.deviceId()
+        return KMUserDefaults.deviceId()
     }
 }
 
-extension Kitemetrics: KFSessionManagerDelegate {
+extension Kitemetrics: KMSessionManagerDelegate {
     
     func sessionReadyToPost(launchTime: Date, closeTime: Date) {
         var request = URLRequest(url: URL(string: Kitemetrics.kSessionsEndpoint)!)
-        request.httpBody = KFHelper.sessionJson(launchTime: launchTime, closeTime: closeTime)
+        request.httpBody = KMHelper.sessionJson(launchTime: launchTime, closeTime: closeTime)
         
         self.queue.addItem(item: request)
     }

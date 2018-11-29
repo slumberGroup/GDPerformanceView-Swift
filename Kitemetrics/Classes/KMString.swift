@@ -1,9 +1,9 @@
 //
-//  KFString.swift
+//  KMString.swift
 //  Pods
 //
 //  Created by Kitefaster on 11/2/16.
-//  Copyright © 2017 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
 //
 
 import Foundation

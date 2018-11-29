@@ -1,19 +1,19 @@
 //
-//  KFLog.swift
+//  KMLog.swift
 //  Pods
 //
 //  Created by Kitefaster on 2/24/17.
-//  Copyright © 2017 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
 //
 
 import Foundation
 
-class KFLog {
+class KMLog {
     
     static let debug = false
     
     static func p(_ message: String) {
-        if KFLog.debug {
+        if KMLog.debug {
             print(message)
         }
     }
