@@ -191,8 +191,12 @@ class KMQueue {
             }
             do {
                 let data = try Data(contentsOf: file)
-                let request = NSKeyedUnarchiver.unarchiveObject(with: data) as! URLRequest
-                return (request, file)
+                let request = NSKeyedUnarchiver.unarchiveObject(with: data) as? URLRequest
+                if request == nil {
+                    return nil
+                } else {
+                    return (request!, file)
+                }
             } catch let error {
                 KMError.logError(error)
             }

@@ -124,25 +124,25 @@ class KMRequest {
                 do{
                     Kitemetrics.shared.currentBackoffMultiplier = 1
                     if request.url!.absoluteString.hasSuffix(Kitemetrics.kApplications) {
-                        let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String: Any]
-                        
-                        if let id = json["id"] as? Int {
-                            KMLog.p("application id: " + String(id))
-                            KMUserDefaults.setApplicationId(kitemetricsApplicationId: id)
+                        if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: Any] {
+                            if let id = json["id"] as? Int {
+                                KMLog.p("application id: " + String(id))
+                                KMUserDefaults.setApplicationId(kitemetricsApplicationId: id)
+                            }
                         }
                     } else if request.url!.absoluteString.hasSuffix(Kitemetrics.kDevices) {
-                        let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String: Any]
-                        
-                        if let id = json["id"] as? Int {
-                            KMLog.p("device id: " + String(id))
-                            KMUserDefaults.setDeviceId(kitemetricsDeviceId: id)
+                        if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: Any] {
+                            if let id = json["id"] as? Int {
+                                KMLog.p("device id: " + String(id))
+                                KMUserDefaults.setDeviceId(kitemetricsDeviceId: id)
+                            }
                         }
                     } else if request.url!.absoluteString.hasSuffix(Kitemetrics.kVersions) {
-                        let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String: Any]
-                        
-                        if let id = json["id"] as? Int {
-                            KMLog.p("version id: " + String(id))
-                            KMUserDefaults.setVersionId(kitemetricsVersionId: id)
+                        if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: Any]{
+                            if let id = json["id"] as? Int {
+                                KMLog.p("version id: " + String(id))
+                                KMUserDefaults.setVersionId(kitemetricsVersionId: id)
+                            }
                         }
                     } else  {
                         KMLog.p("Posted " + request.url!.lastPathComponent)
@@ -164,11 +164,12 @@ class KMRequest {
                     //Do not send notification.  Will attempt to resend again.
                 } else if KMLog.debug {
                     do {
-                        let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String: String]
-                        if let error = json["error"] {
-                            KMError.logErrorMessage(error, sendToServer: false)
-                            if !isImmediate {
-                                NotificationCenter.default.post(name: Notification.Name(rawValue: "com.kitefaster.KFRequest.Post.Error"), object: nil, userInfo: userInfo)
+                        if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: String] {
+                            if let error = json["error"] {
+                                KMError.logErrorMessage(error, sendToServer: false)
+                                if !isImmediate {
+                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "com.kitefaster.KFRequest.Post.Error"), object: nil, userInfo: userInfo)
+                                }
                             }
                         }
                     } catch {

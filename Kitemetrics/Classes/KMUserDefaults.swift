@@ -81,13 +81,16 @@ class KMUserDefaults {
     class func installDate() -> Date {
         let value = UserDefaults.standard.value(forKey: "com.kitemetrics.installDate")
         if value != nil {
-            return value! as! Date
-        } else {
-            //Install date not yet set.  Set it now.
-            let today = Date()
-            setInstallDate(date: today)
-            return today
+            let val = value as? Date
+            if val != nil {
+                return val!
+            }
         }
+        
+        //Install date not yet set.  Set it now.
+        let today = Date()
+        setInstallDate(date: today)
+        return today
     }
     
     class func incrementAttributionRequestAttemptNumber() -> Int {

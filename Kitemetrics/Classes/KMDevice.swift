@@ -55,7 +55,10 @@ public class KMDevice {
             if value == nil {
                 return ""
             } else {
-                return value as! String
+                guard let val = value as? String else {
+                    return ""
+                }
+                return val
             }
         }
         

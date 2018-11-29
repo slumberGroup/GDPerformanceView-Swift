@@ -436,22 +436,24 @@ public class Kitemetrics: NSObject {
             } else if attributionDetails != nil {
                 let attribution = attributionDetails!["Version3.1"]
                 if attribution != nil {
-                    let a = attribution! as! [String : Any]
-                    
-                    if a["iad-attribution"] != nil && a["iad-attribution"] as? String == "false" {
-                        // do nothing
-                    } else if (a["iad-campaign-name"] == nil || a["iad-campaign-name"] as! String == "") && (a["iad-org-name"] == nil || a["iad-org-name"] as! String == "") && (a["iad-keyword"] == nil || a["iad-keyword"] as! String == "") {
-                        //Empty.  Try again in a few seconds.
-                        if attemptNumber < Kitemetrics.kMaxSearchAdAttributionAttempts {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + Kitemetrics.kAttributionTryAgainSeconds) {
-                                self.postSearchAdsAttribution()
+                    let attrib = attribution! as? [String : Any]
+                    if attrib != nil {
+                        let a = attrib!
+                        if a["iad-attribution"] != nil && a["iad-attribution"] as? String == "false" {
+                            // do nothing
+                        } else if (a["iad-campaign-name"] == nil || a["iad-campaign-name"] as? String == "") && (a["iad-org-name"] == nil || a["iad-org-name"] as? String == "") && (a["iad-keyword"] == nil || a["iad-keyword"] as? String == "") {
+                            //Empty.  Try again in a few seconds.
+                            if attemptNumber < Kitemetrics.kMaxSearchAdAttributionAttempts {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Kitemetrics.kAttributionTryAgainSeconds) {
+                                    self.postSearchAdsAttribution()
+                                }
+                            } else {
+                                //Cap retries
+                                KMUserDefaults.setNeedsSearchAdsAttribution(false)
                             }
-                        } else {
-                            //Cap retries
-                            KMUserDefaults.setNeedsSearchAdsAttribution(false)
+                            
+                            return
                         }
-
-                        return
                     }
                 }
 
