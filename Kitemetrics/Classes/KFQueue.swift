@@ -434,7 +434,7 @@ class KFQueue {
         
         let path = documentsDir.appendingPathComponent("Application Support", isDirectory:true).appendingPathComponent(KFDevice.appBundleId(), isDirectory:true).appendingPathComponent("Kitemetrics", isDirectory:true).appendingPathComponent(subdirectory, isDirectory:true)
         let fileManager = FileManager.default
-        if !fileManager.fileExists(atPath: path.absoluteString) {
+        if !fileManager.fileExists(atPath: path.relativePath) {
             do {
                 try fileManager.createDirectory(at: path, withIntermediateDirectories: true, attributes: nil)
             } catch let error {

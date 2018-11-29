@@ -379,6 +379,17 @@ public class Kitemetrics: NSObject {
         self.queue.addItem(item: request)
     }
     
+    @objc
+    public func logPurchaseFunnel(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") {
+        var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
+        guard let json = KFHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType, expiresDate: expiresDate, webOrderLineItemId: webOrderLineItemId) else {
+            return
+        }
+        request.httpBody = json
+        
+        self.queue.addItem(item: request)
+    }
+    
     @available(iOS 10, *)
     func postSearchAdsAttribution() {
         let attemptNumber = KFUserDefaults.incrementAttributionRequestAttemptNumber()

@@ -9,11 +9,18 @@
 import Foundation
 import StoreKit
 
-enum KFPurchaseFunnel: Int {
+//See https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW16 for subscription status
+@objc
+public enum KFPurchaseFunnel: Int {
     case view = 1
     case addToCart = 2
     case purchase = 3
     case promotedInAppPurchase = 4
+    case freeTrial = 5
+    case cancel = 6                 //Subscription was canceled by Apple customer support.
+    case renewal = 7                //Automatic renewal was successful for an expired subscription.
+    case interactiveRenewal = 8     //Customer renewed a subscription interactively after it lapsed, either by using your app’s interface or on the App Store in account settings.
+    case didChangeRenewalPref = 9   //Customer changed the plan that takes affect at the next subscription renewal. Current active plan is not affected.
 }
 
 enum KFInstallType: Int {
@@ -40,18 +47,18 @@ class KFHelper {
     
     class func applicationDict() -> [String: String] {
         var dict: [String: String] = [String: String]()
-        dict["bundleDisplayName"] = KFDevice.appBundleDisplayName()
-        dict["bundleName"] = KFDevice.appBundleName()
-        dict["bundleId"] = KFDevice.appBundleId()
+        dict["bundleDisplayName"] = KMDevice.appBundleDisplayName()
+        dict["bundleName"] = KMDevice.appBundleName()
+        dict["bundleId"] = KMDevice.appBundleId()
         return dict
     }
     
     class func deviceDict() -> [String: String] {
         var dict: [String: String] = [String: String]()
-        dict["deviceIdForVendor"] = KFDevice.identifierForVendor()
-        dict["advertisingIdentifier"] = KFDevice.advertisingIdentifier()
+        dict["deviceIdForVendor"] = KMDevice.identifierForVendor()
+        dict["advertisingIdentifier"] = KMDevice.advertisingIdentifier()
         
-        var deviceType = KFDevice.deviceType()
+        var deviceType = KMDevice.deviceType()
         deviceType = deviceType.replacingOccurrences(of: "\0", with: "")
         dict["deviceType"] = deviceType
         return dict
@@ -60,11 +67,11 @@ class KFHelper {
     class func versionDict() -> [String: String] {
         var dict = [String: String]()
         dict["userIdentifier"] = Kitemetrics.shared.userIdentifier
-        dict["appVersion"] = KFDevice.appVersion()
-        dict["appBuild"] = KFDevice.appBuildVersion()
-        dict["osVersion"] = KFDevice.iosVersion()
-        dict["osCountry"] = KFDevice.regionCode()
-        dict["osLanguage"] = KFDevice.preferredLanguage()
+        dict["appVersion"] = KMDevice.appVersion()
+        dict["appBuild"] = KMDevice.appBuildVersion()
+        dict["osVersion"] = KMDevice.iosVersion()
+        dict["osCountry"] = KMDevice.regionCode()
+        dict["osLanguage"] = KMDevice.preferredLanguage()
         
         //applicationId - added in Kitemetrics post method
         //deviceId - added in Kitemetrics post method
@@ -169,7 +176,7 @@ class KFHelper {
         return KFHelper.purchaseDict(productIdentifier: product.productIdentifier, price: product.price.decimalValue, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: pType)
     }
     
-    class func purchaseDict(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType) -> [String: Any] {
+    class func purchaseDict(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["price"] = price
@@ -178,7 +185,13 @@ class KFHelper {
         dict["quantity"] = quantity
         dict["funnel"] = funnel.rawValue
         dict["purchaseTypeValue"] = purchaseType.rawValue
-        
+        if expiresDate != nil {
+            dict["expiresDateSeconds"] = expiresDate!.timeIntervalSince1970
+        } else {
+            dict["expiresDateSeconds"] = 0
+        }
+        dict["webOrderLineItemId"] = webOrderLineItemId
+    
         let versionId = KFUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
@@ -222,8 +235,8 @@ class KFHelper {
         return jsonFromDictionary(inAppPurchaseDict(product, quantity: quantity, funnel: funnel, purchaseType: purchaseType))
     }
     
-    class func purchaseJson(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType)-> Data? {
-        return jsonFromDictionary(purchaseDict(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType))
+    class func purchaseJson(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "")-> Data? {
+        return jsonFromDictionary(purchaseDict(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType, expiresDate: expiresDate, webOrderLineItemId: webOrderLineItemId))
     }
     
     class func jsonFromDictionary(_ dictionary: [AnyHashable:Any], logErrors: Bool = true) -> Data? {
