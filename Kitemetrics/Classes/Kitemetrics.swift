@@ -18,6 +18,7 @@ public class Kitemetrics: NSObject {
     @objc
     public static let shared = Kitemetrics()
     
+    static let kitemetricsClientVersion = "iOS-1.2.0"
     static let kServer = "https://cloud.kitemetrics.com:443"
     static let kAPI = "/api/v1/"
     static let kApplications = "applications"
@@ -31,7 +32,6 @@ public class Kitemetrics: NSObject {
     static let kErrors = "errors"
     static let kPurchases = "purchases"
     static let kAttributions = "attributions"
-    static let kAPIKey = "apiKey"
     static let kApplicationsEndpoint = kServer + kAPI + kApplications
     static let kDevicesEndpoint = kServer + kAPI + kDevices
     static let kVersionsEndpoint = kServer + kAPI + kVersions
@@ -61,42 +61,23 @@ public class Kitemetrics: NSObject {
         sessionManager.delegate = self
     }
     
-    @objc
+    @available(swift, deprecated: 1.0, obsoleted: 1.0, message: "Please get a new API Key from cloud.kitemetrics.com.  Call initSession(withApiKey:) instead.")
     public func initSession(apiKey: String) {
-        initSession(apiKey: apiKey, userIdentifier: "")
+        initSession(withApiKey: apiKey)
     }
     
     ///Call on app startup, preferablly in AppDelegate application(_:didFinishLaunchingWithOptions:)
     ///- parameter apiKey: Obtain the apiKey from https://cloud.kitemetrics.com
-    ///- parameter userIdentifier: Optional.  This is used for tracking the number of active users.  Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc).
     @objc
-    public func initSession(apiKey: String, userIdentifier: String) {
+    public func initSession(withApiKey: String) {
         KMLog.p("Kitemetrics shared instance initialized with apiKey!")
-        self.apiKey = apiKey
         
-        var uid = userIdentifier
-        if uid != "" {
-            if isEmailAddress(inputString: uid) {
-                KMError.printError("Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc) as the userIdentifier.")
-                uid = ""
-            } else {
-                self.userIdentifier = uid
-            }
-        } else {
-            let lastVersion = KMUserDefaults.lastVersion()
-            if lastVersion != nil && lastVersion!["userIdentifier"] != "" {
-                self.userIdentifier = lastVersion!["userIdentifier"]!
-            }
+        if apiKey.starts(with: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjB9.") {
+            KMLog.forcePrint("Deprecated apiKey. Please get a new API Key from cloud.kitemetrics.com.")
         }
-        
-        appLaunch()
-    }
 
-    func isEmailAddress(inputString: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: inputString)
+        self.apiKey = withApiKey
+        appLaunch()
     }
     
     func appLaunch() {

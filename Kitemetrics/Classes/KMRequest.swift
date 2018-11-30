@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class KMRequest {
     
     var requestApplicationId = false
@@ -21,7 +20,18 @@ class KMRequest {
         
         var request = storedRequest
         request.httpMethod = "POST"
-        request.setValue(Kitemetrics.shared.apiKey, forHTTPHeaderField: Kitemetrics.kAPIKey)
+        
+        if Kitemetrics.shared.apiKey.starts(with: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjB9.") {
+            request.setValue(Kitemetrics.shared.apiKey, forHTTPHeaderField: "apiKey")
+        } else {
+            request.setValue(
+                encode(
+                    claims: ["iss":"Kitemetrics", "sub":"iOS", "aud":"cloud.kitemetrics.com", "jti":UUID().uuidString],
+                    algorithm: .hs256(Kitemetrics.shared.apiKey.data(using: .utf8)!)
+                ), forHTTPHeaderField: "token"
+            )
+        }
+        request.setValue(Kitemetrics.kitemetricsClientVersion, forHTTPHeaderField: "kitemetrics-client-version")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpShouldHandleCookies = false
         request.allowsCellularAccess = true
