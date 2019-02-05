@@ -3,7 +3,7 @@
 //  Pods
 //
 //  Created by kitefaster on 10/27/16.
-//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2019 Kitefaster, LLC. All rights reserved.
 //
 
 import Foundation

@@ -7,77 +7,77 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03B64AB8EE3C87DFD0897077EFD2045C /* KMReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0A463C16BC6C22968E544B1AEAF99 /* KMReachability.swift */; };
 		0B93B7ED3E801E8C95BEB231652CA84C /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */; };
 		12AC2CC4FDF99F9651382446D238BE0E /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */; };
 		1642F64C717D8166279910C22E4B7BA3 /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */; };
+		16697D3B7AB6F325BCB5C30C4C7DF3A6 /* KMReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F176C6C792C2BB48B65A1DB4F8C4E21 /* KMReachability.swift */; };
+		1AA919E280F2B210C9E2F2E834A03DE0 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78FE3D941BDDB419613FE31DA421002 /* JWT.swift */; };
+		20083DCF61DBA667EEEA2A5871A9F256 /* KMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40003B7E5BE433F795996F67217DCAD4 /* KMRequest.swift */; };
 		228C60028726775BF90802257AD0F405 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */; };
+		2677D5F556171720266002C05EEC4FCF /* JWA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850ABF9E7FFC05A43CED563E621ED08A /* JWA.swift */; };
 		27FB7E476D984A28A82D3691AB381ECD /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */; };
+		28338A52CD800A9146D89E71862C7C12 /* Claims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC21ED0D074EF84C021F330617BD618 /* Claims.swift */; };
 		29DD9D0908C2145531C54DFF4A7DC4A4 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */; };
+		37C14B8724BA2AB132CFDA4AD656035C /* Kitemetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3174122B020B660C622ACC85AD36B07D /* Kitemetrics.swift */; };
+		39A06F9DEDB9FF979223A2AD1108F44B /* CompactJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139F63CF010746ABC1B8FADDE22BE3E5 /* CompactJSONEncoder.swift */; };
 		3A382AE10CCDC5885DB1DA68DBBB22C3 /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */; };
+		3C6B9206D2929536441BDFD4F18CE7EF /* KMTImerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74907C1DB91681C0B8D754A004D5C1 /* KMTImerManager.swift */; };
 		3DEA9F73ABC9D66DED2CD0E677CFBF6F /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */; };
 		3FB0E5F429EDF86F21676CB782C49AD9 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */; };
-		52E80210128DDFF0528892D4F0091A7A /* KMDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A81FB473D14D0964A04144BC9EAAA8 /* KMDevice.swift */; };
-		535F0A32B971001CA0CF4BE9CD29A959 /* KMString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678C5059CAFDAF2124652CB9F1AB318E /* KMString.swift */; };
+		51970D64FB30C906299A1A7667C7149D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		539451FDA67006E1BA2FA22BC3428F92 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */; };
 		55CF39346B3172132B5BDED40497EFDC /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */; };
+		57BAC1B261B9CB252604DFA1DBC79D7A /* Kitemetrics-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F126C7516F72099C1387A75991FFEF /* Kitemetrics-dummy.m */; };
+		588CBBEADAD3515ECF94852A5AA254BF /* JOSEHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95655BDE435C6311805A5FD5C821199B /* JOSEHeader.swift */; };
 		59FE908256AB98C49A00E4FE04392AD1 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */; };
-		5A4050BFB2E1421A279AC18E1F5CEA24 /* KMMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA428520C0EF1975C54C992C274861A3 /* KMMutex.swift */; };
 		5CB74AD9FF74E43613D8564490556B37 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */; };
 		5CE0E573C21AAD9E0395EC216EEDAB54 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */; };
-		6090608521B0765F001CA535 /* Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090608421B0765F001CA535 /* Encode.swift */; };
-		6090608721B076B9001CA535 /* ClaimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090608621B076B9001CA535 /* ClaimSet.swift */; };
-		6090608921B076D1001CA535 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090608821B076D1001CA535 /* Algorithm.swift */; };
-		6090608B21B07714001CA535 /* None.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090608A21B07714001CA535 /* None.swift */; };
-		6090608D21B0774D001CA535 /* JWA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090608C21B0774D001CA535 /* JWA.swift */; };
-		6090608F21B07793001CA535 /* CompactJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090608E21B07793001CA535 /* CompactJSONEncoder.swift */; };
-		6090609121B077B0001CA535 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609021B077B0001CA535 /* Base64.swift */; };
-		6090609421B0780C001CA535 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609221B0780C001CA535 /* HMAC.swift */; };
-		6090609521B0780C001CA535 /* HMACCommonCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609321B0780C001CA535 /* HMACCommonCrypto.swift */; };
-		6090609721B0783B001CA535 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609621B0783B001CA535 /* JWT.swift */; };
-		6090609921B0788F001CA535 /* Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609821B0788F001CA535 /* Decode.swift */; };
-		6090609B21B078D2001CA535 /* Claims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609A21B078D2001CA535 /* Claims.swift */; };
-		6090609D21B078EB001CA535 /* JOSEHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609C21B078EB001CA535 /* JOSEHeader.swift */; };
-		6090609F21B07911001CA535 /* CompactJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6090609E21B07911001CA535 /* CompactJSONDecoder.swift */; };
 		60B213D6E5E175A51962B09735A7327A /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */; };
-		62EF7ECCA18876E78B6B60123F90D817 /* Kitemetrics-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D595063DFDC3260F35788BB53864CC /* Kitemetrics-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6AFB36A616A1AD894358631A1B635571 /* KMQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161071A88948F49018DD359915465B2 /* KMQueue.swift */; };
+		686375EC3798FEA25CCC3C4A2B9EFB49 /* KMDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FA9E2FA5581DE689129B448DA9A48E /* KMDevice.swift */; };
 		6D7013D935BEC0F3F501A01CE8558DA1 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */; };
+		730D01770ACB5A2A56C10595108EFE33 /* KMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235266E33EDC6EDD39B2860B8E73B5A /* KMHelper.swift */; };
+		744A22FC0A3D29793FB736C010571FE5 /* Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5065B9CD1C39950B6A25F7B0C32E28 /* Encode.swift */; };
+		7598D7644E41E5CE4C234B487644F8EB /* KMSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39122E198B088FB75CA7EAC1AF22B178 /* KMSessionManager.swift */; };
 		80201860BE3FB405BC604ECB4656E3A0 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */; };
 		86466056B6DEDA09454F73B929D0909E /* Pods-Kitemetrics_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9735CAC021B94B199A0BC48EA6FCD28B /* Pods-Kitemetrics_Example-dummy.m */; };
-		872F620F4D0B8F227057A0706F07D97E /* KMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC1D9432B3567D835D295576362C4C /* KMError.swift */; };
 		8946767CD172FC867584994108505E58 /* Pods-Kitemetrics_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9618C9F1EB9F4050082B72D987302B /* Pods-Kitemetrics_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D438AA9F76BAC68FB1A94AA67E20E3A /* None.swift in Sources */ = {isa = PBXBuildFile; fileRef = E415FCD14A89A14ACD0A9F533C59D8C1 /* None.swift */; };
+		8D646582F54FFE2276285A0305D6DACE /* KMUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91A3C52E5E902B6BDCA367833D439AF /* KMUserDefaults.swift */; };
 		9117622AC14BE0B24C19E75045DB6F01 /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */; };
 		9404D8A437244A81BE0E00711934F876 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */; };
+		965C0C1D6A09687F055207A92136C763 /* CompactJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF8770BA10890763B9677D245D10C1C /* CompactJSONDecoder.swift */; };
+		9665B9DF1B925ED66F244EB52237D671 /* Kitemetrics-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AEE66136B46808F92EFEBB1A0698529 /* Kitemetrics-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		982FE00675386C7F497C9549C10ECA47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		996455C5AFF3E7C140FD3D4ADAC84273 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		9A0C6E909D5F5C756F4E69C1B4140106 /* ClaimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3812B6C4B1A4413E1C9EC32F7C311323 /* ClaimSet.swift */; };
+		9B06C126F7EDB3E2A6931FA39CD8242C /* KMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A91754686F5AB42E47ABF6E9250328 /* KMLog.swift */; };
 		A0F264229F80A23B91FED77EA243B3F0 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */; };
 		A1DDF7C494C0DE331620790486DF27CE /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */; };
 		A2D5362D2BB5EE66371ECA87374FC98A /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */; };
-		A42B20E4C7460EC6EC5B0F1396D92B20 /* KMTImerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29265BF5D694C1F1B58BECD9E3688219 /* KMTImerManager.swift */; };
 		A6D8CDF6B2926F1E3F3C3A7D443F8594 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AD77F49B2951C842B1CA8508C624725E /* KMSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBDD1730ABDA53B731D9378E243C3A6 /* KMSessionManager.swift */; };
+		ACBB2FD5B5E9634A1E9D51F505BD6262 /* KMQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE33274121C5FF040ED40D4D05025A4A /* KMQueue.swift */; };
 		AF9423B357A1B282EF6310FEE82A75E5 /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */; };
 		B51F9DC93471D53FCDFE8DC366569588 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		B537D25D2504A76C3A477BD696026CA0 /* ConstraintMakerPriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */; };
+		B7249AED9E24CFC1F9598E9EE0A55E5A /* KMString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4433E4A3FD7A9153FBCEE397114DAF2 /* KMString.swift */; };
 		B8A0972B11359AD83F123691F30549EB /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */; };
-		B8DF9F8E41A2E8FCC530CD1992B6611A /* Kitemetrics-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7DBC0F12EF1FBCD0C93CBCA1E023DE /* Kitemetrics-dummy.m */; };
-		C4BE039D2713DD299D838D92A4560EDD /* Kitemetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F6C7EA9F05B256DC3F157F3BB11876 /* Kitemetrics.swift */; };
+		C17DCC4CAFBF845D6363DCAFB5B41D2C /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E1E991E6603E9C8C1382DBBC0B18C4 /* Base64.swift */; };
+		C47E7B2562F686BE16FA1F650E2F2A35 /* HMACCommonCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A19D357DB9048A963D403AB548CCC6 /* HMACCommonCrypto.swift */; };
+		C759F6DB5CC745B529F645FEFA36E3F6 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2343B60B207113DABED3D9F5A8B3C061 /* HMAC.swift */; };
 		C83CDF5AD57F9D98C9E9BE6D71286B6C /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */; };
 		CBCAA913C03BD355335E1FF5A734E36F /* Pods-Kitemetrics_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E59BAB2A6E4F74FA4B6DE2BE1B6CD7C /* Pods-Kitemetrics_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC3F51078936B641443940DA0559B212 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */; };
-		CD71725C5487458DEE7BE9E0D7505704 /* KMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0E4EDB474195A29D70E602E58F0F8C /* KMHelper.swift */; };
-		D2D9C5DB2C6FF588A486DB41D8DEA044 /* KMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE04909EB3F8AFD0FE126C138B0E700 /* KMLog.swift */; };
+		D11B81ADC46AE194A6E58F03F7296DFB /* KMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADBE9410133C8266031AD1376A17BB /* KMError.swift */; };
 		D3676913BF3AE32AC49FDF140BC4F529 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */; };
+		D4A1A63E6C2DFF88B54738FFD887255D /* Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974ADEF56B44D2927F714238EE099919 /* Decode.swift */; };
 		D5F39EEEE05A78F92A73E6DDFB6DDE30 /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */; };
 		D9CA3D2B45FD439551587DB7938B4B36 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */; };
 		DF5E17013BF76DC9CC37F0282D13D32B /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */; };
 		E0B198BFBB580821873692E87877456C /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */; };
-		E6E04E458B8A8AA701CB8A9D7B34762E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		E8B1E1073C907CB62AC635D4B43CAE1C /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */; };
-		E9199F97FD42BC752EED6365948FD955 /* KMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E69EA22143D07D849C3D1EB7C8DD366 /* KMRequest.swift */; };
 		EE32F9AD387187454C2FC654536193B0 /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */; };
-		F2867B2904F7D0EE2AFD3CEBDD6120E0 /* KMUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C854A37FB0C2E7FBE3CDCE14919712 /* KMUserDefaults.swift */; };
+		F0811E54584CC50785CD863882A690F3 /* KMMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700B78FBD89147B6B3D66269728C6EC7 /* KMMutex.swift */; };
+		F4BBEE9CFAA2D7E4EFD5BD59569BDFEA /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201599C6CEDA65A2193B3E109C58E6EF /* Algorithm.swift */; };
 		F9D220376CF468EDFF53B8FACA07E062 /* Pods-Kitemetrics_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C65623AF4EAF050EF3F334D785A4B37B /* Pods-Kitemetrics_Tests-dummy.m */; };
 		FFB2565BAACC6C68EC2351A0B7ABC2EB /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */; };
 /* End PBXBuildFile section */
@@ -94,7 +94,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0344462BC9C0DAE6326941441DEB9DB7;
+			remoteGlobalIDString = F7B3CB0AAE3F32998D3EC30B35CFF178;
 			remoteInfo = Kitemetrics;
 		};
 		F7D6969FE0C2A0CEEF2FA80F34F17A07 /* PBXContainerItemProxy */ = {
@@ -110,104 +110,104 @@
 		068A4C41AD3E035EFFE7E7F568CE1EF9 /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		0AF518E3C1EEA98354E7A1BB1CEC881B /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
 		0E59BAB2A6E4F74FA4B6DE2BE1B6CD7C /* Pods-Kitemetrics_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kitemetrics_Tests-umbrella.h"; sourceTree = "<group>"; };
-		0FE04909EB3F8AFD0FE126C138B0E700 /* KMLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMLog.swift; path = Kitemetrics/Classes/KMLog.swift; sourceTree = "<group>"; };
 		11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
-		146B14C872BCD9E2C97E216C2C742028 /* Kitemetrics.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kitemetrics.modulemap; sourceTree = "<group>"; };
+		139F63CF010746ABC1B8FADDE22BE3E5 /* CompactJSONEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CompactJSONEncoder.swift; sourceTree = "<group>"; };
 		155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
-		15ECD35B459498593B5B4AF10A8CD19D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		19A81FB473D14D0964A04144BC9EAAA8 /* KMDevice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMDevice.swift; path = Kitemetrics/Classes/KMDevice.swift; sourceTree = "<group>"; };
+		18ACD002AF227F94E26BC3F18F713BCF /* Kitemetrics.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kitemetrics.xcconfig; sourceTree = "<group>"; };
 		1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
+		201599C6CEDA65A2193B3E109C58E6EF /* Algorithm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
+		202E9AD65382AAF5EC80782C924BFFFB /* Kitemetrics.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = Kitemetrics.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		2057A81225328642D0E49115C61C8897 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
 		216D3640C27DEDD1408F92DFDF08AA8E /* Pods-Kitemetrics_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kitemetrics_Example.release.xcconfig"; sourceTree = "<group>"; };
+		22F126C7516F72099C1387A75991FFEF /* Kitemetrics-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kitemetrics-dummy.m"; sourceTree = "<group>"; };
+		2343B60B207113DABED3D9F5A8B3C061 /* HMAC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
 		23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
-		29265BF5D694C1F1B58BECD9E3688219 /* KMTImerManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMTImerManager.swift; path = Kitemetrics/Classes/KMTImerManager.swift; sourceTree = "<group>"; };
+		2D5065B9CD1C39950B6A25F7B0C32E28 /* Encode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Encode.swift; sourceTree = "<group>"; };
+		2F176C6C792C2BB48B65A1DB4F8C4E21 /* KMReachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMReachability.swift; path = Kitemetrics/Classes/KMReachability.swift; sourceTree = "<group>"; };
+		3174122B020B660C622ACC85AD36B07D /* Kitemetrics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kitemetrics.swift; path = Kitemetrics/Classes/Kitemetrics.swift; sourceTree = "<group>"; };
 		31FD22674F3575A929A67473378BBE55 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35A91D0ACFB6CF1883A820AA2607BCA8 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
+		3812B6C4B1A4413E1C9EC32F7C311323 /* ClaimSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ClaimSet.swift; sourceTree = "<group>"; };
+		39122E198B088FB75CA7EAC1AF22B178 /* KMSessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMSessionManager.swift; path = Kitemetrics/Classes/KMSessionManager.swift; sourceTree = "<group>"; };
 		3A39EF6D4C8D8F847461613349A75E07 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Source/ConstraintDescription.swift; sourceTree = "<group>"; };
 		3ABC9D64458AB89596AC989C36546AE0 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
+		3AEE66136B46808F92EFEBB1A0698529 /* Kitemetrics-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kitemetrics-umbrella.h"; sourceTree = "<group>"; };
+		3DC21ED0D074EF84C021F330617BD618 /* Claims.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Claims.swift; sourceTree = "<group>"; };
+		3F19C702AF72693D15C958F0CC5F154F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40003B7E5BE433F795996F67217DCAD4 /* KMRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMRequest.swift; path = Kitemetrics/Classes/KMRequest.swift; sourceTree = "<group>"; };
 		412E1076B35614E3238E727069B5524A /* Pods-Kitemetrics_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Kitemetrics_Tests.modulemap"; sourceTree = "<group>"; };
 		45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		465909C1E34108C63AB5FBA6378D3493 /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
 		48CE3DCD5A18E652A9D4C4FCC6AEAE10 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
-		52AC1D9432B3567D835D295576362C4C /* KMError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMError.swift; path = Kitemetrics/Classes/KMError.swift; sourceTree = "<group>"; };
+		4FF8770BA10890763B9677D245D10C1C /* CompactJSONDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CompactJSONDecoder.swift; sourceTree = "<group>"; };
+		5235266E33EDC6EDD39B2860B8E73B5A /* KMHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMHelper.swift; path = Kitemetrics/Classes/KMHelper.swift; sourceTree = "<group>"; };
 		5495F3260249C5CD5E62E6D02610A41D /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
 		55F1F08ED6F3C072E7AC9154FBDC8C4E /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
-		58C854A37FB0C2E7FBE3CDCE14919712 /* KMUserDefaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMUserDefaults.swift; path = Kitemetrics/Classes/KMUserDefaults.swift; sourceTree = "<group>"; };
 		5D9C3ECA4DF9E3016266553CF8E3E19E /* Pods-Kitemetrics_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Kitemetrics_Example-frameworks.sh"; sourceTree = "<group>"; };
 		5EC79F011F83BA6ECDD556114758A196 /* Pods-Kitemetrics_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Kitemetrics_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		5FAC0AC855EFDB998E84AB91F91FC4CA /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
 		605D170D9609480FE5972BAFDCB68A62 /* Pods-Kitemetrics_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Kitemetrics_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6090608421B0765F001CA535 /* Encode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encode.swift; path = ../Kitemetrics/Classes/JWT/Encode.swift; sourceTree = "<group>"; };
-		6090608621B076B9001CA535 /* ClaimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimSet.swift; path = ../Kitemetrics/Classes/JWT/ClaimSet.swift; sourceTree = "<group>"; };
-		6090608821B076D1001CA535 /* Algorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Algorithm.swift; path = ../Kitemetrics/Classes/JWT/Algorithm.swift; sourceTree = "<group>"; };
-		6090608A21B07714001CA535 /* None.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = None.swift; path = ../Kitemetrics/Classes/JWT/None.swift; sourceTree = "<group>"; };
-		6090608C21B0774D001CA535 /* JWA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWA.swift; path = ../Kitemetrics/Classes/JWT/JWA.swift; sourceTree = "<group>"; };
-		6090608E21B07793001CA535 /* CompactJSONEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactJSONEncoder.swift; path = ../Kitemetrics/Classes/JWT/CompactJSONEncoder.swift; sourceTree = "<group>"; };
-		6090609021B077B0001CA535 /* Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Base64.swift; path = ../Kitemetrics/Classes/JWT/Base64.swift; sourceTree = "<group>"; };
-		6090609221B0780C001CA535 /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMAC.swift; path = ../Kitemetrics/Classes/JWT/HMAC.swift; sourceTree = "<group>"; };
-		6090609321B0780C001CA535 /* HMACCommonCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HMACCommonCrypto.swift; path = ../Kitemetrics/Classes/JWT/HMACCommonCrypto.swift; sourceTree = "<group>"; };
-		6090609621B0783B001CA535 /* JWT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWT.swift; path = ../Kitemetrics/Classes/JWT/JWT.swift; sourceTree = "<group>"; };
-		6090609821B0788F001CA535 /* Decode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decode.swift; path = ../Kitemetrics/Classes/JWT/Decode.swift; sourceTree = "<group>"; };
-		6090609A21B078D2001CA535 /* Claims.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Claims.swift; path = ../Kitemetrics/Classes/JWT/Claims.swift; sourceTree = "<group>"; };
-		6090609C21B078EB001CA535 /* JOSEHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JOSEHeader.swift; path = ../Kitemetrics/Classes/JWT/JOSEHeader.swift; sourceTree = "<group>"; };
-		6090609E21B07911001CA535 /* CompactJSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactJSONDecoder.swift; path = ../Kitemetrics/Classes/JWT/CompactJSONDecoder.swift; sourceTree = "<group>"; };
 		618BA51B32ACF0F8F31A11BACEF95396 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
-		632A9C073EC4DC417B2C66AE6D531B19 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		632A9C073EC4DC417B2C66AE6D531B19 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Source/ConstraintDSL.swift; sourceTree = "<group>"; };
-		65F0A463C16BC6C22968E544B1AEAF99 /* KMReachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMReachability.swift; path = Kitemetrics/Classes/KMReachability.swift; sourceTree = "<group>"; };
-		678C5059CAFDAF2124652CB9F1AB318E /* KMString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMString.swift; path = Kitemetrics/Classes/KMString.swift; sourceTree = "<group>"; };
-		6C7DBC0F12EF1FBCD0C93CBCA1E023DE /* Kitemetrics-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kitemetrics-dummy.m"; sourceTree = "<group>"; };
-		7668C193C154EF7D79DFFED02BD89AB8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		696D3369E7C43EA60D6AA9C0D502D5B6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		700B78FBD89147B6B3D66269728C6EC7 /* KMMutex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMMutex.swift; path = Kitemetrics/Classes/KMMutex.swift; sourceTree = "<group>"; };
+		75143DF15FD0FE8FBF7F17B1B6F5A38A /* Kitemetrics-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kitemetrics-prefix.pch"; sourceTree = "<group>"; };
 		769F4FE020B18B35A4EA9378D19CF2D4 /* Pods-Kitemetrics_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kitemetrics_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		76ADBE9410133C8266031AD1376A17BB /* KMError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMError.swift; path = Kitemetrics/Classes/KMError.swift; sourceTree = "<group>"; };
 		7E9618C9F1EB9F4050082B72D987302B /* Pods-Kitemetrics_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kitemetrics_Example-umbrella.h"; sourceTree = "<group>"; };
+		84A19D357DB9048A963D403AB548CCC6 /* HMACCommonCrypto.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HMACCommonCrypto.swift; sourceTree = "<group>"; };
+		850ABF9E7FFC05A43CED563E621ED08A /* JWA.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWA.swift; sourceTree = "<group>"; };
 		8A0A4D5D85B4FAEB4C7AF868A3E48121 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
-		8AB7DD52986B32B886D062F1794248AE /* Kitemetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kitemetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E69EA22143D07D849C3D1EB7C8DD366 /* KMRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMRequest.swift; path = Kitemetrics/Classes/KMRequest.swift; sourceTree = "<group>"; };
+		8AB7DD52986B32B886D062F1794248AE /* Kitemetrics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kitemetrics.framework; path = Kitemetrics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EBC6D00AF2DD54A90391EE5538E15BB /* Pods-Kitemetrics_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Kitemetrics_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		9297EFDA2A228BE0D126B13FEC2B2AC1 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
 		92EC67A9344FB011AC6B0CB0B1706C1C /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Source/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		92FA9E2FA5581DE689129B448DA9A48E /* KMDevice.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMDevice.swift; path = Kitemetrics/Classes/KMDevice.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95655BDE435C6311805A5FD5C821199B /* JOSEHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JOSEHeader.swift; sourceTree = "<group>"; };
 		9735CAC021B94B199A0BC48EA6FCD28B /* Pods-Kitemetrics_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kitemetrics_Example-dummy.m"; sourceTree = "<group>"; };
+		974ADEF56B44D2927F714238EE099919 /* Decode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Decode.swift; sourceTree = "<group>"; };
 		9A18E8825B382C0E9D4DD841E95A96F8 /* Pods-Kitemetrics_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kitemetrics_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A097A7893A6D5A57E1590CE722E767B1 /* Kitemetrics.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kitemetrics.xcconfig; sourceTree = "<group>"; };
-		A161071A88948F49018DD359915465B2 /* KMQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMQueue.swift; path = Kitemetrics/Classes/KMQueue.swift; sourceTree = "<group>"; };
 		A4E75F74CC1F2AD1BDA2ECD38FD3DA73 /* Pods-Kitemetrics_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Kitemetrics_Example.modulemap"; sourceTree = "<group>"; };
 		A9E108FDF81661FA3218157125A719D8 /* Pods-Kitemetrics_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Kitemetrics_Example-resources.sh"; sourceTree = "<group>"; };
-		A9F6C7EA9F05B256DC3F157F3BB11876 /* Kitemetrics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kitemetrics.swift; path = Kitemetrics/Classes/Kitemetrics.swift; sourceTree = "<group>"; };
-		AA428520C0EF1975C54C992C274861A3 /* KMMutex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMMutex.swift; path = Kitemetrics/Classes/KMMutex.swift; sourceTree = "<group>"; };
-		AE0E4EDB474195A29D70E602E58F0F8C /* KMHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMHelper.swift; path = Kitemetrics/Classes/KMHelper.swift; sourceTree = "<group>"; };
+		AE33274121C5FF040ED40D4D05025A4A /* KMQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMQueue.swift; path = Kitemetrics/Classes/KMQueue.swift; sourceTree = "<group>"; };
 		AF06BD3B86268E175694328DBA62C944 /* Pods-Kitemetrics_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Kitemetrics_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AF5FAAF2F13CE5B667DCA58EF782CF6D /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
 		B058F739089B32F3323418933731ADFB /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
 		B2EA42BEDC4213A7933BDFFEF46DFD64 /* Pods-Kitemetrics_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Kitemetrics_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B3A91754686F5AB42E47ABF6E9250328 /* KMLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMLog.swift; path = Kitemetrics/Classes/KMLog.swift; sourceTree = "<group>"; };
 		B5C9CEB30AA71EB58B5CD53321954DE0 /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
 		B73C67F9EFC99A11440EE4069211B84A /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
+		B78FE3D941BDDB419613FE31DA421002 /* JWT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
 		B8BDCD0CDEC036E08EBEFEBDB5217C5A /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
-		BAE365A1E156AA51953A17DE5C4EC433 /* Pods_Kitemetrics_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitemetrics_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAE365A1E156AA51953A17DE5C4EC433 /* Pods_Kitemetrics_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Kitemetrics_Example.framework; path = "Pods-Kitemetrics_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65623AF4EAF050EF3F334D785A4B37B /* Pods-Kitemetrics_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kitemetrics_Tests-dummy.m"; sourceTree = "<group>"; };
-		CF4F271526E3338560027BBD0DC78B76 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
 		D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Source/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
 		D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
+		D4433E4A3FD7A9153FBCEE397114DAF2 /* KMString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMString.swift; path = Kitemetrics/Classes/KMString.swift; sourceTree = "<group>"; };
 		D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
-		D6A01DD5EACED5AB9CEAF68E32883986 /* Kitemetrics-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kitemetrics-prefix.pch"; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D6E03888824F0BC09BC4827577C35087 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Source/Debugging.swift; sourceTree = "<group>"; };
 		D851919FB1ABA3E2D1A3EADFD4AF79D4 /* Pods-Kitemetrics_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Kitemetrics_Tests-resources.sh"; sourceTree = "<group>"; };
+		D9E1E991E6603E9C8C1382DBBC0B18C4 /* Base64.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
 		DBE14A5BE5AA8350526F042EBC920BAA /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
+		DC74907C1DB91681C0B8D754A004D5C1 /* KMTImerManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMTImerManager.swift; path = Kitemetrics/Classes/KMTImerManager.swift; sourceTree = "<group>"; };
 		DD13EEA5C9DFF7BD099759C5E418EC40 /* Pods-Kitemetrics_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kitemetrics_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DD97CEFB74800C4A5F04ED11A13D33D5 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
-		DE21308AF33CC42693E2B01EA785A751 /* Kitemetrics.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = Kitemetrics.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		E6D595063DFDC3260F35788BB53864CC /* Kitemetrics-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kitemetrics-umbrella.h"; sourceTree = "<group>"; };
-		E89519BADD1DC5453CE34167364290F9 /* Pods_Kitemetrics_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitemetrics_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDBDD1730ABDA53B731D9378E243C3A6 /* KMSessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMSessionManager.swift; path = Kitemetrics/Classes/KMSessionManager.swift; sourceTree = "<group>"; };
+		E415FCD14A89A14ACD0A9F533C59D8C1 /* None.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = None.swift; sourceTree = "<group>"; };
+		E89519BADD1DC5453CE34167364290F9 /* Pods_Kitemetrics_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Kitemetrics_Tests.framework; path = "Pods-Kitemetrics_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB1C88D7583A855F149230ABA2DF3C8 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
 		EEC1C0925B7A75C47F90DA4CD473E0A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1964997934241F2CD8C8E504DCC9747 /* Kitemetrics.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kitemetrics.modulemap; sourceTree = "<group>"; };
+		F2C54ABD51BDAC2461D9292AD5386B37 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		F3F75E7EE36678F81FD1EC4247DB1B87 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		F48B80C321C969B535FC47FF3DCA5F4A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F91A3C52E5E902B6BDCA367833D439AF /* KMUserDefaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KMUserDefaults.swift; path = Kitemetrics/Classes/KMUserDefaults.swift; sourceTree = "<group>"; };
 		FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,11 +228,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		57B43DE31D03BE3168DB488A21CF18F8 /* Frameworks */ = {
+		67451A080648ABAA881F1DE546C30E37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6E04E458B8A8AA701CB8A9D7B34762E /* Foundation.framework in Frameworks */,
+				51970D64FB30C906299A1A7667C7149D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +247,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C6F0A1F0A87F6F08B5E679064ED0D25 /* JWT */ = {
+			isa = PBXGroup;
+			children = (
+				201599C6CEDA65A2193B3E109C58E6EF /* Algorithm.swift */,
+				D9E1E991E6603E9C8C1382DBBC0B18C4 /* Base64.swift */,
+				3DC21ED0D074EF84C021F330617BD618 /* Claims.swift */,
+				3812B6C4B1A4413E1C9EC32F7C311323 /* ClaimSet.swift */,
+				4FF8770BA10890763B9677D245D10C1C /* CompactJSONDecoder.swift */,
+				139F63CF010746ABC1B8FADDE22BE3E5 /* CompactJSONEncoder.swift */,
+				974ADEF56B44D2927F714238EE099919 /* Decode.swift */,
+				2D5065B9CD1C39950B6A25F7B0C32E28 /* Encode.swift */,
+				2343B60B207113DABED3D9F5A8B3C061 /* HMAC.swift */,
+				84A19D357DB9048A963D403AB548CCC6 /* HMACCommonCrypto.swift */,
+				95655BDE435C6311805A5FD5C821199B /* JOSEHeader.swift */,
+				850ABF9E7FFC05A43CED563E621ED08A /* JWA.swift */,
+				B78FE3D941BDDB419613FE31DA421002 /* JWT.swift */,
+				E415FCD14A89A14ACD0A9F533C59D8C1 /* None.swift */,
+			);
+			name = JWT;
+			path = Kitemetrics/Classes/JWT;
+			sourceTree = "<group>";
+		};
 		0F14D01B37C684095099AE8C8376D636 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,16 +313,6 @@
 			path = "Target Support Files/Pods-Kitemetrics_Example";
 			sourceTree = "<group>";
 		};
-		22D75236F02897B0651E0565098F8768 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				DE21308AF33CC42693E2B01EA785A751 /* Kitemetrics.podspec */,
-				7668C193C154EF7D79DFFED02BD89AB8 /* LICENSE */,
-				15ECD35B459498593B5B4AF10A8CD19D /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		432313F4618A6E0D54282078B6A48A1B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,39 +335,14 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6090608321B0763C001CA535 /* JWT */ = {
+		67240BDD357ADC7F97B48E3A00225809 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				6090608821B076D1001CA535 /* Algorithm.swift */,
-				6090609021B077B0001CA535 /* Base64.swift */,
-				6090609A21B078D2001CA535 /* Claims.swift */,
-				6090608621B076B9001CA535 /* ClaimSet.swift */,
-				6090608E21B07793001CA535 /* CompactJSONEncoder.swift */,
-				6090609E21B07911001CA535 /* CompactJSONDecoder.swift */,
-				6090608421B0765F001CA535 /* Encode.swift */,
-				6090608C21B0774D001CA535 /* JWA.swift */,
-				6090609621B0783B001CA535 /* JWT.swift */,
-				6090609C21B078EB001CA535 /* JOSEHeader.swift */,
-				6090609821B0788F001CA535 /* Decode.swift */,
-				6090609221B0780C001CA535 /* HMAC.swift */,
-				6090609321B0780C001CA535 /* HMACCommonCrypto.swift */,
-				6090608A21B07714001CA535 /* None.swift */,
+				202E9AD65382AAF5EC80782C924BFFFB /* Kitemetrics.podspec */,
+				696D3369E7C43EA60D6AA9C0D502D5B6 /* LICENSE */,
+				F2C54ABD51BDAC2461D9292AD5386B37 /* README.md */,
 			);
-			path = JWT;
-			sourceTree = "<group>";
-		};
-		611F109993B2316E78105A11AD4186C6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				CF4F271526E3338560027BBD0DC78B76 /* Info.plist */,
-				146B14C872BCD9E2C97E216C2C742028 /* Kitemetrics.modulemap */,
-				A097A7893A6D5A57E1590CE722E767B1 /* Kitemetrics.xcconfig */,
-				6C7DBC0F12EF1FBCD0C93CBCA1E023DE /* Kitemetrics-dummy.m */,
-				D6A01DD5EACED5AB9CEAF68E32883986 /* Kitemetrics-prefix.pch */,
-				E6D595063DFDC3260F35788BB53864CC /* Kitemetrics-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Kitemetrics";
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		73C127D904FC4387E259C8AB024B3E73 /* Targets Support Files */ = {
@@ -371,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				E6932A7D37023D5E3DFCAA78F2EE079A /* Development Pods */,
+				8B884CDFA76A48BB1B63B7ED3C7EC2CF /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				0F14D01B37C684095099AE8C8376D636 /* Pods */,
 				81549B9099BFC8ED8AC53C8E6FCF8DAB /* Products */,
@@ -388,6 +375,28 @@
 				632A9C073EC4DC417B2C66AE6D531B19 /* SnapKit.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		865D1374439A92E91B2D2B18613AEC1F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F19C702AF72693D15C958F0CC5F154F /* Info.plist */,
+				F1964997934241F2CD8C8E504DCC9747 /* Kitemetrics.modulemap */,
+				18ACD002AF227F94E26BC3F18F713BCF /* Kitemetrics.xcconfig */,
+				22F126C7516F72099C1387A75991FFEF /* Kitemetrics-dummy.m */,
+				75143DF15FD0FE8FBF7F17B1B6F5A38A /* Kitemetrics-prefix.pch */,
+				3AEE66136B46808F92EFEBB1A0698529 /* Kitemetrics-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Kitemetrics";
+			sourceTree = "<group>";
+		};
+		8B884CDFA76A48BB1B63B7ED3C7EC2CF /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD6403CC575370F8DDB5294CD892EF50 /* Kitemetrics */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		ACE3CBBE2C7163F9C96209ED44FA75D0 /* SnapKit */ = {
@@ -429,31 +438,8 @@
 				45908992EEDBCFF12244DAE9912F7228 /* UILayoutSupport+Extensions.swift */,
 				432313F4618A6E0D54282078B6A48A1B /* Support Files */,
 			);
+			name = SnapKit;
 			path = SnapKit;
-			sourceTree = "<group>";
-		};
-		B1F32418B7CA7402D9D48253D9FEDA35 /* Kitemetrics */ = {
-			isa = PBXGroup;
-			children = (
-				6090608321B0763C001CA535 /* JWT */,
-				A9F6C7EA9F05B256DC3F157F3BB11876 /* Kitemetrics.swift */,
-				19A81FB473D14D0964A04144BC9EAAA8 /* KMDevice.swift */,
-				52AC1D9432B3567D835D295576362C4C /* KMError.swift */,
-				AE0E4EDB474195A29D70E602E58F0F8C /* KMHelper.swift */,
-				0FE04909EB3F8AFD0FE126C138B0E700 /* KMLog.swift */,
-				AA428520C0EF1975C54C992C274861A3 /* KMMutex.swift */,
-				A161071A88948F49018DD359915465B2 /* KMQueue.swift */,
-				65F0A463C16BC6C22968E544B1AEAF99 /* KMReachability.swift */,
-				8E69EA22143D07D849C3D1EB7C8DD366 /* KMRequest.swift */,
-				EDBDD1730ABDA53B731D9378E243C3A6 /* KMSessionManager.swift */,
-				678C5059CAFDAF2124652CB9F1AB318E /* KMString.swift */,
-				29265BF5D694C1F1B58BECD9E3688219 /* KMTImerManager.swift */,
-				58C854A37FB0C2E7FBE3CDCE14919712 /* KMUserDefaults.swift */,
-				22D75236F02897B0651E0565098F8768 /* Pod */,
-				611F109993B2316E78105A11AD4186C6 /* Support Files */,
-			);
-			name = Kitemetrics;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -464,12 +450,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E6932A7D37023D5E3DFCAA78F2EE079A /* Development Pods */ = {
+		DD6403CC575370F8DDB5294CD892EF50 /* Kitemetrics */ = {
 			isa = PBXGroup;
 			children = (
-				B1F32418B7CA7402D9D48253D9FEDA35 /* Kitemetrics */,
+				3174122B020B660C622ACC85AD36B07D /* Kitemetrics.swift */,
+				92FA9E2FA5581DE689129B448DA9A48E /* KMDevice.swift */,
+				76ADBE9410133C8266031AD1376A17BB /* KMError.swift */,
+				5235266E33EDC6EDD39B2860B8E73B5A /* KMHelper.swift */,
+				B3A91754686F5AB42E47ABF6E9250328 /* KMLog.swift */,
+				700B78FBD89147B6B3D66269728C6EC7 /* KMMutex.swift */,
+				AE33274121C5FF040ED40D4D05025A4A /* KMQueue.swift */,
+				2F176C6C792C2BB48B65A1DB4F8C4E21 /* KMReachability.swift */,
+				40003B7E5BE433F795996F67217DCAD4 /* KMRequest.swift */,
+				39122E198B088FB75CA7EAC1AF22B178 /* KMSessionManager.swift */,
+				D4433E4A3FD7A9153FBCEE397114DAF2 /* KMString.swift */,
+				DC74907C1DB91681C0B8D754A004D5C1 /* KMTImerManager.swift */,
+				F91A3C52E5E902B6BDCA367833D439AF /* KMUserDefaults.swift */,
+				0C6F0A1F0A87F6F08B5E679064ED0D25 /* JWT */,
+				67240BDD357ADC7F97B48E3A00225809 /* Pod */,
+				865D1374439A92E91B2D2B18613AEC1F /* Support Files */,
 			);
-			name = "Development Pods";
+			name = Kitemetrics;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,19 +485,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4243073B0F742DF1C595F40925CFDF5C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62EF7ECCA18876E78B6B60123F90D817 /* Kitemetrics-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		98AA2FCEA3685F8360426A4A73B4AC9A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8946767CD172FC867584994108505E58 /* Pods-Kitemetrics_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B791689D5B278E4CCDC7AAFBAB2F1A74 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9665B9DF1B925ED66F244EB52237D671 /* Kitemetrics-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,24 +512,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0344462BC9C0DAE6326941441DEB9DB7 /* Kitemetrics */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7C2304C61C75D53C80CF6BBA66BC1E3D /* Build configuration list for PBXNativeTarget "Kitemetrics" */;
-			buildPhases = (
-				4243073B0F742DF1C595F40925CFDF5C /* Headers */,
-				A1580C2D1FCAA979B18823D28384AC19 /* Sources */,
-				57B43DE31D03BE3168DB488A21CF18F8 /* Frameworks */,
-				72083647F2BAD2E36B8EB5EFE2231E10 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Kitemetrics;
-			productName = Kitemetrics;
-			productReference = 8AB7DD52986B32B886D062F1794248AE /* Kitemetrics.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		1DA1C32DAD5D5B7A2A6A393E52DB9CB0 /* SnapKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B112DA97722A17ABABD0726FE9339183 /* Build configuration list for PBXNativeTarget "SnapKit" */;
@@ -585,6 +569,24 @@
 			productReference = E89519BADD1DC5453CE34167364290F9 /* Pods_Kitemetrics_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		F7B3CB0AAE3F32998D3EC30B35CFF178 /* Kitemetrics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0956BAA0A136342E516DBCB154EF61F5 /* Build configuration list for PBXNativeTarget "Kitemetrics" */;
+			buildPhases = (
+				B791689D5B278E4CCDC7AAFBAB2F1A74 /* Headers */,
+				BCD1A470A456B3373CF1202A615EF357 /* Sources */,
+				67451A080648ABAA881F1DE546C30E37 /* Frameworks */,
+				FC7B2BA0BAF3D84F04FCED52B72D9A91 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kitemetrics;
+			productName = Kitemetrics;
+			productReference = 8AB7DD52986B32B886D062F1794248AE /* Kitemetrics.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -606,7 +608,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0344462BC9C0DAE6326941441DEB9DB7 /* Kitemetrics */,
+				F7B3CB0AAE3F32998D3EC30B35CFF178 /* Kitemetrics */,
 				471AEDF81718C14F7F9EE20DC82A489F /* Pods-Kitemetrics_Example */,
 				C6CA6AF2A6BEDEACFD4EA2049D3BA5AB /* Pods-Kitemetrics_Tests */,
 				1DA1C32DAD5D5B7A2A6A393E52DB9CB0 /* SnapKit */,
@@ -622,13 +624,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		72083647F2BAD2E36B8EB5EFE2231E10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		850B172A1471712DD5AFDC8B0C02EAEE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -637,6 +632,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A2AF9D28054FB645DF8BD6C159730463 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC7B2BA0BAF3D84F04FCED52B72D9A91 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -696,38 +698,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1580C2D1FCAA979B18823D28384AC19 /* Sources */ = {
+		BCD1A470A456B3373CF1202A615EF357 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8DF9F8E41A2E8FCC530CD1992B6611A /* Kitemetrics-dummy.m in Sources */,
-				6090609521B0780C001CA535 /* HMACCommonCrypto.swift in Sources */,
-				C4BE039D2713DD299D838D92A4560EDD /* Kitemetrics.swift in Sources */,
-				52E80210128DDFF0528892D4F0091A7A /* KMDevice.swift in Sources */,
-				872F620F4D0B8F227057A0706F07D97E /* KMError.swift in Sources */,
-				6090609921B0788F001CA535 /* Decode.swift in Sources */,
-				6090608921B076D1001CA535 /* Algorithm.swift in Sources */,
-				6090608B21B07714001CA535 /* None.swift in Sources */,
-				CD71725C5487458DEE7BE9E0D7505704 /* KMHelper.swift in Sources */,
-				D2D9C5DB2C6FF588A486DB41D8DEA044 /* KMLog.swift in Sources */,
-				5A4050BFB2E1421A279AC18E1F5CEA24 /* KMMutex.swift in Sources */,
-				6AFB36A616A1AD894358631A1B635571 /* KMQueue.swift in Sources */,
-				03B64AB8EE3C87DFD0897077EFD2045C /* KMReachability.swift in Sources */,
-				E9199F97FD42BC752EED6365948FD955 /* KMRequest.swift in Sources */,
-				6090609F21B07911001CA535 /* CompactJSONDecoder.swift in Sources */,
-				6090608F21B07793001CA535 /* CompactJSONEncoder.swift in Sources */,
-				6090609D21B078EB001CA535 /* JOSEHeader.swift in Sources */,
-				AD77F49B2951C842B1CA8508C624725E /* KMSessionManager.swift in Sources */,
-				6090609B21B078D2001CA535 /* Claims.swift in Sources */,
-				6090608721B076B9001CA535 /* ClaimSet.swift in Sources */,
-				535F0A32B971001CA0CF4BE9CD29A959 /* KMString.swift in Sources */,
-				6090609721B0783B001CA535 /* JWT.swift in Sources */,
-				6090609121B077B0001CA535 /* Base64.swift in Sources */,
-				A42B20E4C7460EC6EC5B0F1396D92B20 /* KMTImerManager.swift in Sources */,
-				6090608D21B0774D001CA535 /* JWA.swift in Sources */,
-				F2867B2904F7D0EE2AFD3CEBDD6120E0 /* KMUserDefaults.swift in Sources */,
-				6090609421B0780C001CA535 /* HMAC.swift in Sources */,
-				6090608521B0765F001CA535 /* Encode.swift in Sources */,
+				F4BBEE9CFAA2D7E4EFD5BD59569BDFEA /* Algorithm.swift in Sources */,
+				C17DCC4CAFBF845D6363DCAFB5B41D2C /* Base64.swift in Sources */,
+				28338A52CD800A9146D89E71862C7C12 /* Claims.swift in Sources */,
+				9A0C6E909D5F5C756F4E69C1B4140106 /* ClaimSet.swift in Sources */,
+				965C0C1D6A09687F055207A92136C763 /* CompactJSONDecoder.swift in Sources */,
+				39A06F9DEDB9FF979223A2AD1108F44B /* CompactJSONEncoder.swift in Sources */,
+				D4A1A63E6C2DFF88B54738FFD887255D /* Decode.swift in Sources */,
+				744A22FC0A3D29793FB736C010571FE5 /* Encode.swift in Sources */,
+				C759F6DB5CC745B529F645FEFA36E3F6 /* HMAC.swift in Sources */,
+				C47E7B2562F686BE16FA1F650E2F2A35 /* HMACCommonCrypto.swift in Sources */,
+				588CBBEADAD3515ECF94852A5AA254BF /* JOSEHeader.swift in Sources */,
+				2677D5F556171720266002C05EEC4FCF /* JWA.swift in Sources */,
+				1AA919E280F2B210C9E2F2E834A03DE0 /* JWT.swift in Sources */,
+				57BAC1B261B9CB252604DFA1DBC79D7A /* Kitemetrics-dummy.m in Sources */,
+				37C14B8724BA2AB132CFDA4AD656035C /* Kitemetrics.swift in Sources */,
+				686375EC3798FEA25CCC3C4A2B9EFB49 /* KMDevice.swift in Sources */,
+				D11B81ADC46AE194A6E58F03F7296DFB /* KMError.swift in Sources */,
+				730D01770ACB5A2A56C10595108EFE33 /* KMHelper.swift in Sources */,
+				9B06C126F7EDB3E2A6931FA39CD8242C /* KMLog.swift in Sources */,
+				F0811E54584CC50785CD863882A690F3 /* KMMutex.swift in Sources */,
+				ACBB2FD5B5E9634A1E9D51F505BD6262 /* KMQueue.swift in Sources */,
+				16697D3B7AB6F325BCB5C30C4C7DF3A6 /* KMReachability.swift in Sources */,
+				20083DCF61DBA667EEEA2A5871A9F256 /* KMRequest.swift in Sources */,
+				7598D7644E41E5CE4C234B487644F8EB /* KMSessionManager.swift in Sources */,
+				B7249AED9E24CFC1F9598E9EE0A55E5A /* KMString.swift in Sources */,
+				3C6B9206D2929536441BDFD4F18CE7EF /* KMTImerManager.swift in Sources */,
+				8D646582F54FFE2276285A0305D6DACE /* KMUserDefaults.swift in Sources */,
+				8D438AA9F76BAC68FB1A94AA67E20E3A /* None.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,15 +759,15 @@
 		E98B20C56C677E0ACC68421C79436904 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Kitemetrics;
-			target = 0344462BC9C0DAE6326941441DEB9DB7 /* Kitemetrics */;
+			target = F7B3CB0AAE3F32998D3EC30B35CFF178 /* Kitemetrics */;
 			targetProxy = CF2AF84FC48247A883734064CFEC9074 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		31F35C3065D82DD48C2DFE05E00BFF43 /* Release */ = {
+		22D04688F46E9BD2113CE66848BDAEBC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A097A7893A6D5A57E1590CE722E767B1 /* Kitemetrics.xcconfig */;
+			baseConfigurationReference = 18ACD002AF227F94E26BC3F18F713BCF /* Kitemetrics.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -794,37 +796,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		5630751FF32A607E24A91962C141E6AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A097A7893A6D5A57E1590CE722E767B1 /* Kitemetrics.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Kitemetrics/Kitemetrics-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Kitemetrics/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Kitemetrics/Kitemetrics.modulemap";
-				PRODUCT_MODULE_NAME = Kitemetrics;
-				PRODUCT_NAME = Kitemetrics;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		85B95B1234E227C814CCC2C7902D0916 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -881,7 +852,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -1084,6 +1056,37 @@
 			};
 			name = Release;
 		};
+		EB6F57BC8F6721E215D2473E5E2CAB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18ACD002AF227F94E26BC3F18F713BCF /* Kitemetrics.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Kitemetrics/Kitemetrics-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Kitemetrics/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Kitemetrics/Kitemetrics.modulemap";
+				PRODUCT_MODULE_NAME = Kitemetrics;
+				PRODUCT_NAME = Kitemetrics;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		ED98A9D0EB1E45A5B09FB84E0204F3BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9A18E8825B382C0E9D4DD841E95A96F8 /* Pods-Kitemetrics_Tests.debug.xcconfig */;
@@ -1153,20 +1156,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0956BAA0A136342E516DBCB154EF61F5 /* Build configuration list for PBXNativeTarget "Kitemetrics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB6F57BC8F6721E215D2473E5E2CAB4C /* Debug */,
+				22D04688F46E9BD2113CE66848BDAEBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A73625DEBD810B78234FA1958C191C8C /* Debug */,
 				85B95B1234E227C814CCC2C7902D0916 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7C2304C61C75D53C80CF6BBA66BC1E3D /* Build configuration list for PBXNativeTarget "Kitemetrics" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5630751FF32A607E24A91962C141E6AE /* Debug */,
-				31F35C3065D82DD48C2DFE05E00BFF43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

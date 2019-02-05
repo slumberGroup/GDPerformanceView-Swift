@@ -3,7 +3,7 @@
 //  Pods
 //
 //  Created by Kitefaster on 10/18/16.
-//  Copyright © 2018 Kitefaster, LLC. All rights reserved.
+//  Copyright © 2019 Kitefaster, LLC. All rights reserved.
 //
 
 import StoreKit
@@ -226,10 +226,10 @@ public class Kitemetrics: NSObject {
             KMError.printError("Length of userIdentifier must be less than 256 characters. Truncating.")
         }
         
-        if isEmailAddress(inputString: userIdentifier) {
-            KMError.printError("Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc) as the userIdentifier.")
-            return
-        }
+//        if isEmailAddress(inputString: userIdentifier) {
+//            KMError.printError("Do not use Personally Identifiable Information (e.g. email addresses, phone numbers, full name, social security numbers, etc) as the userIdentifier.")
+//            return
+//        }
 
         //Create a new version first
         Kitemetrics.shared.userIdentifier = userIdentifier

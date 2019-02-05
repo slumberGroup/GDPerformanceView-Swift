@@ -3,7 +3,7 @@
 //  Kitemetrics
 //
 //  Created by Kitefaster on 10/14/2016.
-//  Copyright © 2018 Kitefaster. All rights reserved.
+//  Copyright © 2019 Kitefaster. All rights reserved.
 //
 
 import UIKit

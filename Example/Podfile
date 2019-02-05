@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 
 target 'Kitemetrics_Example' do
-  pod 'Kitemetrics', :path => '../'
+  pod 'Kitemetrics', :path => '../../kitemetrics_iOS'
   pod 'SnapKit', '4.2.0'
 
   target 'Kitemetrics_Tests' do
