@@ -1,6 +1,6 @@
 //
 //  KMDevice.swift
-//  Pods
+//  Kitemetrics
 //
 //  Created by Kitefaster on 10/21/16.
 //  Copyright © 2019 Kitefaster, LLC. All rights reserved.

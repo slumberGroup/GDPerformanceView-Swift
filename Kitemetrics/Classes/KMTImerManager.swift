@@ -1,6 +1,6 @@
 //
 //  KMSession.swift
-//  Pods
+//  Kitemetrics
 //
 //  Created by Kitefaster on 11/7/16.
 //  Copyright © 2019 Kitefaster, LLC. All rights reserved.

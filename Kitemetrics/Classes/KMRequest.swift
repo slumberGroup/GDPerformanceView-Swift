@@ -1,6 +1,6 @@
 //
 //  KMRequest.swift
-//  Pods
+//  Kitemetrics
 //
 //  Created by Kitefaster on 10/31/16.
 //  Copyright © 2019 Kitefaster, LLC. All rights reserved.
@@ -230,16 +230,16 @@ class KMRequest {
             let lastVersion = KMUserDefaults.lastVersion()
             let currentVersion = KMHelper.versionDict()
             
-            var installType = KFInstallType.unknown
+            var installType = KMInstallType.unknown
             if lastVersion == nil {
-                installType = KFInstallType.newInstall
+                installType = KMInstallType.newInstall
             } else if lastVersion! != currentVersion {
                 if lastVersion!["appVersion"] != currentVersion["appVersion"] {
-                    installType = KFInstallType.appVersionUpdate
+                    installType = KMInstallType.appVersionUpdate
                 } else if lastVersion!["userIdentifier"] != currentVersion["userIdentifier"] {
-                    installType = KFInstallType.userChange
+                    installType = KMInstallType.userChange
                 } else if lastVersion!["osVersion"] != currentVersion["osVersion"] || lastVersion!["osCountry"] != currentVersion["osCountry"] || lastVersion!["osLanguage"] != currentVersion["osLanguage"] {
-                    installType = KFInstallType.osChange
+                    installType = KMInstallType.osChange
                 }
             }
             KMUserDefaults.setLastVersion(currentVersion)

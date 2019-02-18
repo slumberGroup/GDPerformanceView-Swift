@@ -1,6 +1,6 @@
 //
 //  KMHelper.swift
-//  Pods
+//  Kitemetrics
 //
 //  Created by Kitefaster on 10/24/16.
 //  Copyright © 2019 Kitefaster, LLC. All rights reserved.
@@ -9,9 +9,16 @@
 import Foundation
 import StoreKit
 
+@available(*, deprecated, renamed: "KMPurchaseFunnel")
+public enum KFPurchaseFunnel{}
+@available(*, deprecated, renamed: "KMInstallType")
+enum KFInstallType{}
+@available(*, deprecated, renamed: "KMPurchaseType")
+public enum KFPurchaseType{}
+
 //See https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW16 for subscription status
 @objc
-public enum KFPurchaseFunnel: Int {
+public enum KMPurchaseFunnel: Int {
     case view = 1
     case addToCart = 2
     case purchase = 3
@@ -23,7 +30,7 @@ public enum KFPurchaseFunnel: Int {
     case didChangeRenewalPref = 9   //Customer changed the plan that takes affect at the next subscription renewal. Current active plan is not affected.
 }
 
-enum KFInstallType: Int {
+enum KMInstallType: Int {
     case unknown = 0
     case newInstall = 1
     case reinstall = 2
@@ -33,7 +40,7 @@ enum KFInstallType: Int {
 }
 
 @objc
-public enum KFPurchaseType: Int {
+public enum KMPurchaseType: Int {
     case unknown = 1
     case appleInAppConsumable = 2
     case appleInAppNonConsumable = 3
@@ -41,6 +48,7 @@ public enum KFPurchaseType: Int {
     case appleInAppNonRenewingSubscription = 5
     case applePaidApp = 6
     case eCommerce = 7
+    case appleInAppSubscription = 8
 }
 
 class KMHelper {
@@ -158,12 +166,12 @@ class KMHelper {
         return dict
     }
     
-    class func inAppPurchaseDict(_ product: SKProduct, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType?) -> [String: Any] {
-        let pType: KFPurchaseType
+    class func inAppPurchaseDict(_ product: SKProduct, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType?) -> [String: Any] {
+        let pType: KMPurchaseType
         if product.isDownloadable == true {
-            pType = KFPurchaseType.appleInAppNonConsumable
+            pType = KMPurchaseType.appleInAppNonConsumable
         } else if purchaseType == nil {
-            pType = KFPurchaseType.unknown
+            pType = KMPurchaseType.unknown
         } else {
             pType = purchaseType!
         }
@@ -176,7 +184,7 @@ class KMHelper {
         return KMHelper.purchaseDict(productIdentifier: product.productIdentifier, price: product.price.decimalValue, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: pType)
     }
     
-    class func purchaseDict(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") -> [String: Any] {
+    class func purchaseDict(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["price"] = price
@@ -192,6 +200,76 @@ class KMHelper {
         }
         dict["webOrderLineItemId"] = webOrderLineItemId
     
+        dict["deviceId"] = KMUserDefaults.deviceId()
+
+        let versionId = KMUserDefaults.versionId()
+        if versionId > 0 {
+            dict["versionId"] = versionId
+        }
+        return dict
+    }
+    
+    class func paymentDict(product: SKProduct, transaction: SKPaymentTransaction) -> [String: Any] {
+        var currencyCode = ""
+        if product.priceLocale.currencyCode != nil {
+            currencyCode = product.priceLocale.currencyCode!
+        }
+        
+        var purchaseType: KMPurchaseType = .unknown
+        if transaction.downloads.count > 0 {
+            purchaseType = .appleInAppNonConsumable
+        }
+
+        if #available(iOS 11.2, *) {
+            if product.introductoryPrice != nil {
+                purchaseType = .appleInAppAutoRenewableSubscription
+            } else if product.subscriptionPeriod != nil {
+                purchaseType = .appleInAppSubscription
+            }
+        }
+        var subscriptionGroupIdentifier = ""
+        if #available(iOS 12.0, *) {
+            if product.subscriptionGroupIdentifier != nil {
+                subscriptionGroupIdentifier = product.subscriptionGroupIdentifier!
+                if purchaseType == .unknown {
+                    purchaseType = .appleInAppSubscription
+                }
+            }
+        }
+        
+        var dict = [String: Any]()
+        dict["timestamp"] = Date().timeIntervalSince1970
+        dict["transactionIdentifier"] = transaction.transactionIdentifier
+        dict["price"] = product.price.decimalValue
+        dict["currencyCode"] = currencyCode
+        dict["productIdentifier"] = product.productIdentifier
+        dict["quantity"] = transaction.payment.quantity
+        dict["funnel"] = KMPurchaseFunnel.purchase.rawValue
+        dict["purchaseTypeValue"] = purchaseType.rawValue
+        dict["subscriptionGroupIdentifier"] = subscriptionGroupIdentifier
+        
+        
+        if #available(iOS 11.2, *) {
+            if product.subscriptionPeriod != nil {
+                let subscriptionPeriod = product.subscriptionPeriod!
+                dict["subscriptionNumberOfUnits"] = subscriptionPeriod.numberOfUnits
+                dict["subscriptionUnit"] = subscriptionPeriod.unit.rawValue
+            }
+            
+            if product.introductoryPrice != nil {
+                let productDiscount = product.introductoryPrice!
+                dict["introPrice"] = productDiscount.price.decimalValue
+                dict["introPaymentMode"] = productDiscount.paymentMode.rawValue
+                dict["introNumberOfPeriods"] = productDiscount.numberOfPeriods
+                
+                let introSubscriptionPeriod = productDiscount.subscriptionPeriod
+                dict["introNumberOfUnits"] = introSubscriptionPeriod.numberOfUnits
+                dict["introUnit"] = introSubscriptionPeriod.unit.rawValue
+            }
+        }
+        
+        dict["deviceId"] = KMUserDefaults.deviceId()
+ 
         let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
             dict["versionId"] = versionId
@@ -231,12 +309,16 @@ class KMHelper {
         return jsonFromDictionary(errorDict(error, isInternal: isInternal), logErrors: false)
     }
     
-    class func inAppPurchaseJson(_ product: SKProduct, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType?)-> Data? {
+    class func inAppPurchaseJson(_ product: SKProduct, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType?)-> Data? {
         return jsonFromDictionary(inAppPurchaseDict(product, quantity: quantity, funnel: funnel, purchaseType: purchaseType))
     }
     
-    class func purchaseJson(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "")-> Data? {
+    class func purchaseJson(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "")-> Data? {
         return jsonFromDictionary(purchaseDict(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType, expiresDate: expiresDate, webOrderLineItemId: webOrderLineItemId))
+    }
+    
+    class func paymentJson(product: SKProduct, transaction: SKPaymentTransaction) -> Data? {
+        return jsonFromDictionary(paymentDict(product: product, transaction: transaction))
     }
     
     class func jsonFromDictionary(_ dictionary: [AnyHashable:Any], logErrors: Bool = true) -> Data? {

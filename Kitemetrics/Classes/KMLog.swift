@@ -1,6 +1,6 @@
 //
 //  KMLog.swift
-//  Pods
+//  Kitemetrics
 //
 //  Created by Kitefaster on 2/24/17.
 //  Copyright © 2019 Kitefaster, LLC. All rights reserved.

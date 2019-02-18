@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```swift
     Kitemetrics.shared.logInAppPurchase(skProduct, quantity: 1)
     //It is recommended to include the purchaseType if known
-    Kitemetrics.shared.logInAppPurchase(skProduct, quantity: 1, purchaseType: KFPurchaseType.appleInAppNonConsumable)
+    Kitemetrics.shared.logInAppPurchase(skProduct, quantity: 1, purchaseType: KMPurchaseType.appleInAppNonConsumable)
 
     //If the SKProduct is unavailable you can log a purchase directly as
     Kitemetrics.shared.logPurchase(productIdentifier: "productId", price: Decimal(0.99), currencyCode: "USD", quantity: 1, purchaseType: .eCommerce)
@@ -109,11 +109,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```objective-c
     [[Kitemetrics shared] logInAppPurchase:skProduct quantity:1];
     //It is recommended to include the purchaseType if known
-    [[Kitemetrics shared] logInAppPurchase:skProduct quantity:1 purchaseType:KFPurchaseTypeAppleInAppNonConsumable];
+    [[Kitemetrics shared] logInAppPurchase:skProduct quantity:1 purchaseType:KMPurchaseTypeAppleInAppNonConsumable];
 
     //If the SKProduct is unavailable you can log a purchase directly as
     NSDecimal price = [[[NSDecimalNumber alloc] initWithFloat:0.99f] decimalValue];
-    [[Kitemetrics shared] logPurchaseWithProductIdentifier:@"productId" price:price currencyCode:@"USD" quantity:1 purchaseType:KFPurchaseTypeECommerce];
+    [[Kitemetrics shared] logPurchaseWithProductIdentifier:@"productId" price:price currencyCode:@"USD" quantity:1 purchaseType:KMPurchaseTypeECommerce];
 ```
 
 Full list of pre-defined and custom events are available at the full [documentation](http://kitemetrics.com/docs/?utm_source=github&utm_medium=readme&utm_campaign=cp).

@@ -1,6 +1,6 @@
 //
 //  Kitemetrics.swift
-//  Pods
+//  Kitemetrics
 //
 //  Created by Kitefaster on 10/18/16.
 //  Copyright © 2019 Kitefaster, LLC. All rights reserved.
@@ -31,7 +31,9 @@ public class Kitemetrics: NSObject {
     static let kEventRedeemInvites = "eventRedeemInvites"
     static let kErrors = "errors"
     static let kPurchases = "purchases"
+    static let kPayments = "payments"
     static let kAttributions = "attributions"
+    static let kReceipts = "receipts"
     static let kApplicationsEndpoint = kServer + kAPI + kApplications
     static let kDevicesEndpoint = kServer + kAPI + kDevices
     static let kVersionsEndpoint = kServer + kAPI + kVersions
@@ -42,13 +44,16 @@ public class Kitemetrics: NSObject {
     static let kEventRedeemInviteEndpoint = kServer + kAPI + kEventRedeemInvites
     static let kErrorsEndpoint = kServer + kAPI + kErrors
     static let kPurchasesEndpoint = kServer + kAPI + kPurchases
+    static let kPaymentsEndpoint = kServer + kAPI + kPayments
     static let kAttributionsEndpoint = kServer + kAPI + kAttributions
+    static let kReceiptsEndpoint = kServer + kAPI + kReceipts
     
     static let kMaxSearchAdAttributionAttempts = 1000
     static let kAttributionTryAgainSeconds = TimeInterval(2)
     
     var apiKey: String = ""
     public var userIdentifier: String = ""
+    let payment: KMPayment
     let sessionManager = KMSessionManager()
     let queue = KMQueue()
     let timerManager = KMTimerManager()
@@ -56,6 +61,7 @@ public class Kitemetrics: NSObject {
     var currentBackoffValue = 1
     
     private override init() {
+        payment = KMPayment()
         super.init()
         KMLog.p("Kitemetrics shared instance initialized!")
         sessionManager.delegate = self
@@ -89,7 +95,7 @@ public class Kitemetrics: NSObject {
             //This is a new install or a reinstall
             postApplication()
             postDevice()
-            postVersion(currentVersion, installType: KFInstallType.newInstall)
+            postVersion(currentVersion, installType: KMInstallType.newInstall)
             KMUserDefaults.setNeedsSearchAdsAttribution(true)
             KMUserDefaults.setLastVersion(currentVersion)
             KMUserDefaults.setLastAttemptToSendErrorQueue(Date())
@@ -97,13 +103,13 @@ public class Kitemetrics: NSObject {
         } else if lastVersion! != currentVersion {
             KMUserDefaults.setVersionId(kitemetricsVersionId: nil)
             if lastVersion!["appVersion"] != currentVersion["appVersion"] {
-                postVersion(currentVersion, installType: KFInstallType.appVersionUpdate)
+                postVersion(currentVersion, installType: KMInstallType.appVersionUpdate)
             } else if lastVersion!["userIdentifier"] != currentVersion["userIdentifier"] {
-                postVersion(currentVersion, installType: KFInstallType.userChange)
+                postVersion(currentVersion, installType: KMInstallType.userChange)
             } else if lastVersion!["osVersion"] != currentVersion["osVersion"] || lastVersion!["osCountry"] != currentVersion["osCountry"] || lastVersion!["osLanguage"] != currentVersion["osLanguage"] {
-                postVersion(currentVersion, installType: KFInstallType.osChange)
+                postVersion(currentVersion, installType: KMInstallType.osChange)
             } else {
-                postVersion(currentVersion, installType: KFInstallType.unknown)
+                postVersion(currentVersion, installType: KMInstallType.unknown)
             }
             KMUserDefaults.setLastVersion(currentVersion)
         }
@@ -161,7 +167,7 @@ public class Kitemetrics: NSObject {
         self.queue.addItem(item: request)
     }
     
-    func postVersion(_ versionDict: [String: Any], installType: KFInstallType) {
+    func postVersion(_ versionDict: [String: Any], installType: KMInstallType) {
         var modifiedVersionDict = versionDict
         modifiedVersionDict["timestamp"] = Date().timeIntervalSince1970
         modifiedVersionDict["installType"] = installType.rawValue
@@ -235,7 +241,7 @@ public class Kitemetrics: NSObject {
         Kitemetrics.shared.userIdentifier = userIdentifier
         let currentVersion = KMHelper.versionDict()
         KMUserDefaults.setLastVersion(currentVersion)
-        postVersion(currentVersion, installType: KFInstallType.userChange)
+        postVersion(currentVersion, installType: KMInstallType.userChange)
         
         var request = URLRequest(url: URL(string: Kitemetrics.kEventSignUpsEndpoint)!)
         guard let json = KMHelper.eventSignUpJson(method: method, userIdentifier: userIdentifier) else {
@@ -308,9 +314,10 @@ public class Kitemetrics: NSObject {
     
     ///Log when a user adds an in-app item to their cart
     @objc
-    public func logInAppAddToCart(_ product: SKProduct, quantity: Int, purchaseType: KFPurchaseType = .unknown) {
+    @available(*, deprecated, message: "Removed. Kitemetrics now automatically detects In-App Purchase events.")
+    public func logInAppAddToCart(_ product: SKProduct, quantity: Int, purchaseType: KMPurchaseType = .unknown) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KMHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KFPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
+        guard let json = KMHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KMPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -320,9 +327,9 @@ public class Kitemetrics: NSObject {
     
     ///Log when a user adds an item to their cart
     @objc
-    public func logAddToCart(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, purchaseType: KFPurchaseType) {
+    public func logAddToCart(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, purchaseType: KMPurchaseType) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KFPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
+        guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KMPurchaseFunnel.addToCart, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -332,15 +339,17 @@ public class Kitemetrics: NSObject {
     
     ///Log when a user completes an in-app purchase
     @objc
+    @available(*, deprecated, message: "Removed. Kitemetrics now automatically detects In-App Purchase events.")
     public func logInAppPurchase(_ product: SKProduct, quantity: Int) {
-        logInAppPurchase(product, quantity:quantity, purchaseType: KFPurchaseType.unknown)
+        logInAppPurchase(product, quantity:quantity, purchaseType: KMPurchaseType.unknown)
     }
     
     ///Log when a user completes an in-app purchase
     @objc
-    public func logInAppPurchase(_ product: SKProduct, quantity: Int, purchaseType: KFPurchaseType) {
+    @available(*, deprecated, message: "Removed. Kitemetrics now automatically detects In-App Purchase events.")
+    public func logInAppPurchase(_ product: SKProduct, quantity: Int, purchaseType: KMPurchaseType) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KMHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KFPurchaseFunnel.purchase, purchaseType: purchaseType) else {
+        guard let json = KMHelper.inAppPurchaseJson(product, quantity: quantity, funnel: KMPurchaseFunnel.purchase, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -350,9 +359,9 @@ public class Kitemetrics: NSObject {
     
     ///Log when a user completes a purchase
     @objc
-    public func logPurchase(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, purchaseType: KFPurchaseType) {
+    public func logPurchase(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, purchaseType: KMPurchaseType) {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
-        guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KFPurchaseFunnel.purchase, purchaseType: purchaseType) else {
+        guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: KMPurchaseFunnel.purchase, purchaseType: purchaseType) else {
             return
         }
         request.httpBody = json
@@ -361,7 +370,7 @@ public class Kitemetrics: NSObject {
     }
     
     @objc
-    public func logPurchaseFunnel(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KFPurchaseFunnel, purchaseType: KFPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") {
+    public func logPurchaseFunnel(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") {
         var request = URLRequest(url: URL(string: Kitemetrics.kPurchasesEndpoint)!)
         guard let json = KMHelper.purchaseJson(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType, expiresDate: expiresDate, webOrderLineItemId: webOrderLineItemId) else {
             return
