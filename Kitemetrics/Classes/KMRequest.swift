@@ -21,20 +21,16 @@ class KMRequest {
         var request = storedRequest
         request.httpMethod = "POST"
         
-        if Kitemetrics.shared.apiKey.starts(with: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjB9.") {
-            request.setValue(Kitemetrics.shared.apiKey, forHTTPHeaderField: "apiKey")
-        } else {
-            request.setValue(
-                encode(
-                    claims: ["iss":"Kitemetrics", "sub":"iOS", "aud":"cloud.kitemetrics.com", "jti":UUID().uuidString],
-                    algorithm: .hs256(Kitemetrics.shared.apiKey.data(using: .utf8)!)
-                ), forHTTPHeaderField: "token"
-            )
-        }
+        request.setValue(Kitemetrics.shared.apiKey, forHTTPHeaderField: "apiKey")
         request.setValue(Kitemetrics.kitemetricsClientVersion, forHTTPHeaderField: "kitemetrics-client-version")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpShouldHandleCookies = false
         request.allowsCellularAccess = true
+        
+        if request.url?.absoluteString == Kitemetrics.kReceiptsEndpoint {
+            request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
+        } else {
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
         
         let sendToServer = request.url?.absoluteString != Kitemetrics.kErrorsEndpoint
         
@@ -44,7 +40,8 @@ class KMRequest {
             var dictionary = KMHelper.dictionaryFromJson(request.httpBody!)
             
             if dictionary != nil {
-                if dictionary!["applicationId"] == nil, let applicationId = KMUserDefaults.applicationId() {
+                if dictionary!["applicationId"] == nil {
+                    let applicationId = KMUserDefaults.applicationId()
                     if applicationId > 0 {
                         dictionary!["applicationId"] = applicationId
                     } else {
@@ -137,14 +134,14 @@ class KMRequest {
                         if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: Any] {
                             if let id = json["id"] as? Int {
                                 KMLog.p("application id: " + String(id))
-                                KMUserDefaults.setApplicationId(kitemetricsApplicationId: id)
+                                KMUserDefaults.setApplicationId(id)
                             }
                         }
                     } else if request.url!.absoluteString.hasSuffix(Kitemetrics.kDevices) {
                         if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: Any] {
                             if let id = json["id"] as? Int {
                                 KMLog.p("device id: " + String(id))
-                                KMUserDefaults.setDeviceId(kitemetricsDeviceId: id)
+                                KMUserDefaults.setDeviceId(id)
                             }
                         }
                     } else if request.url!.absoluteString.hasSuffix(Kitemetrics.kVersions) {
@@ -249,12 +246,11 @@ class KMRequest {
             modifiedVersionDict["timestamp"] = Date().timeIntervalSince1970
             modifiedVersionDict["installType"] = installType.rawValue
             
-            if let applicationId = KMUserDefaults.applicationId() {
-                if applicationId > 0 {
-                    modifiedVersionDict["applicationId"] = applicationId
-                } else {
-                    modifiedVersionDict["bundleId"] = KMDevice.appBundleId()
-                }
+            let applicationId = KMUserDefaults.applicationId()
+            if applicationId > 0 {
+                modifiedVersionDict["applicationId"] = applicationId
+            } else {
+                modifiedVersionDict["bundleId"] = KMDevice.appBundleId()
             }
             
             let deviceId = KMUserDefaults.deviceId()

@@ -55,8 +55,8 @@ extension KMPayment: SKPaymentTransactionObserver {
                     request.httpBody = rawReceiptData
                     
                     let applicationId = KMUserDefaults.applicationId()
-                    if applicationId != nil && applicationId! > 0 {
-                        request.addValue(String(applicationId!), forHTTPHeaderField: "applicationId")
+                    if applicationId > 0 {
+                        request.addValue(String(applicationId), forHTTPHeaderField: "applicationId")
                     }
                     
                     let deviceId = KMUserDefaults.deviceId()

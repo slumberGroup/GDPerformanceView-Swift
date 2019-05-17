@@ -79,7 +79,17 @@ public class Kitemetrics: NSObject {
         KMLog.p("Kitemetrics shared instance initialized with apiKey!")
         
         if apiKey.starts(with: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjB9.") {
-            KMLog.forcePrint("Deprecated apiKey. Please get a new API Key from cloud.kitemetrics.com.")
+            KMLog.forcePrint("Deprecated apiKey. Please get a new API Key from https://cloud.kitemetrics.com.")
+        } else if KMUserDefaults.applicationId() == 0 {
+            let divider = apiKey.firstIndex(of: "p")
+            if divider != nil {
+                let applicationIdStr = apiKey[..<divider!]
+                let applicationId = Int(applicationIdStr)
+                if applicationId != nil {
+                    KMUserDefaults.setApplicationId(applicationId!)
+                }
+            }
+            
         }
 
         self.apiKey = withApiKey
@@ -172,12 +182,11 @@ public class Kitemetrics: NSObject {
         modifiedVersionDict["timestamp"] = Date().timeIntervalSince1970
         modifiedVersionDict["installType"] = installType.rawValue
         
-        if let applicationId = KMUserDefaults.applicationId() {
-            if applicationId > 0 {
-                modifiedVersionDict["applicationId"] = applicationId
-            } else {
-                modifiedVersionDict["bundleId"] = KMDevice.appBundleId()
-            }
+        let applicationId = KMUserDefaults.applicationId()
+        if applicationId > 0 {
+            modifiedVersionDict["applicationId"] = applicationId
+        } else {
+            modifiedVersionDict["bundleId"] = KMDevice.appBundleId()
         }
 
         let deviceId = KMUserDefaults.deviceId()

@@ -10,15 +10,15 @@ import Foundation
 
 class KMUserDefaults {
     
-    class func setApplicationId(kitemetricsApplicationId: Int) {
+    class func setApplicationId(_ kitemetricsApplicationId: Int) {
         UserDefaults.standard.set(kitemetricsApplicationId, forKey: "com.kitemetrics.applicationId")
     }
     
-    class func applicationId() -> Int? {
+    class func applicationId() -> Int {
         return UserDefaults.standard.integer(forKey: "com.kitemetrics.applicationId")
     }
     
-    class func setDeviceId(kitemetricsDeviceId: Int) {
+    class func setDeviceId(_ kitemetricsDeviceId: Int) {
         UserDefaults.standard.set(kitemetricsDeviceId, forKey: "com.kitemetrics.deviceId")
     }
     
