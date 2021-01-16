@@ -2,8 +2,8 @@
 //  KMSession.swift
 //  Kitemetrics
 //
-//  Created by kitefaster on 10/27/16.
-//  Copyright © 2019 Kitefaster, LLC. All rights reserved.
+//  Created by Kitemetrics on 10/27/16.
+//  Copyright © 2021 Kitemetrics. All rights reserved.
 //
 
 import Foundation

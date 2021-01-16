@@ -2,8 +2,8 @@
 //  KMPayment.swift
 //  Kitemetrics
 //
-//  Created by Kitefaster on 2/5/19.
-//  Copyright © 2019 Kitefaster, LLC. All rights reserved.
+//  Created by Kitemetrics on 2/5/19.
+//  Copyright © 2021 Kitemetrics. All rights reserved.
 //
 
 

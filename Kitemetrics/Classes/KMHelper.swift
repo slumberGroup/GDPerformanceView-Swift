@@ -2,8 +2,8 @@
 //  KMHelper.swift
 //  Kitemetrics
 //
-//  Created by Kitefaster on 10/24/16.
-//  Copyright © 2019 Kitefaster, LLC. All rights reserved.
+//  Created by Kitemetrics on 10/24/16.
+//  Copyright © 2021 Kitemetrics. All rights reserved.
 //
 
 import Foundation
