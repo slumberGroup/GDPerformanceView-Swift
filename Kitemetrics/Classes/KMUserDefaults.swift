@@ -135,7 +135,7 @@ class KMUserDefaults {
         return UserDefaults.standard.integer(forKey: "com.kitemetrics.attributionClientVersionId")
     }
     
-    class func setAttributionToken(_ attributionTokenString: String){
+    class func setAttributionToken(_ attributionTokenString: String) {
         UserDefaults.standard.set(attributionTokenString, forKey: "com.kitemetrics.attributionToken")
     }
     
@@ -144,7 +144,7 @@ class KMUserDefaults {
         return UserDefaults.standard.value(forKey: "com.kitemetrics.attributionToken") as? String
     }
     
-    class func setAttributionTokenWithAuthorization(_ attributionTokenString: String){
+    class func setAttributionTokenWithAuthorization(_ attributionTokenString: String) {
         UserDefaults.standard.set(attributionTokenString, forKey: "com.kitemetrics.attributionTokenWithAuthorization")
     }
     

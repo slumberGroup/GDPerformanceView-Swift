@@ -2,8 +2,8 @@
 //  KMAttribution.swift
 //  Kitemetrics
 //
-//  Created by mcp on 1/16/21.
-//
+//  Created by Kitemetrics on 1/16/21.
+//  Copyright © 2021 Kitemetrics. All rights reserved.
 
 import Foundation
 
