@@ -17,6 +17,10 @@ class KMRequest {
     
     func postRequest(_ storedRequest: URLRequest, filename: URL?, isImmediate: Bool = false) {
         KMLog.p("Sending request to " + storedRequest.url!.absoluteString)
+        if Kitemetrics.shared.apiKey == "API_KEY" {
+            return
+        }
+        
         
         var request = storedRequest
         request.httpMethod = "POST"
@@ -55,6 +59,7 @@ class KMRequest {
                         dictionary!["deviceId"] = deviceId
                     } else {
                         postImmediateDeviceId()
+                        dictionary!["deviceIdForVendor"] = KMDevice.identifierForVendor()
                     }
                 }
                 
@@ -127,7 +132,7 @@ class KMRequest {
             
             let statusCode = httpResponse.statusCode
             
-            if (statusCode == 200) {
+            if statusCode == 200 {
                 do{
                     Kitemetrics.shared.currentBackoffMultiplier = 1
                     if request.url!.absoluteString.hasSuffix(Kitemetrics.kApplications) {
@@ -137,7 +142,7 @@ class KMRequest {
                                 KMUserDefaults.setApplicationId(id)
                             }
                         }
-                    } else if request.url!.absoluteString.hasSuffix(Kitemetrics.kDevices) {
+                    } else if request.url!.absoluteString.hasSuffix(Kitemetrics.kDevices) || request.url!.absoluteString.hasSuffix(Kitemetrics.kAttributionTokens) {
                         if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: Any] {
                             if let id = json["id"] as? Int {
                                 KMLog.p("device id: " + String(id))
@@ -163,6 +168,9 @@ class KMRequest {
                         NotificationCenter.default.post(name: Notification.Name(rawValue: "com.kitefaster.KFRequest.Post.Error"), object: nil, userInfo: userInfo)
                     }
                 }
+            } else if statusCode == 204 {
+                KMLog.p("Posted " + request.url!.lastPathComponent)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "com.kitefaster.KFRequest.Post.Success"), object: nil, userInfo: userInfo)
             } else {
                 if statusCode == 502 || statusCode == 404 {
                     //server down, increase timeout
@@ -192,7 +200,7 @@ class KMRequest {
     
     func postImmediateApplication() {
         if self.requestApplicationId == false {
-            KMError.logErrorMessage("Need application Id", sendToServer: true)
+            KMError.logErrorMessage("Need application Id", sendToServer: false)
             self.requestApplicationId = true
             var request = URLRequest(url: URL(string: Kitemetrics.kApplicationsEndpoint)!)
             guard let json = KMHelper.applicationJson() else {
@@ -206,7 +214,7 @@ class KMRequest {
     
     func postImmediateDeviceId() {
         if self.requestDeviceId == false {
-            KMError.logErrorMessage("Need device Id", sendToServer: true)
+            KMError.logErrorMessage("Need device Id", sendToServer: false)
             self.requestDeviceId = true
             var request = URLRequest(url: URL(string: Kitemetrics.kDevicesEndpoint)!)
             guard let json = KMHelper.deviceJson() else {
@@ -220,7 +228,7 @@ class KMRequest {
     
     func postImmediateVersionId() {
         if self.requestVersionId == false {
-            KMError.logErrorMessage("Need version Id", sendToServer: true)
+            KMError.logErrorMessage("Need version Id", sendToServer: false)
             self.requestVersionId = true
             
             //TODO: Refactor duplicate code from Kitemetrics.appLaunch()

@@ -146,7 +146,8 @@ class KMQueue {
         do {
             var contents: [URL]? = nil
             try self.mutex.sync {
-                contents = try fileManager.contentsOfDirectory(at: queueDirectory(), includingPropertiesForKeys: [], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                let directory = queueDirectory()
+                contents = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
                 self.newFilesToLoad = false
                 
                 if contents != nil && contents!.count > 0 {

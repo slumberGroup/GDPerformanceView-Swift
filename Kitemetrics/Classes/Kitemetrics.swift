@@ -9,6 +9,8 @@
 import StoreKit
 import AdSupport
 import iAd
+import AdServices
+import AppTrackingTransparency
 
 ///Kitemetrics iOS Client SDK
 @objc
@@ -23,6 +25,7 @@ public class Kitemetrics: NSObject {
     static let kAPI = "/api/v1/"
     static let kApplications = "applications"
     static let kDevices = "devices"
+    static let kAttributionTokens = "attributionTokens"
     static let kVersions = "versions"
     static let kSessions = "sessions"
     static let kEvents = "events"
@@ -36,6 +39,7 @@ public class Kitemetrics: NSObject {
     static let kReceipts = "receipts"
     static let kApplicationsEndpoint = kServer + kAPI + kApplications
     static let kDevicesEndpoint = kServer + kAPI + kDevices
+    static let kAttributionTokensEndpoint = kServer + kAPI + kAttributionTokens
     static let kVersionsEndpoint = kServer + kAPI + kVersions
     static let kSessionsEndpoint = kServer + kAPI + kSessions
     static let kEventsEndpoint = kServer + kAPI + kEvents
@@ -59,6 +63,8 @@ public class Kitemetrics: NSObject {
     let timerManager = KMTimerManager()
     var currentBackoffMultiplier = 1
     var currentBackoffValue = 1
+    let searchAdsAttribution = KMAttribution()
+    var onSearchAdsAttribution: ((KMAttributionDetails?) -> Void)?
     
     private override init() {
         payment = KMPayment()
@@ -89,7 +95,6 @@ public class Kitemetrics: NSObject {
                     KMUserDefaults.setApplicationId(applicationId!)
                 }
             }
-            
         }
 
         self.apiKey = withApiKey
@@ -127,6 +132,12 @@ public class Kitemetrics: NSObject {
         self.queue.startSending()
         self.timerManager.performForegroundActions()
         
+        if #available(iOS 14.3, *) {
+            if KMUserDefaults.attributionToken() == nil {
+                postAttributionToken()
+            }
+        }
+        
         if #available(iOS 10, *) {
             if KMUserDefaults.needsSearchAdsAttribution() {
                 //Number of days since install
@@ -156,6 +167,15 @@ public class Kitemetrics: NSObject {
                     
                 }
             }
+        }
+    }
+    
+    
+    /// Call attributeWithTrackingAuthorization to attribute an install to Apple Search Ads in iOS 14.3+ after you have requested tracking authorization.  You should place this call in the completion block of ATTrackingManager.requestTrackingAuthorization().  If the user has authorized tracking, the attribution will have the click date.  This call is optional, if you do not call this function, Kitemetrics will automatically attempt to attribute the install to Apple Search Ads, without the click date.
+    @available(iOS 14.3, *)
+    public func attributeWithTrackingAuthorization() {
+        if KMUserDefaults.attributionTokenWithAuthorization() == nil && ATTrackingManager.trackingAuthorizationStatus == .authorized {
+            postAttributionToken()
         }
     }
     
@@ -389,6 +409,37 @@ public class Kitemetrics: NSObject {
         self.queue.addItem(item: request)
     }
     
+    @available(iOS 14.3, *)
+    func fetchAttributionToken() -> String? {
+        do {
+            let attributionTokenString = try AAAttribution.attributionToken()
+            KMLog.p("Attribution token is: " + attributionTokenString)
+            KMUserDefaults.setAttributionTokenTimestamp()
+            KMUserDefaults.setAttributionToken(attributionTokenString)
+            if ATTrackingManager.trackingAuthorizationStatus == .authorized {
+                KMUserDefaults.setAttributionTokenWithAuthorization(attributionTokenString)
+            }
+            
+            return attributionTokenString
+        } catch {
+            KMError.logError(error)
+        }
+        
+        return nil
+    }
+    
+    @available(iOS 14.3, *)
+    func postAttributionToken() {
+        if fetchAttributionToken() != nil {
+            var request = URLRequest(url: URL(string: Kitemetrics.kAttributionTokensEndpoint)!)
+            guard let json = KMHelper.deviceAttributionTokenJson() else {
+                return
+            }
+            request.httpBody = json
+            self.queue.addItem(item: request)
+        }
+    }
+    
     @available(iOS 10, *)
     func postSearchAdsAttribution() {
         let attemptNumber = KMUserDefaults.incrementAttributionRequestAttemptNumber()
@@ -398,7 +449,7 @@ public class Kitemetrics: NSObject {
             if error != nil {
                 let adClientError = error as? ADClientError
                 if adClientError != nil {
-                    if adClientError!.code == ADClientError.limitAdTracking {
+                    if adClientError!.code == ADClientError.trackingRestrictedOrDenied {
                         KMLog.p("Limit ad tracking is turned on.  ADClientError.limitAdTracking")
                         KMUserDefaults.setNeedsSearchAdsAttribution(false)
                         KMUserDefaults.setAttributionDate()
@@ -462,8 +513,17 @@ public class Kitemetrics: NSObject {
                 self.postAttribution(jsonData)
                 KMUserDefaults.setNeedsSearchAdsAttribution(false)
                 KMUserDefaults.setAttribution(attributionDetails!)
+                
+                if let onAttribution = self.onSearchAdsAttribution {
+                    onAttribution(self.searchAdsAttribution.attributionDetails)
+                    self.onSearchAdsAttribution = nil
+                }
             } else {
                 KMError.logErrorMessage("nil attribuiton and nil error.")
+            }
+            
+            if let onAttribution = self.onSearchAdsAttribution {
+                onAttribution(self.searchAdsAttribution.attributionDetails)
             }
         })
     }
@@ -480,6 +540,15 @@ public class Kitemetrics: NSObject {
     @objc
     public func kitemetricsDeviceId() -> Int {
         return KMUserDefaults.deviceId()
+    }
+    
+    public func attributionDetails(completionHandler:@escaping (_ result: KMAttributionDetails?) -> Void) {
+        if KMUserDefaults.needsSearchAdsAttribution() {
+            // The attribution is not yet ready, call the completion handler later
+            self.onSearchAdsAttribution = completionHandler
+        } else {
+            completionHandler(self.searchAdsAttribution.attributionDetails)
+        }
     }
 }
 
