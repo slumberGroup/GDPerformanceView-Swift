@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.version          = '1.2.0'
   s.summary          = 'iOS App Analytics, Apple Search Ads Attribution, and Reporting.'
   
-  s.swift_version    = '4.2'
+  s.swift_version    = '5.3.3'
   s.ios.deployment_target = '8.0'
 
   s.description      = <<-DESC
@@ -21,7 +21,7 @@ Kitemetrics provides keyword level attribution for Apple Search Ads. It associat
   s.homepage         = 'https://github.com/kitefaster/kitemetrics_iOS'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
-  s.author           = { 'Kitefaster, LLC' => '' }
+  s.author           = { 'Kitemetrics' => '' }
   s.source           = { :git => 'https://github.com/kitefaster/kitemetrics_iOS.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/kitefasterApps'
 
