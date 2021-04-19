@@ -79,7 +79,7 @@ public class Kitemetrics: NSObject {
     }
     
     ///Call on app startup, preferablly in AppDelegate application(_:didFinishLaunchingWithOptions:)
-    ///- parameter apiKey: Obtain the apiKey from https://cloud.kitemetrics.com
+    ///- parameter withApiKey: Obtain the apiKey from https://cloud.kitemetrics.com
     @objc
     public func initSession(withApiKey: String) {
         KMLog.p("Kitemetrics shared instance initialized with apiKey!")
