@@ -22,5 +22,10 @@
   "social_media_url": "https://twitter.com/kitefasterApps",
   "source_files": "Kitemetrics/Classes/**/*",
   "weak_frameworks": "iAd",
+  "dependencies": {
+    "ReachabilitySwift": [
+      "~> 5.0.0"
+    ]
+  },
   "swift_version": "5.3.3"
 }

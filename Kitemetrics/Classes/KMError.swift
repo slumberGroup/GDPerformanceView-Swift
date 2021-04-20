@@ -10,6 +10,12 @@ import Foundation
 
 class KMError {
     
+    static let errorMessagesToIgnore = [
+        "Error sending request. The Internet connection appears to be offline.",
+        "Error sending request. The network connection was lost.",
+        "Error sending request. An SSL error has occurred and a secure connection to the server cannot be made."
+    ]
+    
     class func logAsNSError(_ error: Error) {
         let nsError = error as NSError
         logErrorMessage(nsError.description)
@@ -26,7 +32,9 @@ class KMError {
     class func logErrorMessage(_ errorMessage: String, sendToServer: Bool = true) {
         KMLog.p("========== Kitemetrics ERROR: " + errorMessage)
         if sendToServer {
-            Kitemetrics.shared.postError(errorMessage, isInternal: true)
+            if errorMessagesToIgnore.contains(errorMessage) == false {
+                Kitemetrics.shared.postError(errorMessage, isInternal: true)
+            }
         }
     }
     

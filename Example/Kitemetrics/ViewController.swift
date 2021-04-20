@@ -171,14 +171,14 @@ class ViewController: UIViewController {
     
     @objc func createAddToCart() {
         //If you have the SKProduct from an In-App Purchase you can use the below
-        //Kitemetrics.shared.logInAppPurchase(SKProduct, quantity: Int, purchaseType: KFPurchaseType)
+        //Kitemetrics.shared.logInAppPurchase(SKProduct, quantity: Int, purchaseType: KMPurchaseType)
         //else if the SKProduct is unavailble or this is an eCommerce transaction you can pass the productIdentifier, price and currency code manually
         Kitemetrics.shared.logAddToCart(productIdentifier: "com.kitefaster.demo.Kitemetrics-Example.TestPurchase1", price: Decimal(0.99), currencyCode: "USD", quantity: 1, purchaseType: .appleInAppConsumable)
     }
     
     @objc func createPurchase() {
         //If you have the SKProduct from an In-App Purchase you can use the below
-        //Kitemetrics.shared.logInAppPurchase(SKProduct, quantity: Int, purchaseType: KFPurchaseType)
+        //Kitemetrics.shared.logInAppPurchase(SKProduct, quantity: Int, purchaseType: KMPurchaseType)
         //else if the SKProduct is unavailble or this is an eCommerce transaction you can pass the productIdentifier, price and currency code manually
         Kitemetrics.shared.logPurchase(productIdentifier: "com.kitefaster.demo.Kitemetrics-Example.TestPurchase1", price: Decimal(0.99), currencyCode: "USD", quantity: 1, purchaseType: .appleInAppConsumable)
     }
