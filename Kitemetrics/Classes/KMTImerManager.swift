@@ -63,8 +63,7 @@ class KMTimerManager {
     
     @objc func perfromTimerActions() {
         KMLog.p("timer fired")
-        KMUserDefaults.setCloseTime(Date())
-        Kitemetrics.shared.queue.saveQueue()
+        Kitemetrics.shared.queue.saveQueue(setCloseTime: true)
     }
     
     func performForegroundActions() {
@@ -76,8 +75,7 @@ class KMTimerManager {
     func performBackgroundActions() {
         KMLog.p("stopTimer")
         stopTimer()
-        Kitemetrics.shared.queue.saveQueue()
-        KMUserDefaults.setCloseTime(Date())
+        Kitemetrics.shared.queue.saveQueue(setCloseTime: true)
     }
     
     func fireTimerManually() {

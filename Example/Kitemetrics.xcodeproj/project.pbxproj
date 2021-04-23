@@ -13,8 +13,8 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		609C23851F6CC63500BABEE7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 609C23841F6CC63500BABEE7 /* Default-568h@2x.png */; };
 		60F22FCB1FB258ED00D8F99B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F22FCA1FB258ED00D8F99B /* LaunchScreen.storyboard */; };
-		9B87E6509CCBF323AA3EDC8A /* Pods_Kitemetrics_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734193832DAB491E60838043 /* Pods_Kitemetrics_Example.framework */; };
-		DDBD99D2059F23BA3258CFFB /* Pods_Kitemetrics_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23373BB587B0B38B4642A93D /* Pods_Kitemetrics_Tests.framework */; };
+		911B6507D5C05D3AAA045BCA /* Pods_Kitemetrics_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AE41B8B73929D9B9AECDF2 /* Pods_Kitemetrics_Tests.framework */; };
+		E9F52F800A45719AC9526484 /* Pods_Kitemetrics_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CA7EA557E23E025AADD960 /* Pods_Kitemetrics_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,10 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		23373BB587B0B38B4642A93D /* Pods_Kitemetrics_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitemetrics_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AE41B8B73929D9B9AECDF2 /* Pods_Kitemetrics_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitemetrics_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35845BC0ED4D9B7B148BE151 /* Pods-Kitemetrics_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Kitemetrics_Tests/Pods-Kitemetrics_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FEF165FF7C92C4D17D5A562 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		49907D43360D57451D514FAE /* Pods-Kitemetrics_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kitemetrics_Tests/Pods-Kitemetrics_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		4A65E8DCD1F40A391A3AA456 /* Pods-Kitemetrics_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example.release.xcconfig"; sourceTree = "<group>"; };
+		58CA7EA557E23E025AADD960 /* Pods_Kitemetrics_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitemetrics_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		604864E91F697E8000D9D15B /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		607FACD01AFB9204008FA782 /* Kitemetrics_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitemetrics_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,9 +44,9 @@
 		609C23841F6CC63500BABEE7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		60F22FCA1FB258ED00D8F99B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Kitemetrics/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67B6A2AFA6587BC6305312AC /* Kitemetrics.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Kitemetrics.podspec; path = ../Kitemetrics.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		734193832DAB491E60838043 /* Pods_Kitemetrics_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kitemetrics_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DECECBDCD13AF96716C27C9A /* Pods-Kitemetrics_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kitemetrics_Tests/Pods-Kitemetrics_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		F216012EAC1A28F58BB8D6B5 /* Pods-Kitemetrics_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		68A03FE1F4DEDD1E2E48BBF5 /* Pods-Kitemetrics_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Example.release.xcconfig"; path = "Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example.release.xcconfig"; sourceTree = "<group>"; };
+		78A81026740EBDD9D35C0C47 /* Pods-Kitemetrics_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Tests.release.xcconfig"; path = "Target Support Files/Pods-Kitemetrics_Tests/Pods-Kitemetrics_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		EA73BA380F36D3BE769012BB /* Pods-Kitemetrics_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitemetrics_Example.debug.xcconfig"; path = "Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F3B52D6E570A5E0A20D04370 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B87E6509CCBF323AA3EDC8A /* Pods_Kitemetrics_Example.framework in Frameworks */,
+				E9F52F800A45719AC9526484 /* Pods_Kitemetrics_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDBD99D2059F23BA3258CFFB /* Pods_Kitemetrics_Tests.framework in Frameworks */,
+				911B6507D5C05D3AAA045BCA /* Pods_Kitemetrics_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +74,22 @@
 			isa = PBXGroup;
 			children = (
 				604864E91F697E8000D9D15B /* iAd.framework */,
-				734193832DAB491E60838043 /* Pods_Kitemetrics_Example.framework */,
-				23373BB587B0B38B4642A93D /* Pods_Kitemetrics_Tests.framework */,
+				58CA7EA557E23E025AADD960 /* Pods_Kitemetrics_Example.framework */,
+				31AE41B8B73929D9B9AECDF2 /* Pods_Kitemetrics_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A5806EC50AA7D693D6062F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA73BA380F36D3BE769012BB /* Pods-Kitemetrics_Example.debug.xcconfig */,
+				68A03FE1F4DEDD1E2E48BBF5 /* Pods-Kitemetrics_Example.release.xcconfig */,
+				35845BC0ED4D9B7B148BE151 /* Pods-Kitemetrics_Tests.debug.xcconfig */,
+				78A81026740EBDD9D35C0C47 /* Pods-Kitemetrics_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -89,8 +101,8 @@
 				607FACD21AFB9204008FA782 /* Example for Kitemetrics */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				CAF10AE77CC443907B6A1AE5 /* Pods */,
 				41286B8D8A6C08384AA0A566 /* Frameworks */,
+				4A5806EC50AA7D693D6062F9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,17 +162,6 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		CAF10AE77CC443907B6A1AE5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F216012EAC1A28F58BB8D6B5 /* Pods-Kitemetrics_Example.debug.xcconfig */,
-				4A65E8DCD1F40A391A3AA456 /* Pods-Kitemetrics_Example.release.xcconfig */,
-				DECECBDCD13AF96716C27C9A /* Pods-Kitemetrics_Tests.debug.xcconfig */,
-				49907D43360D57451D514FAE /* Pods-Kitemetrics_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,11 +169,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Kitemetrics_Example" */;
 			buildPhases = (
-				323649A7F95BDC841E51E576 /* [CP] Check Pods Manifest.lock */,
+				513F5ADF332CB99D9A00A84A /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				917E63D8309D7892039E78FB /* [CP] Embed Pods Frameworks */,
+				0081162926C90B962CADDCEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,7 +188,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Kitemetrics_Tests" */;
 			buildPhases = (
-				4F7CC7287446F5DA23A5C039 /* [CP] Check Pods Manifest.lock */,
+				9F98A22971592EB16D63B6C9 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -266,16 +267,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		323649A7F95BDC841E51E576 /* [CP] Check Pods Manifest.lock */ = {
+		0081162926C90B962CADDCEB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kitemetrics/Kitemetrics.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kitemetrics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		513F5ADF332CB99D9A00A84A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Kitemetrics_Example-checkManifestLockResult.txt",
 			);
@@ -284,42 +311,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4F7CC7287446F5DA23A5C039 /* [CP] Check Pods Manifest.lock */ = {
+		9F98A22971592EB16D63B6C9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Kitemetrics_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		917E63D8309D7892039E78FB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Kitemetrics/Kitemetrics.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kitemetrics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kitemetrics_Example/Pods-Kitemetrics_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -400,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -448,7 +459,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -459,12 +470,12 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F216012EAC1A28F58BB8D6B5 /* Pods-Kitemetrics_Example.debug.xcconfig */;
+			baseConfigurationReference = EA73BA380F36D3BE769012BB /* Pods-Kitemetrics_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YFZJ926957;
 				INFOPLIST_FILE = Kitemetrics/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				OTHER_LDFLAGS = (
@@ -483,12 +494,12 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A65E8DCD1F40A391A3AA456 /* Pods-Kitemetrics_Example.release.xcconfig */;
+			baseConfigurationReference = 68A03FE1F4DEDD1E2E48BBF5 /* Pods-Kitemetrics_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YFZJ926957;
 				INFOPLIST_FILE = Kitemetrics/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				OTHER_LDFLAGS = (
@@ -507,7 +518,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DECECBDCD13AF96716C27C9A /* Pods-Kitemetrics_Tests.debug.xcconfig */;
+			baseConfigurationReference = 35845BC0ED4D9B7B148BE151 /* Pods-Kitemetrics_Tests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = YFZJ926957;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -528,7 +539,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49907D43360D57451D514FAE /* Pods-Kitemetrics_Tests.release.xcconfig */;
+			baseConfigurationReference = 78A81026740EBDD9D35C0C47 /* Pods-Kitemetrics_Tests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = YFZJ926957;
 				FRAMEWORK_SEARCH_PATHS = (

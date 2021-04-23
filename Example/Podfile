@@ -1,5 +1,5 @@
 use_frameworks!
-platform :ios, '14.2'
+platform :ios, '13.0'
 
 
 target 'Kitemetrics_Example' do

@@ -134,5 +134,31 @@ class KMUserDefaults {
     class func attributionClientVersionId() -> Int {
         return UserDefaults.standard.integer(forKey: "com.kitemetrics.attributionClientVersionId")
     }
+    
+    class func setAttributionToken(_ attributionTokenString: String) {
+        UserDefaults.standard.set(attributionTokenString, forKey: "com.kitemetrics.attributionToken")
+    }
+    
+    // The Attribution Token when ATTrackingManager.AuthorizationStatus is in any status
+    class func attributionToken() -> String? {
+        return UserDefaults.standard.value(forKey: "com.kitemetrics.attributionToken") as? String
+    }
+    
+    class func setAttributionTokenWithAuthorization(_ attributionTokenString: String) {
+        UserDefaults.standard.set(attributionTokenString, forKey: "com.kitemetrics.attributionTokenWithAuthorization")
+    }
+    
+    // The Attribution Token when ATTrackingManager.AuthorizationStatus == .authorized
+    class func attributionTokenWithAuthorization() -> String? {
+        return UserDefaults.standard.value(forKey: "com.kitemetrics.attributionTokenWithAuthorization") as? String
+    }
+    
+    class func setAttributionTokenTimestamp() {
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "com.kitemetrics.attributionTokenTimestamp")
+    }
+    
+    class func attributionTokenTimestamp() -> TimeInterval? {
+        return UserDefaults.standard.value(forKey: "com.kitemetrics.attributionTokenTimestamp") as? TimeInterval
+    }
 
 }

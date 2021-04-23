@@ -72,6 +72,23 @@ class KMHelper {
         return dict
     }
     
+    class func deviceAttributionTokenDict() -> [String: Any] {
+        var dict: [String: Any] = [String: Any]()
+        //deviceId - added in Kitemetrics post method
+        dict["deviceIdForVendor"] = KMDevice.identifierForVendor()
+        dict["advertisingIdentifier"] = KMDevice.advertisingIdentifier()
+        var deviceType = KMDevice.deviceType()
+        deviceType = deviceType.replacingOccurrences(of: "\0", with: "")
+        dict["deviceType"] = deviceType
+        
+        dict["attributionToken"] = KMUserDefaults.attributionToken()
+        if let attributionTokenTimestamp = KMUserDefaults.attributionTokenTimestamp() {
+            dict["attributionTokenTimestamp"] = attributionTokenTimestamp
+        }
+        
+        return dict
+    }
+    
     class func versionDict() -> [String: String] {
         var dict = [String: String]()
         dict["userIdentifier"] = Kitemetrics.shared.userIdentifier
@@ -283,6 +300,10 @@ class KMHelper {
     
     class func deviceJson() -> Data? {
         return jsonFromDictionary(deviceDict())
+    }
+    
+    class func deviceAttributionTokenJson() -> Data? {
+        return jsonFromDictionary(deviceAttributionTokenDict())
     }
     
     class func sessionJson(launchTime: Date, closeTime: Date) -> Data? {
