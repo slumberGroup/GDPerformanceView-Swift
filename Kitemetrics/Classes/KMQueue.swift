@@ -47,7 +47,7 @@ class KMQueue {
     }
     
     func addItem(item: URLRequest) {
-        self.serialDispatchQueue.async {
+        self.serialDispatchQueue.async(flags: .barrier) {
             KMLog.p("KMQueue addItem with url: " +  item.url!.absoluteString)
             self.queue.append(item)
             
@@ -58,7 +58,7 @@ class KMQueue {
     }
     
     func saveQueue(setCloseTime: Bool = false) {
-        self.serialDispatchQueue.async {
+        self.serialDispatchQueue.async(flags: .barrier) {
             if self.queue.count > 0 {
                 KMLog.p("KMQueue saveQueue, " + String(self.queue.count) + " items.")
                 var filePath = self.queueDirectory()
@@ -127,7 +127,7 @@ class KMQueue {
     }
     
     func saveRequestToError(_ request: URLRequest) {
-        self.serialDispatchQueue.async {
+        self.serialDispatchQueue.async(flags: .barrier) {
             KMLog.p("KMQueue saveRequestToError")
             var filePath = self.queueErrorsDirectory()
             let now = String(Date().timeIntervalSinceReferenceDate)
