@@ -25,7 +25,7 @@ class KMQueue {
     var errorOnLastSend = false
     var isApiKeySet = false
     
-    let serialDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.serialDispatchQueue", qos: .background)
+    let concurrentDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.concurrentDispatchQueue", qos: .background, attributes: .concurrent)
     
     static let kMaxQueueSize = 30
     static let kTimeToWaitBeforeSendingMessagesWithErrors = 43200.0 // 12 hours
@@ -47,7 +47,7 @@ class KMQueue {
     }
     
     func addItem(item: URLRequest) {
-        self.serialDispatchQueue.async(flags: .barrier) {
+        self.concurrentDispatchQueue.async(flags: .barrier) {
             KMLog.p("KMQueue addItem with url: " +  item.url!.absoluteString)
             self.queue.append(item)
             
@@ -58,7 +58,7 @@ class KMQueue {
     }
     
     func saveQueue(setCloseTime: Bool = false) {
-        self.serialDispatchQueue.async(flags: .barrier) {
+        self.concurrentDispatchQueue.async(flags: .barrier) {
             if self.queue.count > 0 {
                 KMLog.p("KMQueue saveQueue, " + String(self.queue.count) + " items.")
                 var filePath = self.queueDirectory()
@@ -127,7 +127,7 @@ class KMQueue {
     }
     
     func saveRequestToError(_ request: URLRequest) {
-        self.serialDispatchQueue.async(flags: .barrier) {
+        self.concurrentDispatchQueue.async(flags: .barrier) {
             KMLog.p("KMQueue saveRequestToError")
             var filePath = self.queueErrorsDirectory()
             let now = String(Date().timeIntervalSinceReferenceDate)
@@ -148,7 +148,7 @@ class KMQueue {
     }
     
     func loadFilesToSend() {
-        self.serialDispatchQueue.async {
+        self.concurrentDispatchQueue.async {
             KMLog.p("KMQueue loadFilesToSend")
             let fileManager = FileManager.default
             do {
@@ -174,7 +174,7 @@ class KMQueue {
     }
     
     func loadErrorFilesToSend() {
-        self.serialDispatchQueue.async {
+        self.concurrentDispatchQueue.async {
             KMLog.p("KMQueue loadErrorFilesToSend")
             let fileManager = FileManager.default
             do {
