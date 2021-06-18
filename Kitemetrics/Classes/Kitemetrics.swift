@@ -82,23 +82,23 @@ public class Kitemetrics: NSObject {
     ///- parameter withApiKey: Obtain the apiKey from https://cloud.kitemetrics.com
     @objc
     public func initSession(withApiKey: String) {
-        KMLog.p("Kitemetrics shared instance initialized with apiKey!")
-        
-        if apiKey.starts(with: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjB9.") {
-            KMLog.forcePrint("Deprecated apiKey. Please get a new API Key from https://cloud.kitemetrics.com.")
-        } else if KMUserDefaults.applicationId() == 0 {
-            let divider = apiKey.firstIndex(of: "p")
-            if divider != nil {
-                let applicationIdStr = apiKey[..<divider!]
-                let applicationId = Int(applicationIdStr)
-                if applicationId != nil {
-                    KMUserDefaults.setApplicationId(applicationId!)
+        DispatchQueue.global(qos: .default).async {
+            KMLog.p("Kitemetrics shared instance initialized with apiKey.")
+            self.apiKey = withApiKey
+            if self.apiKey.starts(with: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjB9.") {
+                KMLog.forcePrint("Deprecated apiKey. Please get a new API Key from https://cloud.kitemetrics.com.")
+            } else if KMUserDefaults.applicationId() == 0 {
+                let divider = self.apiKey.firstIndex(of: "p")
+                if divider != nil {
+                    let applicationIdStr = self.apiKey[..<divider!]
+                    if let applicationId = Int(applicationIdStr) {
+                        KMUserDefaults.setApplicationId(applicationId)
+                    }
                 }
             }
-        }
 
-        self.apiKey = withApiKey
-        appLaunch()
+            self.appLaunch()
+        }
     }
     
     func appLaunch() {
@@ -410,7 +410,7 @@ public class Kitemetrics: NSObject {
     }
     
     @available(iOS 14.3, *)
-    func fetchAttributionToken() -> String? {
+    private func fetchAttributionToken() -> String? {
         do {
             let attributionTokenString = try AAAttribution.attributionToken()
             KMLog.p("Attribution token is: " + attributionTokenString)
