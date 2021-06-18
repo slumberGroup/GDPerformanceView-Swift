@@ -10,15 +10,15 @@ import Foundation
 
 class KMLog {
     
-    static let debug = false
+    static let debug = true
     
     static func p(_ message: String) {
         if KMLog.debug {
-            print(message)
+            print("Kitemetrics: " + message)
         }
     }
     
     static func forcePrint(_ message: String) {
-        print(message)
+        print("Kitemetrics: " + message)
     }
 }
