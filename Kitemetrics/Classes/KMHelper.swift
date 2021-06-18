@@ -51,9 +51,9 @@ public enum KMPurchaseType: Int {
     case appleInAppSubscription = 8
 }
 
-class KMHelper {
+enum KMHelper {
     
-    class func applicationDict() -> [String: String] {
+    static func applicationDict() -> [String: String] {
         var dict: [String: String] = [String: String]()
         dict["bundleDisplayName"] = KMDevice.appBundleDisplayName()
         dict["bundleName"] = KMDevice.appBundleName()
@@ -61,7 +61,7 @@ class KMHelper {
         return dict
     }
     
-    class func deviceDict() -> [String: String] {
+    static func deviceDict() -> [String: String] {
         var dict: [String: String] = [String: String]()
         dict["deviceIdForVendor"] = KMDevice.identifierForVendor()
         dict["advertisingIdentifier"] = KMDevice.advertisingIdentifier()
@@ -72,7 +72,7 @@ class KMHelper {
         return dict
     }
     
-    class func deviceAttributionTokenDict() -> [String: Any] {
+    static func deviceAttributionTokenDict() -> [String: Any] {
         var dict: [String: Any] = [String: Any]()
         //deviceId - added in Kitemetrics post method
         dict["deviceIdForVendor"] = KMDevice.identifierForVendor()
@@ -89,7 +89,7 @@ class KMHelper {
         return dict
     }
     
-    class func versionDict() -> [String: String] {
+    static func versionDict() -> [String: String] {
         var dict = [String: String]()
         dict["userIdentifier"] = Kitemetrics.shared.userIdentifier
         dict["appVersion"] = KMDevice.appVersion()
@@ -105,7 +105,7 @@ class KMHelper {
         return dict
     }
     
-    class func sessionDict(launchTime: Date, closeTime: Date) -> [String: Any] {
+    static func sessionDict(launchTime: Date, closeTime: Date) -> [String: Any] {
         var dict = [String: Any]()
         let versionId = KMUserDefaults.versionId()
         if versionId > 0 {
@@ -118,7 +118,7 @@ class KMHelper {
         return dict
     }
     
-    class func eventDict(_ event: String) -> [String: Any] {
+    static func eventDict(_ event: String) -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["event"] = event.truncate(255)
@@ -130,7 +130,7 @@ class KMHelper {
         return dict
     }
     
-    class func eventSignUpDict(method: String, userIdentifier: String) -> [String: Any] {
+    static func eventSignUpDict(method: String, userIdentifier: String) -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["method"] = method.truncate(255)
@@ -143,7 +143,7 @@ class KMHelper {
         return dict
     }
     
-    class func eventInviteDict(method: String, code: String?) -> [String: Any] {
+    static func eventInviteDict(method: String, code: String?) -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["method"] = method.truncate(255)
@@ -158,7 +158,7 @@ class KMHelper {
         return dict
     }
     
-    class func eventRedeemInviteDict(code: String) -> [String: Any] {
+    static func eventRedeemInviteDict(code: String) -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["code"] = code.truncate(255)
@@ -170,7 +170,7 @@ class KMHelper {
         return dict
     }
     
-    class func errorDict(_ error: String, isInternal: Bool) -> [String: Any] {
+    static func errorDict(_ error: String, isInternal: Bool) -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["error"] = error.truncate(1000)
@@ -183,7 +183,7 @@ class KMHelper {
         return dict
     }
     
-    class func inAppPurchaseDict(_ product: SKProduct, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType?) -> [String: Any] {
+    static func inAppPurchaseDict(_ product: SKProduct, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType?) -> [String: Any] {
         let pType: KMPurchaseType
         if product.isDownloadable == true {
             pType = KMPurchaseType.appleInAppNonConsumable
@@ -201,7 +201,7 @@ class KMHelper {
         return KMHelper.purchaseDict(productIdentifier: product.productIdentifier, price: product.price.decimalValue, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: pType)
     }
     
-    class func purchaseDict(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") -> [String: Any] {
+    static func purchaseDict(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "") -> [String: Any] {
         var dict = [String: Any]()
         dict["timestamp"] = Date().timeIntervalSince1970
         dict["price"] = price
@@ -226,7 +226,7 @@ class KMHelper {
         return dict
     }
     
-    class func paymentDict(product: SKProduct, transaction: SKPaymentTransaction) -> [String: Any] {
+    static func paymentDict(product: SKProduct, transaction: SKPaymentTransaction) -> [String: Any] {
         var currencyCode = ""
         if product.priceLocale.currencyCode != nil {
             currencyCode = product.priceLocale.currencyCode!
@@ -294,57 +294,57 @@ class KMHelper {
         return dict
     }
     
-    class func applicationJson() -> Data? {
+    static func applicationJson() -> Data? {
         return jsonFromDictionary(applicationDict())
     }
     
-    class func deviceJson() -> Data? {
+    static func deviceJson() -> Data? {
         return jsonFromDictionary(deviceDict())
     }
     
-    class func deviceAttributionTokenJson() -> Data? {
+    static func deviceAttributionTokenJson() -> Data? {
         return jsonFromDictionary(deviceAttributionTokenDict())
     }
     
-    class func sessionJson(launchTime: Date, closeTime: Date) -> Data? {
+    static func sessionJson(launchTime: Date, closeTime: Date) -> Data? {
         return jsonFromDictionary(sessionDict(launchTime: launchTime, closeTime: closeTime))
     }
     
-    class func eventJson(_ event: String) -> Data? {
+    static func eventJson(_ event: String) -> Data? {
         return jsonFromDictionary(eventDict(event))
     }
     
-    class func eventSignUpJson(method: String, userIdentifier: String) -> Data? {
+    static func eventSignUpJson(method: String, userIdentifier: String) -> Data? {
         return jsonFromDictionary(eventSignUpDict(method: method, userIdentifier: userIdentifier))
     }
     
-    class func eventInviteJson(method: String, code: String?) -> Data? {
+    static func eventInviteJson(method: String, code: String?) -> Data? {
         return jsonFromDictionary(eventInviteDict(method: method, code: code))
     }
     
-    class func eventRedeemInviteJson(code: String) -> Data? {
+    static func eventRedeemInviteJson(code: String) -> Data? {
         return jsonFromDictionary(eventRedeemInviteDict(code: code))
     }
     
-    class func errorJson(_ error: String, isInternal: Bool) -> Data? {
+    static func errorJson(_ error: String, isInternal: Bool) -> Data? {
         return jsonFromDictionary(errorDict(error, isInternal: isInternal), logErrors: false)
     }
     
-    class func inAppPurchaseJson(_ product: SKProduct, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType?)-> Data? {
+    static func inAppPurchaseJson(_ product: SKProduct, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType?)-> Data? {
         return jsonFromDictionary(inAppPurchaseDict(product, quantity: quantity, funnel: funnel, purchaseType: purchaseType))
     }
     
-    class func purchaseJson(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "")-> Data? {
+    static func purchaseJson(productIdentifier: String, price: Decimal, currencyCode: String, quantity: Int, funnel: KMPurchaseFunnel, purchaseType: KMPurchaseType, expiresDate: Date? = nil, webOrderLineItemId: String = "")-> Data? {
         return jsonFromDictionary(purchaseDict(productIdentifier: productIdentifier, price: price, currencyCode: currencyCode, quantity: quantity, funnel: funnel, purchaseType: purchaseType, expiresDate: expiresDate, webOrderLineItemId: webOrderLineItemId))
     }
     
-    class func paymentJson(product: SKProduct, transaction: SKPaymentTransaction) -> Data? {
+    static func paymentJson(product: SKProduct, transaction: SKPaymentTransaction) -> Data? {
         return jsonFromDictionary(paymentDict(product: product, transaction: transaction))
     }
     
-    class func jsonFromDictionary(_ dictionary: [AnyHashable:Any], logErrors: Bool = true) -> Data? {
+    static func jsonFromDictionary(_ dictionary: [AnyHashable:Any], logErrors: Bool = true) -> Data? {
         do {
-            if KMLog.debug {
+            if KMUserDefaults.isDebug() {
                 print(dictionary)
             }
             let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: JSONSerialization.WritingOptions())
@@ -359,7 +359,7 @@ class KMHelper {
         return nil
     }
     
-    class func dictionaryFromJson(_ json: Data) -> [AnyHashable:Any]? {
+    static func dictionaryFromJson(_ json: Data) -> [AnyHashable:Any]? {
         do {
             guard let dictionary = try JSONSerialization.jsonObject(with: json, options: JSONSerialization.ReadingOptions()) as? [AnyHashable : Any] else {
                 return nil

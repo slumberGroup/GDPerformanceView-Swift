@@ -177,7 +177,7 @@ class KMRequest {
                     Kitemetrics.shared.currentBackoffMultiplier = Kitemetrics.shared.currentBackoffMultiplier + 1
                     KMLog.p("Timeout. Set backoff to " + String(Kitemetrics.shared.currentBackoffMultiplier))
                     //Do not send notification.  Will attempt to resend again.
-                } else if KMLog.debug {
+                } else if KMUserDefaults.isDebug() {
                     do {
                         if let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as? [String: String] {
                             if let error = json["error"] {

@@ -69,7 +69,7 @@ public class Kitemetrics: NSObject {
     private override init() {
         payment = KMPayment()
         super.init()
-        KMLog.p("Kitemetrics shared instance initialized!")
+        KMLog.p("Kitemetrics shared instance initialized.")
         sessionManager.delegate = self
     }
     
@@ -81,10 +81,12 @@ public class Kitemetrics: NSObject {
     ///Call on app startup, preferablly in AppDelegate application(_:didFinishLaunchingWithOptions:)
     ///- parameter withApiKey: Obtain the apiKey from https://cloud.kitemetrics.com
     @objc
-    public func initSession(withApiKey: String) {
+    public func initSession(withApiKey: String, isDebug: Bool = false) {
         DispatchQueue.global(qos: .default).async {
+            KMUserDefaults.setDebug(isDebug)
             KMLog.p("Kitemetrics shared instance initialized with apiKey.")
             self.apiKey = withApiKey
+            
             if self.apiKey.starts(with: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjB9.") {
                 KMLog.forcePrint("Deprecated apiKey. Please get a new API Key from https://cloud.kitemetrics.com.")
             } else if KMUserDefaults.applicationId() == 0 {

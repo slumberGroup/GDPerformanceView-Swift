@@ -8,12 +8,10 @@
 
 import Foundation
 
-class KMLog {
-    
-    static let debug = false
+enum KMLog {
     
     static func p(_ message: String) {
-        if KMLog.debug {
+        if KMUserDefaults.isDebug() {
             print("Kitemetrics: " + message)
         }
     }
@@ -21,4 +19,5 @@ class KMLog {
     static func forcePrint(_ message: String) {
         print("Kitemetrics: " + message)
     }
+    
 }

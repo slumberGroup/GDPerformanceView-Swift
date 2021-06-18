@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KMError {
+enum KMError {
     
     static let errorMessagesToIgnore = [
         "Error sending request. The Internet connection appears to be offline.",
@@ -16,12 +16,12 @@ class KMError {
         "Error sending request. An SSL error has occurred and a secure connection to the server cannot be made."
     ]
     
-    class func logAsNSError(_ error: Error) {
+    static func logAsNSError(_ error: Error) {
         let nsError = error as NSError
         logErrorMessage(nsError.description)
     }
     
-    class func logError(_ error: Error, sendToServer: Bool = true) {
+    static func logError(_ error: Error, sendToServer: Bool = true) {
         if sendToServer {
             KMError.logAsNSError(error)
         } else {
@@ -29,7 +29,7 @@ class KMError {
         }
     }
     
-    class func logErrorMessage(_ errorMessage: String, sendToServer: Bool = true) {
+    static func logErrorMessage(_ errorMessage: String, sendToServer: Bool = true) {
         KMLog.p("========== Kitemetrics ERROR: " + errorMessage)
         if sendToServer {
             if errorMessagesToIgnore.contains(errorMessage) == false {
@@ -38,11 +38,11 @@ class KMError {
         }
     }
     
-    class func printError(_ errorMessage: String) {
+    static func printError(_ errorMessage: String) {
         KMLog.forcePrint("========== Kitemetrics ERROR: " + errorMessage)
     }
     
-    class func printWarning(_ errorMessage: String) {
+    static func printWarning(_ errorMessage: String) {
         KMLog.forcePrint("========== Kitemetrics WARNING: " + errorMessage)
     }
     

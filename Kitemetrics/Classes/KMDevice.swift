@@ -11,34 +11,34 @@ import AdSupport
 import UIKit
 
 
-public class KMDevice {
+public enum KMDevice {
     
     //The build-version-number string for the bundle
-    public class func appBuildVersion() -> String {
+    public static func appBuildVersion() -> String {
         return stringValueFromInfoDict(kCFBundleVersionKey as String)
     }
     
     // The release-version-number string for the bundle.
-    public class func appVersion() -> String {
+    public static func appVersion() -> String {
         return stringValueFromInfoDict("CFBundleShortVersionString")
     }
     
     //The user-visible name of the bundle; used by Siri and visible on the Home screen in iOS.
-    public class func appBundleDisplayName() -> String {
+    public static func appBundleDisplayName() -> String {
         return stringValueFromInfoDict("CFBundleDisplayName")
     }
     
     //The human-readable name of the bundle.  This key is often found in the InfoPlist.strings since it is usually localized.
-    public class func appBundleName() -> String {
+    public static func appBundleName() -> String {
         return stringValueFromInfoDict(kCFBundleNameKey as String)
     }
     
     //An identifier string that specifies the app type of the bundle. The string should be in reverse DNS format.
-    public class func appBundleId() -> String {
+    public static func appBundleId() -> String {
         return stringValueFromInfoDict(kCFBundleIdentifierKey as String)
     }
     
-    public class func advertisingIdentifier() -> String {
+    public static func advertisingIdentifier() -> String {
         let identifierManager = ASIdentifierManager.shared()
         if identifierManager.isAdvertisingTrackingEnabled {
             let identifier = identifierManager.advertisingIdentifier
@@ -48,7 +48,7 @@ public class KMDevice {
         return ""
     }
     
-    class func stringValueFromInfoDict(_ key: String) -> String {
+    static func stringValueFromInfoDict(_ key: String) -> String {
         let dict = Bundle.main.infoDictionary
         if dict != nil {
             let value = dict![key]
@@ -66,12 +66,12 @@ public class KMDevice {
     }
     
     //e.g. Version 10.0 (Build 14A345)
-    public class func iosVersion() -> String {
+    public static func iosVersion() -> String {
         return ProcessInfo.processInfo.operatingSystemVersionString
     }
 
     
-    public class func deviceType() -> String {
+    public static func deviceType() -> String {
         var systemInfo = utsname()
         uname(&systemInfo)
         guard let deviceType = NSString(bytes: &systemInfo.machine, length: Int(_SYS_NAMELEN), encoding: String.Encoding.ascii.rawValue) as String? else {
@@ -81,12 +81,12 @@ public class KMDevice {
     }
     
     //e.g. iPhone
-    class func model() -> String {
+    static func model() -> String {
         return UIDevice.current.model
     }
     
     //e.g. en
-    public class func preferredLanguage() -> String {
+    public static func preferredLanguage() -> String {
         if Locale.preferredLanguages.count > 0 {
             return Locale.preferredLanguages[0]
         }
@@ -94,7 +94,7 @@ public class KMDevice {
     }
     
     //e.g. US
-    public class func regionCode() -> String {
+    public static func regionCode() -> String {
         guard let regionCode = Locale.current.regionCode else {
             return ""
         }
@@ -102,17 +102,17 @@ public class KMDevice {
     }
     
     //e.g. iOS
-    class func systemName() -> String {
+    static func systemName() -> String {
         return UIDevice.current.systemName
     }
     
     //e.g. 10.0
-    class func systemVersion() -> String {
+    static func systemVersion() -> String {
         return UIDevice.current.systemVersion
     }
     
     //e.g. 744643BA-0BB4-469F-BD23-7BC5AF3A708E
-    public class func identifierForVendor() -> String {
+    public static func identifierForVendor() -> String {
         guard let uuid = UIDevice.current.identifierForVendor else {
             return ""
         }
