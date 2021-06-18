@@ -10,7 +10,7 @@ import Foundation
 
 class KMLog {
     
-    static let debug = true
+    static let debug = false
     
     static func p(_ message: String) {
         if KMLog.debug {
