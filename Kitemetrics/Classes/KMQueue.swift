@@ -25,7 +25,7 @@ class KMQueue {
     var errorOnLastSend = false
     var isApiKeySet = false
     
-    let serialDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.serialDispatchQueue", qos: .background, attributes: .concurrent)
+    let serialDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.serialDispatchQueue", qos: .background)
     
     static let kMaxQueueSize = 30
     static let kTimeToWaitBeforeSendingMessagesWithErrors = 43200.0 // 12 hours
