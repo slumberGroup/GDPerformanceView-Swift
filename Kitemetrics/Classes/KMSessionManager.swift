@@ -18,10 +18,10 @@ class KMSessionManager {
     
     func open() {
         let now = Date()
-        let lastLaunchTime = KMUserDefaults.launchTime()
-        let lastCloseTime = KMUserDefaults.closeTime()
+        let nullableLastLaunchTime = KMUserDefaults.launchTime()
+        let nullableLastCloseTime = KMUserDefaults.closeTime()
         
-        if lastLaunchTime == nil && lastCloseTime == nil {
+        if nullableLastLaunchTime == nil || nullableLastCloseTime == nil {
             //The very first launch of the app.  Start the session.
             KMUserDefaults.setLaunchTime(now)
             //Set the close time to now also, just incase the app crashes or terminates early.
@@ -29,22 +29,18 @@ class KMSessionManager {
             return
         }
         
-        
-        if fabs(lastCloseTime!.timeIntervalSinceNow) < 30 {
-            //If last close time is less than 30 seconds, continue as the same session
-            KMUserDefaults.setCloseTime(now)
-            //Leave start time alone, since it is a continuation
-            return
+        if let lastLaunchTime = KMUserDefaults.launchTime(), let lastCloseTime = KMUserDefaults.closeTime() {
+            if fabs(lastCloseTime.timeIntervalSinceNow) < 30 {
+                //If last close time is less than 30 seconds, continue as the same session
+                KMUserDefaults.setCloseTime(now)
+                //Leave start time alone, since it is a continuation
+                return
+            }
+            
+            //Post the last session
+            self.delegate?.sessionReadyToPost(launchTime: lastLaunchTime, closeTime: lastCloseTime)
         }
-        
-        //Post the last session
-        if lastLaunchTime != nil && lastCloseTime != nil{
-            self.delegate?.sessionReadyToPost(launchTime: lastLaunchTime!, closeTime: lastCloseTime!)
-        } else {
-            //Somehow one of the values is still null.  Log error.
-            KMError.logErrorMessage("One of the session values is null")
-        }
-        
+
         //Start the new session
         KMUserDefaults.setLaunchTime(now)
         KMUserDefaults.setCloseTime(now)
