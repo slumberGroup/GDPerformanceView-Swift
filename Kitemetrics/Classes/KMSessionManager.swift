@@ -18,10 +18,9 @@ class KMSessionManager {
     
     func open() {
         let now = Date()
-        let lastLaunchTime = KMUserDefaults.launchTime()
-        let lastCloseTime = KMUserDefaults.closeTime()
         
-        if lastLaunchTime == nil && lastCloseTime == nil {
+        guard let lastLaunchTime = KMUserDefaults.launchTime(),
+              let lastCloseTime = KMUserDefaults.closeTime() else {
             //The very first launch of the app.  Start the session.
             KMUserDefaults.setLaunchTime(now)
             //Set the close time to now also, just incase the app crashes or terminates early.
@@ -29,8 +28,7 @@ class KMSessionManager {
             return
         }
         
-        
-        if fabs(lastCloseTime!.timeIntervalSinceNow) < 30 {
+        if fabs(lastCloseTime.timeIntervalSinceNow) < 30 {
             //If last close time is less than 30 seconds, continue as the same session
             KMUserDefaults.setCloseTime(now)
             //Leave start time alone, since it is a continuation
@@ -38,13 +36,8 @@ class KMSessionManager {
         }
         
         //Post the last session
-        if lastLaunchTime != nil && lastCloseTime != nil{
-            self.delegate?.sessionReadyToPost(launchTime: lastLaunchTime!, closeTime: lastCloseTime!)
-        } else {
-            //Somehow one of the values is still null.  Log error.
-            KMError.logErrorMessage("One of the session values is null")
-        }
-        
+        self.delegate?.sessionReadyToPost(launchTime: lastLaunchTime, closeTime: lastCloseTime)
+
         //Start the new session
         KMUserDefaults.setLaunchTime(now)
         KMUserDefaults.setCloseTime(now)
