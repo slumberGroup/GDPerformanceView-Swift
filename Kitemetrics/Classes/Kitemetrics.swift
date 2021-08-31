@@ -140,7 +140,7 @@ public class Kitemetrics: NSObject {
             }
         }
         
-        if #available(iOS 10, *) {
+        if #available(iOS 12, *) {
             if KMUserDefaults.needsSearchAdsAttribution() {
                 //Number of days since install
                 let installDate = KMUserDefaults.installDate()
@@ -442,7 +442,7 @@ public class Kitemetrics: NSObject {
         }
     }
     
-    @available(iOS 10, *)
+    @available(iOS 12, *)
     func postSearchAdsAttribution() {
         let attemptNumber = KMUserDefaults.incrementAttributionRequestAttemptNumber()
         KMLog.p("Requesting attribution details attempt # " + String(attemptNumber))
