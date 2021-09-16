@@ -355,10 +355,10 @@ class KMQueue {
     
     func removeCurrentSendRequestAndSendNext() {
         KMLog.p("KMQueue removeCurrentSendRequestAndSendNext")
-        if self.requestsToSend != nil && self.requestsToSend!.count > 0 {
-            self.requestsToSend!.remove(at: 0)
-            if self.requestsToSend!.count == 0 && self.filesToSend != nil {
-                self.filesToSend!.remove(at: 0)
+        if self.requestsToSend?.isEmpty == false {
+            self.requestsToSend?.removeFirst()
+            if self.requestsToSend?.isEmpty == true && self.filesToSend?.isEmpty == false {
+                self.filesToSend?.removeFirst()
                 if let currentFile = self.currentFile {
                     do {
                         try FileManager.default.removeItem(at: currentFile)
