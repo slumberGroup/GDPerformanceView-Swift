@@ -27,10 +27,10 @@ class KMQueue {
     
     let serialDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.serialDispatchQueue", qos: .background)
     
-    static let kMaxQueueSize = 30
-    static let kTimeToWaitBeforeSendingMessagesWithErrors = 43200.0 // 12 hours
-    static let kMaxQueueFilesToSave = 1000
-    static let kMaxErrorFilesToSave = 500
+    static let kMaxQueueSize = 15
+    static let kTimeToWaitBeforeSendingMessagesWithErrors = 12 * 60 * 60 // 12 hours
+    static let kMaxQueueFilesToSave = 200
+    static let kMaxErrorFilesToSave = 100
     
     init() {
         self.requester.queue = self
@@ -154,19 +154,15 @@ class KMQueue {
             do {
                 let directory = self.queueDirectory()
                 let contents: [URL]? = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-                self.newFilesToLoad = false
-                
-                if let contents = contents, contents.isEmpty == false {
-                    let date = Date().addingTimeInterval(-14*24*60*60).timeIntervalSince1970
+                    self.newFilesToLoad = false
                     
-                    self.filesToSend = contents.filter { url in
-                        return KMQueue.timeIntervalFromFilename(url.lastPathComponent) > date
-                    }.sorted(by: { urlOne, urlTwo in
-                        let urlOneTime = KMQueue.timeIntervalFromFilename(urlOne.lastPathComponent)
-                        let urlTwoTime = KMQueue.timeIntervalFromFilename(urlTwo.lastPathComponent)
-                        return urlOneTime < urlTwoTime
-                    })
-                }
+                    if contents != nil && contents!.count > 0 {
+                        self.filesToSend = contents!.sorted {a,b in
+                            let atime = KMQueue.timeIntervalFromFilename(a.lastPathComponent)
+                            let btime = KMQueue.timeIntervalFromFilename(b.lastPathComponent)
+                            return atime < btime
+                        }
+                    }
             } catch let error {
                 KMError.logError(error)
             }
