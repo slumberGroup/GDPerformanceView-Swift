@@ -153,16 +153,20 @@ class KMQueue {
             let fileManager = FileManager.default
             do {
                 let directory = self.queueDirectory()
-                self.filesToSend = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-                    self.newFilesToLoad = false
+                let contents: [URL]? = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                self.newFilesToLoad = false
+                
+                if let contents = contents, contents.isEmpty == false {
+                    let date = Date().addingTimeInterval(-14*24*60*60).timeIntervalSince1970
                     
-//                    if contents != nil && contents!.count > 0 {
-//                        self.filesToSend = contents!.sorted {a,b in
-//                            let atime = KMQueue.timeIntervalFromFilename(a.lastPathComponent)
-//                            let btime = KMQueue.timeIntervalFromFilename(b.lastPathComponent)
-//                            return atime < btime
-//                        }
-//                    }
+                    self.filesToSend = contents.filter { url in
+                        return KMQueue.timeIntervalFromFilename(url.lastPathComponent) > date
+                    }.sorted(by: { urlOne, urlTwo in
+                        let urlOneTime = KMQueue.timeIntervalFromFilename(urlOne.lastPathComponent)
+                        let urlTwoTime = KMQueue.timeIntervalFromFilename(urlTwo.lastPathComponent)
+                        return urlOneTime < urlTwoTime
+                    })
+                }
             } catch let error {
                 KMError.logError(error)
             }
