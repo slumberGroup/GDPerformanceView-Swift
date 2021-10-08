@@ -153,16 +153,16 @@ class KMQueue {
             let fileManager = FileManager.default
             do {
                 let directory = self.queueDirectory()
-                let contents: [URL]? = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+                self.filesToSend = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: [], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
                     self.newFilesToLoad = false
                     
-                    if contents != nil && contents!.count > 0 {
-                        self.filesToSend = contents!.sorted {a,b in
-                            let atime = KMQueue.timeIntervalFromFilename(a.lastPathComponent)
-                            let btime = KMQueue.timeIntervalFromFilename(b.lastPathComponent)
-                            return atime < btime
-                        }
-                    }
+//                    if contents != nil && contents!.count > 0 {
+//                        self.filesToSend = contents!.sorted {a,b in
+//                            let atime = KMQueue.timeIntervalFromFilename(a.lastPathComponent)
+//                            let btime = KMQueue.timeIntervalFromFilename(b.lastPathComponent)
+//                            return atime < btime
+//                        }
+//                    }
             } catch let error {
                 KMError.logError(error)
             }
