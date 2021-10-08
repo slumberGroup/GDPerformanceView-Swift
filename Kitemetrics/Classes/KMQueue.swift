@@ -28,7 +28,7 @@ class KMQueue {
     let serialDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.serialDispatchQueue", qos: .background)
     
     static let kMaxQueueSize = 15
-    static let kTimeToWaitBeforeSendingMessagesWithErrors = 12 * 60 * 60 // 12 hours
+    static let kTimeToWaitBeforeSendingMessagesWithErrors = 12.0 * 60.0 * 60.0 // 12 hours
     static let kMaxQueueFilesToSave = 200
     static let kMaxErrorFilesToSave = 100
     
