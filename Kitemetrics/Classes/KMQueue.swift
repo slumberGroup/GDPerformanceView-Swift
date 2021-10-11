@@ -216,23 +216,29 @@ class KMQueue {
     }
     
     func loadRequestsToSend() -> Bool {
-        KMLog.p("KMQueue loadRequestsToSend filesToSend count \(self.filesToSend!.count)")
-        if self.filesToSend != nil && self.filesToSend!.count > 0 {
-            guard let file = self.filesToSend?.first else {
-                return false
-            }
-            do {
-                KMLog.p("KMQueue loadRequestsToSend getting data")
-                let data = try Data(contentsOf: file)
-                KMLog.p("KMQueue loadRequestsToSend data bytes \(data.count)")
-                KMLog.p("KMQueue unarchive object")
-                self.requestsToSend = NSKeyedUnarchiver.unarchiveObject(with: data) as? [URLRequest]
-                KMLog.p("KMQueue unarchived object!")
-                self.currentFile = file
-                return true
-            } catch let error {
-                KMError.logError(error)
-            }
+        KMLog.p("KMQueue loadRequestsToSend")
+        
+        guard let filesToSend = filesToSend,
+              filesToSend.isEmpty == false else {
+                  KMLog.p("KMQueue loadRequestsToSend empty or nil")
+                  return false
+              }
+        
+        KMLog.p("KMQueue loadRequestsToSend filesToSend count \(filesToSend.count)")
+        guard let file = filesToSend.first else {
+            return false
+        }
+        do {
+            KMLog.p("KMQueue loadRequestsToSend getting data")
+            let data = try Data(contentsOf: file)
+            KMLog.p("KMQueue loadRequestsToSend data bytes \(data.count)")
+            KMLog.p("KMQueue unarchive object")
+            self.requestsToSend = NSKeyedUnarchiver.unarchiveObject(with: data) as? [URLRequest]
+            KMLog.p("KMQueue unarchived object!")
+            self.currentFile = file
+            return true
+        } catch let error {
+            KMError.logError(error)
         }
         return false
     }
