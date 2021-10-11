@@ -29,5 +29,6 @@ Kitemetrics provides keyword level attribution for Apple Search Ads. It associat
   spec.weak_framework  = 'iAd'
   
   spec.dependency 'ReachabilitySwift', '~> 5.0.0'
+  spec.dependency 'SwiftyBeaver'
   
 end

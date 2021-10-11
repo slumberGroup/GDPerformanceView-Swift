@@ -69,6 +69,7 @@ public class Kitemetrics: NSObject {
     private override init() {
         payment = KMPayment()
         super.init()
+        KMLog.setupLogging()
         KMLog.p("Kitemetrics shared instance initialized.")
         sessionManager.delegate = self
     }

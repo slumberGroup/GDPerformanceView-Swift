@@ -1,6 +1,6 @@
 {
   "name": "Kitemetrics",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "summary": "iOS App Analytics, Apple Search Ads Attribution, and Reporting.",
   "swift_versions": "5.3.3",
   "platforms": {
@@ -17,7 +17,7 @@
   },
   "source": {
     "git": "https://github.com/kitefaster/kitemetrics_iOS.git",
-    "tag": "1.2.0"
+    "tag": "1.2.1"
   },
   "social_media_url": "https://twitter.com/kitefasterApps",
   "source_files": "Kitemetrics/Classes/**/*",
@@ -25,6 +25,9 @@
   "dependencies": {
     "ReachabilitySwift": [
       "~> 5.0.0"
+    ],
+    "SwiftyBeaver": [
+
     ]
   },
   "swift_version": "5.3.3"
