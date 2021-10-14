@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.summary          = 'iOS App Analytics, Apple Search Ads Attribution, and Reporting.'
   
   spec.swift_version    = '5.3.3'
-  spec.ios.deployment_target = '8.0'
+  spec.ios.deployment_target = '9.0'
 
   spec.description      = <<-DESC
 Kitemetrics provides keyword level attribution for Apple Search Ads. It associates each attribution to an In-App Purchase. The Kitemetrics web service calculates the Average Revenue per User.
@@ -29,5 +29,6 @@ Kitemetrics provides keyword level attribution for Apple Search Ads. It associat
   spec.weak_framework  = 'iAd'
   
   spec.dependency 'ReachabilitySwift', '~> 5.0.0'
+  spec.dependency 'SwiftyBeaver'
   
 end

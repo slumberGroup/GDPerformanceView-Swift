@@ -69,7 +69,6 @@ public class Kitemetrics: NSObject {
     private override init() {
         payment = KMPayment()
         super.init()
-        KMLog.p("Kitemetrics shared instance initialized.")
         sessionManager.delegate = self
     }
     
@@ -81,7 +80,14 @@ public class Kitemetrics: NSObject {
     ///Call on app startup, preferablly in AppDelegate application(_:didFinishLaunchingWithOptions:)
     ///- parameter withApiKey: Obtain the apiKey from https://cloud.kitemetrics.com
     @objc
-    public func initSession(withApiKey: String, isDebug: Bool = false) {
+    public func initSession(withApiKey: String,
+                            isDebug: Bool = false,
+                            cloudLoggingConfig: SwiftyBeaverCloudLoggingConfig? = nil) {
+        if isDebug == true {
+            KMLog.setupLogging(config: cloudLoggingConfig)
+        }
+        KMLog.p("Kitemetrics shared instance initialized.")
+        
         DispatchQueue.global(qos: .default).async {
             KMUserDefaults.setDebug(isDebug)
             KMLog.p("Kitemetrics shared instance initialized with apiKey.")

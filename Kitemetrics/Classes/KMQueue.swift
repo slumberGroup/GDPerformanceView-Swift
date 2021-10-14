@@ -27,10 +27,10 @@ class KMQueue {
     
     let serialDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.serialDispatchQueue", qos: .background)
     
-    static let kMaxQueueSize = 30
-    static let kTimeToWaitBeforeSendingMessagesWithErrors = 43200.0 // 12 hours
-    static let kMaxQueueFilesToSave = 1000
-    static let kMaxErrorFilesToSave = 500
+    static let kMaxQueueSize = 15
+    static let kTimeToWaitBeforeSendingMessagesWithErrors = 12.0 * 60.0 * 60.0 // 12 hours
+    static let kMaxQueueFilesToSave = 200
+    static let kMaxErrorFilesToSave = 100
     
     init() {
         self.requester.queue = self
@@ -217,18 +217,28 @@ class KMQueue {
     
     func loadRequestsToSend() -> Bool {
         KMLog.p("KMQueue loadRequestsToSend")
-        if self.filesToSend != nil && self.filesToSend!.count > 0 {
-            guard let file = self.filesToSend?.first else {
-                return false
-            }
-            do {
-                let data = try Data(contentsOf: file)
-                self.requestsToSend = NSKeyedUnarchiver.unarchiveObject(with: data) as? [URLRequest]
-                self.currentFile = file
-                return true
-            } catch let error {
-                KMError.logError(error)
-            }
+        
+        guard let filesToSend = filesToSend,
+              filesToSend.isEmpty == false else {
+                  KMLog.p("KMQueue loadRequestsToSend empty or nil")
+                  return false
+              }
+        
+        KMLog.p("KMQueue loadRequestsToSend filesToSend count \(filesToSend.count)")
+        guard let file = filesToSend.first else {
+            return false
+        }
+        do {
+            KMLog.p("KMQueue loadRequestsToSend getting data")
+            let data = try Data(contentsOf: file)
+            KMLog.p("KMQueue loadRequestsToSend data bytes \(data.count)")
+            KMLog.p("KMQueue unarchive object")
+            self.requestsToSend = NSKeyedUnarchiver.unarchiveObject(with: data) as? [URLRequest]
+            KMLog.p("KMQueue unarchived object!")
+            self.currentFile = file
+            return true
+        } catch let error {
+            KMError.logError(error)
         }
         return false
     }
