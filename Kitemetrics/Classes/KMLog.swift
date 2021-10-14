@@ -9,22 +9,38 @@
 import Foundation
 import SwiftyBeaver
 
+@objc
+open class SwiftyBeaverCloudLoggingConfig: NSObject {
+    let appID: String
+    let appSecret: String
+    let encryptionKey: String
+    
+    public init(appID: String, appSecret: String, encryptionKey: String) {
+        self.appID = appID
+        self.appSecret = appSecret
+        self.encryptionKey = encryptionKey
+    }
+}
+
 enum KMLog {
     
     static private let logger = SwiftyBeaver.self
     
     ///Setup logging
-    static func setupLogging() {
+    static func setupLogging(config: SwiftyBeaverCloudLoggingConfig? = nil) {
         //SwiftyBeaver
-        let platform = SBPlatformDestination(appID: "XWx2Jv",
-                                             appSecret: "freh8gasmVEwctxraf1ouxwlqodidz5U",
-                                             encryptionKey: "usvtXgrwjw71rtvhpjvaaqesmrodmevm") // log to cloud
+        if let config = config {
+            let platform = SBPlatformDestination(appID: config.appID,
+                                                 appSecret: config.appSecret,
+                                                 encryptionKey: config.encryptionKey) // log to cloud
+            platform.format = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $C$L$c $M"
+            KMLog.logger.addDestination(platform)
+        }
+        
         let console = ConsoleDestination()  // log to Xcode Console
         let file = FileDestination()  // log to default swiftybeaver.log file
         console.format = "$DHH:mm:ss.SSS$d $C$L$c $M"
         file.format = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $C$L$c $M"
-        platform.format = "$Dyyyy-MM-dd HH:mm:ss.SSS$d $C$L$c $M"
-        KMLog.logger.addDestination(platform)
         KMLog.logger.addDestination(console)
         KMLog.logger.addDestination(file)
     }
