@@ -1,10 +1,10 @@
 {
   "name": "Kitemetrics",
-  "version": "1.2.1",
+  "version": "1.2.4",
   "summary": "iOS App Analytics, Apple Search Ads Attribution, and Reporting.",
   "swift_versions": "5.3.3",
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "description": "Kitemetrics provides keyword level attribution for Apple Search Ads. It associates each attribution to an In-App Purchase. The Kitemetrics web service calculates the Average Revenue per User.",
   "homepage": "https://github.com/kitefaster/kitemetrics_iOS",
@@ -17,7 +17,7 @@
   },
   "source": {
     "git": "https://github.com/kitefaster/kitemetrics_iOS.git",
-    "tag": "1.2.1"
+    "tag": "1.2.4"
   },
   "social_media_url": "https://twitter.com/kitefasterApps",
   "source_files": "Kitemetrics/Classes/**/*",
@@ -27,6 +27,9 @@
       "~> 5.0.0"
     ],
     "SwiftyBeaver": [
+
+    ],
+    "GDPerformanceView-Swift": [
 
     ]
   },

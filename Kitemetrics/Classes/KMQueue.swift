@@ -9,9 +9,8 @@
 import Foundation
 import Reachability
 
-
-class KMQueue {
-    
+class KMQueue: CPUAndMemoryUsageObserverProtocol {
+        
     var reachability: Reachability?
     let requester = KMRequest()
     var queue = [URLRequest]()
@@ -25,7 +24,11 @@ class KMQueue {
     var errorOnLastSend = false
     var isApiKeySet = false
     
+    var isQueueSuspended = false
+    
     let serialDispatchQueue = DispatchQueue(label: "com.kitemetrics.KMQueue.serialDispatchQueue", qos: .background)
+    
+    private var resourcesMonitor: KMDeviceResourcesMonitor?
     
     static let kMaxQueueSize = 15
     static let kTimeToWaitBeforeSendingMessagesWithErrors = 12.0 * 60.0 * 60.0 // 12 hours
@@ -39,10 +42,16 @@ class KMQueue {
         NotificationCenter.default.addObserver(self, selector: #selector(didReceivePostSuccess), name: NSNotification.Name(rawValue: "com.kitefaster.KMRequest.Post.Success"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didReceivePostError), name: NSNotification.Name(rawValue: "com.kitefaster.KMRequest.Post.Error"), object: nil)
         
+        resourcesMonitor = KMDeviceResourcesMonitor()
+        
+        resourcesMonitor?.addObserver(self)
+        
         KMLog.p("KMQueue init")
     }
     
     deinit {
+        resourcesMonitor?.removeObserver(self)
+        resourcesMonitor = nil
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -232,9 +241,7 @@ class KMQueue {
             KMLog.p("KMQueue loadRequestsToSend getting data")
             let data = try Data(contentsOf: file)
             KMLog.p("KMQueue loadRequestsToSend data bytes \(data.count)")
-            KMLog.p("KMQueue unarchive object")
             self.requestsToSend = NSKeyedUnarchiver.unarchiveObject(with: data) as? [URLRequest]
-            KMLog.p("KMQueue unarchived object!")
             self.currentFile = file
             return true
         } catch let error {
@@ -505,6 +512,26 @@ class KMQueue {
         }
         
         return false
+    }
+    
+    // MARK: - CPUAndMemoryUsageObserverProtocol
+    
+    var identifier: String {
+        return "KMQueue"
+    }
+    
+    func cpuIsReachingLimit() {
+        if isQueueSuspended == false {
+            isQueueSuspended = true
+            serialDispatchQueue.suspend()
+        }
+    }
+    
+    func cpuHasCalmedDown() {
+        if isQueueSuspended == true {
+            isQueueSuspended = false
+            serialDispatchQueue.resume()
+        }
     }
     
 }

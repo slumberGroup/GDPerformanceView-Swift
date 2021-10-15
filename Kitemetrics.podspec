@@ -30,5 +30,6 @@ Kitemetrics provides keyword level attribution for Apple Search Ads. It associat
   
   spec.dependency 'ReachabilitySwift', '~> 5.0.0'
   spec.dependency 'SwiftyBeaver'
+  spec.dependency 'GDPerformanceView-Swift'
   
 end

@@ -6,6 +6,7 @@ target 'Kitemetrics_Example' do
   pod 'Kitemetrics', :path => '../.'
   pod 'SnapKit', '~> 5.0.0'
   pod 'SwiftyBeaver'
+  pod 'GDPerformanceView-Swift'
 
   target 'Kitemetrics_Tests' do
     inherit! :search_paths
