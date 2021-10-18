@@ -14,15 +14,15 @@ extension Notification.Name {
     public static let cpuRegularUsageReachedNotification = Notification.Name("cpuRegularUsageReachedNotification")
 }
 
-protocol ObserverProtocol {
+protocol ObservableProtocol {
     var identifier: String { get }
 }
 
-protocol CPUAndMemoryUsageReportObserverProtocol: ObserverProtocol {
+protocol CPUAndMemoryUsageReportObservableProtocol: ObservableProtocol {
     func didUpdateCPUAndMemoryUsage(_ usageReport: KMUsageReport)
 }
 
-protocol CPUAndMemoryUsageObserverProtocol: ObserverProtocol {
+protocol CPUAndMemoryUsageObservableProtocol: ObservableProtocol {
     func cpuIsReachingLimit()
     func cpuHasCalmedDown()
 }
@@ -53,7 +53,7 @@ class KMDeviceResourcesMonitor {
     private var lastAverageIndexModified: Int = -1
     private var previousElapsedSeconds: Int = 0
     
-    private var observers: [ObserverProtocol] = []
+    private var observers: [ObservableProtocol] = []
     
     /**
      Starts a `PerformanceMonitor` that displays a label for iOS 14 and below devices. Above iOS 15, we do it ourselves.
@@ -70,7 +70,7 @@ class KMDeviceResourcesMonitor {
     /**
      Adds an observer to be notified.
      */
-    public func addObserver<T: ObserverProtocol>(_ observerToAdd: T) {
+    public func addObserver<T: ObservableProtocol>(_ observerToAdd: T) {
         if observers.contains(where: { observer in
             return observer.identifier == observerToAdd.identifier
         }) == false {
@@ -81,7 +81,7 @@ class KMDeviceResourcesMonitor {
     /**
      Removes an observer from being notified.
      */
-    public func removeObserver<T: ObserverProtocol>(_ observerToRemove: T) {
+    public func removeObserver<T: ObservableProtocol>(_ observerToRemove: T) {
         observers.removeAll(where: { observer in
             return observer.identifier == observerToRemove.identifier
         })
@@ -133,7 +133,7 @@ class KMDeviceResourcesMonitor {
         if cpuAverageUsage > KMDeviceResourcesMonitor.cpuThresholdRatio {
             KMLog.p("CPU is reaching its limit.")
             observers.forEach { observer in
-                if let usageObserver = observer as? CPUAndMemoryUsageObserverProtocol {
+                if let usageObserver = observer as? CPUAndMemoryUsageObservableProtocol {
                     KMLog.p("Usage Observer Notified - cpu reaching limit.")
                     usageObserver.cpuIsReachingLimit()
                 }
@@ -141,7 +141,7 @@ class KMDeviceResourcesMonitor {
         } else {
             KMLog.p("CPU is calming down.")
             observers.forEach { observer in
-                if let usageObserver = observer as? CPUAndMemoryUsageObserverProtocol {
+                if let usageObserver = observer as? CPUAndMemoryUsageObservableProtocol {
                     KMLog.p("Usage Observer Notified - cpu has calmed down.")
                     usageObserver.cpuHasCalmedDown()
                 }
@@ -161,7 +161,7 @@ extension KMDeviceResourcesMonitor: PerformanceMonitorDelegate {
                                          fps: performanceReport.fps,
                                          memoryUsage: memoryUsage)
         observers.forEach { observer in
-            if let usageObserver = observer as? CPUAndMemoryUsageReportObserverProtocol {
+            if let usageObserver = observer as? CPUAndMemoryUsageReportObservableProtocol {
                 KMLog.p("Usage Report Observer Notified - did update CPU and memory usage.")
                 usageObserver.didUpdateCPUAndMemoryUsage(report)
             }

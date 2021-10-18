@@ -9,7 +9,7 @@
 import Foundation
 import Reachability
 
-class KMQueue: CPUAndMemoryUsageObserverProtocol {
+class KMQueue: CPUAndMemoryUsageObservableProtocol {
         
     var reachability: Reachability?
     let requester = KMRequest()
@@ -514,7 +514,7 @@ class KMQueue: CPUAndMemoryUsageObserverProtocol {
         return false
     }
     
-    // MARK: - CPUAndMemoryUsageObserverProtocol
+    // MARK: - CPUAndMemoryUsageObservableProtocol
     
     var identifier: String {
         return "KMQueue"
