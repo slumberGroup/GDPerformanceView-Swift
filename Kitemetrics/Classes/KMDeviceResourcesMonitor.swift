@@ -53,19 +53,21 @@ class KMDeviceResourcesMonitor {
     private var lastAverageIndexModified: Int = -1
     private var previousElapsedSeconds: Int = 0
     
-    private var observers: [ObservableProtocol] = []
-    
     /**
-     Starts a `PerformanceMonitor` that displays a label for iOS 14 and below devices. Above iOS 15, we do it ourselves.
+     Starts a `PerformanceMonitor`.
      Once we reach `cpuThresholdRatio` we will start counting `cpuOverThresholdLimitInSeconds` before we tell observers
      that the CPU is reaching a high level of usage.
      */
-    public init() {
-        PerformanceMonitor.shared().start()
-        PerformanceMonitor.shared().delegate = self
-        PerformanceMonitor.shared().performanceViewConfigurator.options = [.performance, .memory]
-        PerformanceMonitor.shared().hide()
-    }
+    private lazy var performanceMonitor: PerformanceMonitor = {
+        let performanceMonitor = PerformanceMonitor(options: [.performance, .memory],
+                                                    style: .light,
+                                                    delegate: self)
+        performanceMonitor.start()
+        performanceMonitor.hide()
+        return performanceMonitor
+    }()
+    
+    private var observers: [ObservableProtocol] = []
     
     /**
      Adds an observer to be notified.
