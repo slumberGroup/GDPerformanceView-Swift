@@ -14,15 +14,15 @@ extension Notification.Name {
     public static let cpuRegularUsageReachedNotification = Notification.Name("cpuRegularUsageReachedNotification")
 }
 
-protocol ObservableProtocol {
+protocol Observable {
     var identifier: String { get }
 }
 
-protocol CPUAndMemoryUsageReportObservableProtocol: ObservableProtocol {
+protocol CPUAndMemoryUsageReportObservable: Observable {
     func didUpdateCPUAndMemoryUsage(_ usageReport: KMUsageReport)
 }
 
-protocol CPUAndMemoryUsageObservableProtocol: ObservableProtocol {
+protocol CPUAndMemoryUsageObservable: Observable {
     func cpuIsReachingLimit()
     func cpuHasCalmedDown()
 }
@@ -41,10 +41,10 @@ struct KMUsageReport {
     let memoryUsage: KMMemoryUsage
 }
 
-class KMDeviceResourcesMonitor {
+final class KMDeviceResourcesMonitor {
     
     private static let cpuThresholdRatio = 90
-    private static let cpuOverThresholdLimitInSeconds = 80 // The limit is 50 (`cpuThresholdRatio`) over 180 seconds.
+    private static let cpuOverThresholdLimitInSeconds = 80 // The limit is 50% (`cpuThresholdRatio`) over 180 seconds.
    
     private var firstTimestamp: DispatchTime?
     private var cpuUsageValues: [Int] = Array(repeating: 0,
@@ -67,12 +67,12 @@ class KMDeviceResourcesMonitor {
         return performanceMonitor
     }()
     
-    private var observers: [ObservableProtocol] = []
+    private var observers: [Observable] = []
     
     /**
      Adds an observer to be notified.
      */
-    public func addObserver<T: ObservableProtocol>(_ observerToAdd: T) {
+    public func addObserver<T: Observable>(_ observerToAdd: T) {
         if observers.contains(where: { observer in
             return observer.identifier == observerToAdd.identifier
         }) == false {
@@ -83,7 +83,7 @@ class KMDeviceResourcesMonitor {
     /**
      Removes an observer from being notified.
      */
-    public func removeObserver<T: ObservableProtocol>(_ observerToRemove: T) {
+    public func removeObserver<T: Observable>(_ observerToRemove: T) {
         observers.removeAll(where: { observer in
             return observer.identifier == observerToRemove.identifier
         })
@@ -135,7 +135,7 @@ class KMDeviceResourcesMonitor {
         if cpuAverageUsage > KMDeviceResourcesMonitor.cpuThresholdRatio {
             KMLog.p("CPU is reaching its limit.")
             observers.forEach { observer in
-                if let usageObserver = observer as? CPUAndMemoryUsageObservableProtocol {
+                if let usageObserver = observer as? CPUAndMemoryUsageObservable {
                     KMLog.p("Usage Observer Notified - cpu reaching limit.")
                     usageObserver.cpuIsReachingLimit()
                 }
@@ -143,7 +143,7 @@ class KMDeviceResourcesMonitor {
         } else {
             KMLog.p("CPU is calming down.")
             observers.forEach { observer in
-                if let usageObserver = observer as? CPUAndMemoryUsageObservableProtocol {
+                if let usageObserver = observer as? CPUAndMemoryUsageObservable {
                     KMLog.p("Usage Observer Notified - cpu has calmed down.")
                     usageObserver.cpuHasCalmedDown()
                 }
@@ -152,6 +152,8 @@ class KMDeviceResourcesMonitor {
         return cpuAverageUsage
     }
 }
+
+// MARK: - KMDeviceResourcesMonitor extensions
 
 extension KMDeviceResourcesMonitor: PerformanceMonitorDelegate {
     func performanceMonitor(didReport performanceReport: PerformanceReport) {
@@ -163,7 +165,7 @@ extension KMDeviceResourcesMonitor: PerformanceMonitorDelegate {
                                          fps: performanceReport.fps,
                                          memoryUsage: memoryUsage)
         observers.forEach { observer in
-            if let usageObserver = observer as? CPUAndMemoryUsageReportObservableProtocol {
+            if let usageObserver = observer as? CPUAndMemoryUsageReportObservable {
                 KMLog.p("Usage Report Observer Notified - did update CPU and memory usage.")
                 usageObserver.didUpdateCPUAndMemoryUsage(report)
             }
