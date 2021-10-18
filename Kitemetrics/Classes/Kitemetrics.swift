@@ -55,15 +55,15 @@ public class Kitemetrics: NSObject {
     static let kMaxSearchAdAttributionAttempts = 1000
     static let kAttributionTryAgainSeconds = TimeInterval(2)
     
-    var apiKey: String = ""
-    public var userIdentifier: String = ""
+    lazy var apiKey: String = ""
+    lazy public var userIdentifier: String = ""
     let payment: KMPayment
-    let sessionManager = KMSessionManager()
-    let queue = KMQueue()
-    let timerManager = KMTimerManager()
-    var currentBackoffMultiplier = 1
-    var currentBackoffValue = 1
-    let searchAdsAttribution = KMAttribution()
+    lazy var sessionManager = KMSessionManager()
+    lazy var queue = KMQueue()
+    lazy var timerManager = KMTimerManager()
+    lazy var currentBackoffMultiplier = 1
+    lazy var currentBackoffValue = 1
+    lazy var searchAdsAttribution = KMAttribution()
     var onSearchAdsAttribution: ((KMAttributionDetails?) -> Void)?
     
     private override init() {
