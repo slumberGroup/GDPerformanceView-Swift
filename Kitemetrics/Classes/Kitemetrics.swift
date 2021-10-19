@@ -81,11 +81,7 @@ public class Kitemetrics: NSObject {
     ///- parameter withApiKey: Obtain the apiKey from https://cloud.kitemetrics.com
     @objc
     public func initSession(withApiKey: String,
-                            isDebug: Bool = false,
-                            cloudLoggingConfig: SwiftyBeaverCloudLoggingConfig? = nil) {
-        if isDebug == true {
-            KMLog.setupLogging(config: cloudLoggingConfig)
-        }
+                            isDebug: Bool = false) {
         KMLog.p("Kitemetrics shared instance initialized.")
         
         DispatchQueue.global(qos: .default).async {
