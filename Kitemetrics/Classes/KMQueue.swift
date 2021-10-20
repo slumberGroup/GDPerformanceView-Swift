@@ -30,10 +30,10 @@ class KMQueue: CPUAndMemoryUsageObservable {
     
     private var resourcesMonitor: KMDeviceResourcesMonitor?
     
-    static let kMaxQueueSize = 15
+    static let kMaxQueueSize = 30
     static let kTimeToWaitBeforeSendingMessagesWithErrors = 12.0 * 60.0 * 60.0 // 12 hours
-    static let kMaxQueueFilesToSave = 200
-    static let kMaxErrorFilesToSave = 100
+    static let kMaxQueueFilesToSave = 500
+    static let kMaxErrorFilesToSave = 250
     
     init() {
         self.requester.queue = self
@@ -524,6 +524,9 @@ class KMQueue: CPUAndMemoryUsageObservable {
         if isQueueSuspended == false {
             isQueueSuspended = true
             serialDispatchQueue.suspend()
+            KMLog.p("Suspended serialDispatchQueue")
+        } else {
+            KMLog.p("serialDispatchQueue already suspended")
         }
     }
     
@@ -531,6 +534,9 @@ class KMQueue: CPUAndMemoryUsageObservable {
         if isQueueSuspended == true {
             isQueueSuspended = false
             serialDispatchQueue.resume()
+            KMLog.p("Resumed serialDispatchQueue")
+        } else {
+            KMLog.p("serialDispatchQueue already resumed")
         }
     }
     
