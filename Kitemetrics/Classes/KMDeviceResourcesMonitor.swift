@@ -43,8 +43,8 @@ struct KMUsageReport {
 
 final class KMDeviceResourcesMonitor {
     
-    private static let cpuThresholdRatio = 90
-    private static let cpuOverThresholdLimitInSeconds = 80 // The limit is 50% (`cpuThresholdRatio`) over 180 seconds.
+    private static let cpuThresholdRatio = 85
+    private static let cpuOverThresholdLimitInSeconds = 70 // The limit is 50% (`cpuThresholdRatio`) over 180 seconds.
    
     private var firstTimestamp: DispatchTime?
     private var cpuUsageValues: [Int] = Array(repeating: 0,
