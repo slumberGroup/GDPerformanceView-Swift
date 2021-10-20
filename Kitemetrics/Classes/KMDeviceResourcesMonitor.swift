@@ -62,12 +62,15 @@ final class KMDeviceResourcesMonitor {
         let performanceMonitor = PerformanceMonitor(options: [.performance, .memory],
                                                     style: .light,
                                                     delegate: self)
-        performanceMonitor.start()
-        performanceMonitor.hide()
         return performanceMonitor
     }()
     
     private var observers: [Observable] = []
+    
+    public required init() {
+        performanceMonitor.start()
+        performanceMonitor.hide()
+    }
     
     /**
      Adds an observer to be notified.
