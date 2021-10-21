@@ -80,17 +80,17 @@ public class PerformanceMonitor {
     
     public weak var delegate: PerformanceMonitorDelegate?
     
-    public var performanceViewConfigurator: PerformanceViewConfigurator {
+    public var performanceViewConfigurator: PerformanceViewConfigurator? {
         get {
             return self.performanceView
         }
         set { }
     }
     
-    public var statusBarConfigurator: StatusBarConfigurator {
+    public var statusBarConfigurator: StatusBarConfigurator? {
         get {
-            guard let rootViewController = self.performanceView.rootViewController as? WindowViewController else {
-                fatalError("Root view controller must be a kind of WindowViewController.")
+            guard let rootViewController = self.performanceView?.rootViewController as? WindowViewController else {
+                return nil
             }
             return rootViewController
         }
@@ -101,7 +101,7 @@ public class PerformanceMonitor {
     
     private static var sharedPerformanceMonitor: PerformanceMonitor!
     
-    private let performanceView = PerformanceView()
+    private let performanceView: PerformanceView?
     private let performanceCalculator = PerformanceCalculator()
     private var state = States.paused
     
@@ -113,9 +113,14 @@ public class PerformanceMonitor {
     ///   - options: Display options. Allows to change the format of the displayed information.
     ///   - style: Style. Allows to change the appearance of the displayed information.
     ///   - delegate: Performance monitor output.
-    required public init(options: DisplayOptions = .default, style: Style = .dark, delegate: PerformanceMonitorDelegate? = nil) {
-        self.performanceView.options = options
-        self.performanceView.style = style
+    required public init(withPerformanceView showPerformanceView: Bool, options: DisplayOptions = .default, style: Style = .dark, delegate: PerformanceMonitorDelegate? = nil) {
+        if showPerformanceView == true {
+            self.performanceView = PerformanceView()
+            self.performanceView?.options = options
+            self.performanceView?.style = style
+        } else {
+            self.performanceView = nil
+        }
         
         self.performanceCalculator.onReport = { [weak self] (performanceReport) in
             DispatchQueue.main.async {
@@ -132,7 +137,7 @@ public class PerformanceMonitor {
     /// - Returns: Performance monitor singleton.
     public class func shared() -> PerformanceMonitor {
         if self.sharedPerformanceMonitor == nil {
-            self.sharedPerformanceMonitor = PerformanceMonitor()
+            self.sharedPerformanceMonitor = PerformanceMonitor(withPerformanceView: true)
         }
         return self.sharedPerformanceMonitor
     }
@@ -146,11 +151,11 @@ public class PerformanceMonitor {
 
 public extension PerformanceMonitor {
     func hide() {
-        self.performanceView.hide()
+        self.performanceView?.hide()
     }
     
     func show() {
-        self.performanceView.show()
+        self.performanceView?.show()
     }
     
     func start() {
@@ -216,7 +221,7 @@ private extension PerformanceMonitor {
 
 private extension PerformanceMonitor {
     func apply(performanceReport: PerformanceReport) {
-        self.performanceView.update(withPerformanceReport: performanceReport)
+        self.performanceView?.update(withPerformanceReport: performanceReport)
         self.delegate?.performanceMonitor(didReport: performanceReport)
     }
 }

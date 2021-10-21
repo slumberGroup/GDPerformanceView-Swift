@@ -59,8 +59,7 @@ final class KMDeviceResourcesMonitor {
      that the CPU is reaching a high level of usage.
      */
     private lazy var performanceMonitor: PerformanceMonitor = {
-        let performanceMonitor = PerformanceMonitor(options: [.performance, .memory],
-                                                    style: .light,
+        let performanceMonitor = PerformanceMonitor(withPerformanceView: false,
                                                     delegate: self)
         return performanceMonitor
     }()

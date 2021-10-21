@@ -1,6 +1,6 @@
 PODS:
   - GDPerformanceView-Swift (2.1.1)
-  - Kitemetrics (1.2.4):
+  - Kitemetrics (1.2.7):
     - GDPerformanceView-Swift
     - ReachabilitySwift (~> 5.0.0)
     - SwiftyBeaver
@@ -9,29 +9,36 @@ PODS:
   - SwiftyBeaver (1.9.5)
 
 DEPENDENCIES:
-  - GDPerformanceView-Swift
+  - "GDPerformanceView-Swift (from `git@github.com:slumberGroup/GDPerformanceView-Swift.git`, branch `master`)"
   - Kitemetrics (from `../.`)
   - SnapKit (~> 5.0.0)
   - SwiftyBeaver
 
 SPEC REPOS:
   trunk:
-    - GDPerformanceView-Swift
     - ReachabilitySwift
     - SnapKit
     - SwiftyBeaver
 
 EXTERNAL SOURCES:
+  GDPerformanceView-Swift:
+    :branch: master
+    :git: "git@github.com:slumberGroup/GDPerformanceView-Swift.git"
   Kitemetrics:
     :path: "../."
 
+CHECKOUT OPTIONS:
+  GDPerformanceView-Swift:
+    :commit: 185caf72d55a66e7e33044764fd0dd9d0d5186cf
+    :git: "git@github.com:slumberGroup/GDPerformanceView-Swift.git"
+
 SPEC CHECKSUMS:
   GDPerformanceView-Swift: 22d964fe40b19e3d914dba2586237d064de8fd77
-  Kitemetrics: 5c1916c5c7cbb11288d2b917a780f14a3101b5f2
+  Kitemetrics: ef08b21563520f3a262d15e755f711bcf63046e8
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
 
-PODFILE CHECKSUM: e4c0337eb00108fa167f5e98d31ce1486bb7a0c3
+PODFILE CHECKSUM: 4f8e4bdabf539b85beac72cdc65b996ef3702607
 
 COCOAPODS: 1.11.2
