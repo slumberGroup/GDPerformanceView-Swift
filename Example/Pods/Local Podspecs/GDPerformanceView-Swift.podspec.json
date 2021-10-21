@@ -1,6 +1,6 @@
 {
   "name": "GDPerformanceView-Swift",
-  "version": "2.1.1",
+  "version": "3.0.1",
   "summary": "Shows FPS, CPU and memory usage, device model, app and iOS versions above the status bar and report FPS, CPU and memory usage via delegate.",
   "homepage": "https://github.com/dani-gavrilov/GDPerformanceView-Swift",
   "license": {
@@ -14,8 +14,8 @@
     "ios": "9.0"
   },
   "source": {
-    "git": "https://github.com/dani-gavrilov/GDPerformanceView-Swift.git",
-    "tag": "2.1.1"
+    "git": "git@github.com:slumberGroup/GDPerformanceView-Swift.git",
+    "branch": "3.0.1"
   },
   "source_files": "GDPerformanceView-Swift/GDPerformanceMonitoring/*.swift",
   "frameworks": [
