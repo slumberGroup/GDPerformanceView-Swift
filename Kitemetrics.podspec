@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name             = 'Kitemetrics'
-  spec.version          = '1.2.9'
+  spec.version          = '1.2.10'
   spec.summary          = 'iOS App Analytics, Apple Search Ads Attribution, and Reporting.'
   
   spec.swift_version    = '5.3.3'
@@ -30,6 +30,5 @@ Kitemetrics provides keyword level attribution for Apple Search Ads. It associat
   
   spec.dependency 'ReachabilitySwift', '~> 5.0.0'
   spec.dependency 'SwiftyBeaver'
-  spec.dependency 'GDPerformanceView-Swift'
   
 end
