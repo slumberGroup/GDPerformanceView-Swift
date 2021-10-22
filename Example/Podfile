@@ -1,0 +1,16 @@
+use_frameworks!
+platform :ios, '13.0'
+
+
+target 'Kitemetrics_Example' do
+  pod 'Kitemetrics', :path => '../.'
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'SwiftyBeaver'
+  pod 'GDPerformanceView-Swift', :git => 'git@github.com:slumberGroup/GDPerformanceView-Swift.git', :branch => 'master'
+
+  target 'Kitemetrics_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
